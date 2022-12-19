@@ -16,6 +16,9 @@ class Tom:
     def tom_heal():
         restore = random.randrange(0, 4)
         Tom.hp += restore
+    def tom_heal_team(member):
+        heal = random.randrange(0, 4)
+        member.hp += heal
 
 
         
