@@ -3,7 +3,7 @@ import random
 
 class Tom:
     def __init__(self):
-        self.hp = 20
+        self.hp = 12
         self.attack = 4
         self.defence = 2
     def tom_attack(oponent):
