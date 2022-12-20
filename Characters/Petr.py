@@ -5,13 +5,13 @@ class Petr:
         self.defence = 1
         self.regeneration = 2
 
-    def petr_attack(oponent):
-        Petr.energy -= 3
+    def petr_attack(self, oponent):
+        self.energy -= 3
         blow = 3 - oponent.defence
         oponent.hp -= blow
 
-    def petr_special(oponent):
-        Petr.energy -= 6            # tady se taky domluvíme
+    def petr_special(self, oponent):
+        self.energy -= 6            # tady se taky domluvíme
         blow = 5 - oponent.defence
         oponent.hp -= blow
 
