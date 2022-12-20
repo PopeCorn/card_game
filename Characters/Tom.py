@@ -14,4 +14,10 @@ class Tom:
         Tom.energy -= 6
         blow = 5 - oponent.defence
         oponent.hp -= blow
-        
+    def tom_energy_regeneration(self):
+        if self.energy == 7:
+            pass
+        elif self.energy == 6:
+            self.energy += 1
+        else:
+            self.energy += 2
