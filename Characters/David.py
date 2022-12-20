@@ -5,13 +5,13 @@ class David:
         self.defence = 1
         self.regeneration = 2
 
-    def david_attack(oponent):
-        David.energy -= 3
+    def david_attack(self, oponent):
+        self.energy -= 3
         blow = 2 - oponent.defence
         oponent.hp -= blow
 
-    def david_special(oponent):
-        David.energy -= 6
+    def david_special(self, oponent):
+        self.energy -= 6
         blow = 6 - oponent.defence
         oponent.hp -= blow
 
