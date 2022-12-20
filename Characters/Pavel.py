@@ -5,13 +5,13 @@ class Pavel:
         self.defence = 1
         self.regeneration = 2
 
-    def pavel_attack(oponent):
-        Pavel.energy -= 3
+    def pavel_attack(self, oponent):
+        self.energy -= 3
         blow = 3 - oponent.defence
         oponent.hp -= blow
 
-    def pavel_special(oponent):
-        Pavel.energy -= 7
+    def pavel_special(self, oponent):
+        self.energy -= 7
         blow = 8 - oponent.defence
         oponent.hp -= blow
 
