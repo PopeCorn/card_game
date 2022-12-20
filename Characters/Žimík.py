@@ -5,13 +5,13 @@ class Zimik:
         self.defence = 1
         self.regeneration = 2
 
-    def zimik_attack(oponent):
-        Zimik.energy -= 4
+    def zimik_attack(self, oponent):
+        self.energy -= 4
         blow = 3 - oponent.defence
         oponent.hp -= blow
 
-    def zimik_special(oponent):
-        Zimik.energy -= 6             # tady se taky domluvíme
+    def zimik_special(self, oponent):
+        self.energy -= 6             # tady se taky domluvíme
         blow = 5 - oponent.defence
         oponent.hp -= blow
 
