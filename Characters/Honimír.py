@@ -5,13 +5,13 @@ class Honimír:
         self.defence = 1
         self.regeneration = 2
 
-    def honimír_attack(oponent):
-        Honimír.energy -= 2
+    def honimír_attack(self, oponent):
+        self.energy -= 2
         blow = 2 - oponent.defence
         oponent.hp -= blow
 
-    def honimír_special(oponent):
-        Honimír.energy -= 7
+    def honimír_special(self, oponent):
+        self.energy -= 7
         blow = 7 - oponent.defence
         oponent.hp -= blow
 
