@@ -5,13 +5,13 @@ class Honza:
         self.defence = 1
         self.regeneration = 2
 
-    def honza_attack(oponent):
-        Honza.energy -= 3
+    def honza_attack(self, oponent):
+        self.energy -= 3
         blow = 3 - oponent.defence
         oponent.hp -= blow
 
-    def honza_special(oponent):
-        Honza.energy -= 6
+    def honza_special(self, oponent):
+        self.energy -= 6
         oponent.hp -= 1
         oponent.energy = 0
 
