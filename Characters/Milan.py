@@ -5,13 +5,13 @@ class Milan:
         self.defence = 1
         self.regeneration = 2
 
-    def milan_attack(oponent):
-        Milan.energy -= 4
+    def milan_attack(self, oponent):
+        self.energy -= 4
         blow = 3 - oponent.defence
         oponent.hp -= blow
 
-    def milan_special(oponent):
-        Milan.energy -= 7
+    def milan_special(self, oponent):
+        self.energy -= 7
         blow = 5 - oponent.defence
         oponent.hp -= blow
 
