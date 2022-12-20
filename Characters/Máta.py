@@ -5,13 +5,13 @@ class Matyas:
         self.defence = 1
         self.regeneration = 2
 
-    def matyas_attack(oponent):
-        Matyas.energy -= 3
+    def matyas_attack(self, oponent):
+        self.energy -= 3
         blow = 4 - oponent.defence
         oponent.hp -= blow
 
-    def matyas_special(oponent):
-        Matyas.energy -= 6             # Tady se taky domluvíme
+    def matyas_special(self, oponent):
+        self.energy -= 6             # Tady se taky domluvíme
         blow = 5 - oponent.defence
         oponent.hp -= blow
 
