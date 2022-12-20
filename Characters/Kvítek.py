@@ -5,13 +5,13 @@ class Kvitek:
         self.defence = 1
         self.regeneration = 2
 
-    def kvitek_attack(oponent):
-        Kvitek.energy -= 4
+    def kvitek_attack(self, oponent):
+        self.energy -= 4
         blow = 3 - oponent.defence
         oponent.hp -= blow
 
-    def kvitek_special(oponent):
-        Kvitek.energy -= 7          # Pak se domluvíme jak to uděláme
+    def kvitek_special(self, oponent):
+        self.energy -= 7          # Pak se domluvíme jak to uděláme
         blow = 5 - oponent.defence
         oponent.hp -= blow
 
