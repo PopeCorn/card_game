@@ -13,8 +13,13 @@ class Nikolas:
         oponent.hp -= blow
     
     def nikolas_special(self, oponent):
-        self.energy -= 6
-        roll = random.randrange(1, 10)
-        blow = roll - oponent.defence
-        oponent.hp -= blow
+        self.energy -= 6             # tady se taky domluvíme
+        blow = random.randrange(1, 10) - oponent.defence
+        if blow == 0:
+            oponent.defence = 0
+        elif blow > 0:
+            oponent.defence -= blow
+        else:
+            oponent.hp -= blow
+            oponent.defence = 0
         

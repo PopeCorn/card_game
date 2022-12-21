@@ -11,14 +11,12 @@ class Kvitek:
         oponent.hp -= blow
 
     def kvitek_special(self, oponent):
-        self.energy -= 7          # Pak se domluvíme jak to uděláme
+        self.energy -= 7             # tady se taky domluvíme
         blow = 5 - oponent.defence
-        oponent.hp -= blow
-
-    def kvitek_energy_regeneration(self):
-        if self.energy == 9:
-            pass
-        elif self.energy == 8:
-            self.energy += 1
+        if blow == 0:
+            oponent.defence = 0
+        elif blow > 0:
+            oponent.defence -= blow
         else:
-            self.energy += 2
+            oponent.hp -= blow
+            oponent.defence = 0

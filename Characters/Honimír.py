@@ -11,14 +11,12 @@ class Honimír:
         oponent.hp -= blow
 
     def honimír_special(self, oponent):
-        self.energy -= 7
+        self.energy -= 7             # tady se taky domluvíme
         blow = 7 - oponent.defence
-        oponent.hp -= blow
-
-    def honimír_energy_regeneration(self):
-        if self.energy == 8:
-            pass
-        elif self.energy == 7:
-            self.energy += 1
+        if blow == 0:
+            oponent.defence = 0
+        elif blow > 0:
+            oponent.defence -= blow
         else:
-            self.energy += 2
+            oponent.hp -= blow
+            oponent.defence = 0

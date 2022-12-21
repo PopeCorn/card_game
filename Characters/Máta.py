@@ -11,14 +11,12 @@ class Matyas:
         oponent.hp -= blow
 
     def matyas_special(self, oponent):
-        self.energy -= 6             # Tady se taky domluvíme
+        self.energy -= 6             # tady se taky domluvíme
         blow = 5 - oponent.defence
-        oponent.hp -= blow
-
-    def matyas_energy_regeneration(self):
-        if self.energy == 7:
-            pass
-        elif self.energy == 6:
-            self.energy += 1
+        if blow == 0:
+            oponent.defence = 0
+        elif blow > 0:
+            oponent.defence -= blow
         else:
-            self.energy += 2
+            oponent.hp -= blow
+            oponent.defence = 0

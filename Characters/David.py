@@ -2,6 +2,7 @@ class David:
     def __init__(self):
         self.hp = 13
         self.energy = 8
+        self.max_energy = 8
         self.defence = 1
         self.regeneration = 2
 
@@ -11,14 +12,12 @@ class David:
         oponent.hp -= blow
 
     def david_special(self, oponent):
-        self.energy -= 6
+        self.energy -= 6             # tady se taky domluvíme
         blow = 6 - oponent.defence
-        oponent.hp -= blow
-
-    def david_energy_regeneration(self):
-        if self.energy == 8:
-            pass
-        elif self.energy == 7:
-            self.energy += 1
+        if blow == 0:
+            oponent.defence = 0
+        elif blow > 0:
+            oponent.defence -= blow
         else:
-            self.energy += 2
+            oponent.hp -= blow
+            oponent.defence = 0
