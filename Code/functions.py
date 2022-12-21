@@ -8,8 +8,8 @@ def regeneration(list):
 
 def attacking(target, attack):
     if attack == 0:
-            target.defence = 0
-    elif attack > 0:
+        target.defence = 0
+    elif attack < 0:
         target.defence -= attack
     else:
         target.hp -= attack
