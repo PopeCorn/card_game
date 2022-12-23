@@ -11,9 +11,9 @@ class Tom:
     def tom_attack(self, oponent):
         self.energy -= 4
         blow = 4 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 4)
     
     def tom_special(self, oponent):
         self.energy -= 6
         blow = 5 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 5)
