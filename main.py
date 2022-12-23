@@ -2,6 +2,7 @@ from Characters import David, Honimír, Honza, Kvítek, Mark, Máta, Milan, Niko
 
 # Nic zatím nedělat
 
-# tohle je jen příklad
-davídek = David.David()
-print(davídek.hp)
+# Toto je jen příklad
+if __name__ == "__main__":
+    davídek = David.David()
+    print(davídek.hp)
