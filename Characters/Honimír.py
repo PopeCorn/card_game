@@ -7,7 +7,6 @@ class Honimír:
         self.energy = 8
         self.max_energy = 8
         self.defence = 1
-        self.regeneration = 2
 
     def attack(self, oponent):
         f.attack(self.energy, 2, 2, oponent)
