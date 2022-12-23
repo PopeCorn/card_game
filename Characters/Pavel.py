@@ -10,14 +10,10 @@ class Pavel:
         self.regeneration = 2
 
     def attack(self, oponent):
-        self.energy -= 3
-        blow = 3 - oponent.defence
-        f.attacking(oponent, blow, 3)
+        f.attack(self.energy, 3, 3, oponent)
 
     def special(self, oponent):
-        self.energy -= 7
-        blow = 8 - oponent.defence
-        f.attacking(oponent, blow, 8)
+        f.attack(self.energy, 7, 8, oponent)
 
     def heal(self):
         self.energy -= 1

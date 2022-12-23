@@ -10,14 +10,10 @@ class Kvitek:
         self.regeneration = 2
 
     def attack(self, oponent):
-        self.energy -= 4
-        blow = 3 - oponent.defence
-        f.attacking(oponent, blow, 3)
+        f.attack(self.energy, 4, 3, oponent)
 
     def special(self, oponent):
-        self.energy -= 7
-        blow = 5 - oponent.defence
-        f.attacking(oponent, blow, 5)
+        f.attack(self.energy, 7, 5, oponent)
 
     def heal(self):
         self.energy -= 1

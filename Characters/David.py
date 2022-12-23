@@ -10,14 +10,10 @@ class David:
         self.regeneration = 2
 
     def attack(self, oponent):
-        self.energy -= 3
-        blow = 2 - oponent.defence
-        f.attacking(oponent, blow, 2)
+        f.attack(self.energy, 3, 2, oponent)
 
     def special(self, oponent):
-        self.energy -= 6
-        blow = 6 - oponent.defence
-        f.attacking(oponent, blow, 6)
+        f.attack(self.energy, 6, 6, oponent)
 
     def heal(self):
         self.energy -= 1

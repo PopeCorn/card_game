@@ -16,6 +16,16 @@ def attacking(target, attack, original_attack):
         target.defence = 0
 
 
+def attack(energy, energy_taken, damage, defender):
+    if energy < energy_taken:
+            print('You do not have enough energy!')
+    else:
+        energy -= energy_taken
+        blow = damage - defender.defence
+        attacking(defender, blow, damage)
+
+
+
 def healing(character):
     if character.hp == character.max_hp or character.hp == character.max_hp - 1:
         character.hp = character.max_hp

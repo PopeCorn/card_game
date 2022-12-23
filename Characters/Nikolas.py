@@ -11,15 +11,11 @@ class Nikolas:
         self.regeneration = 2
     
     def attack(self, oponent):
-        self.energy -= 3
-        blow = 4 - oponent.defence
-        f.attacking(oponent, blow, 4)
-    
+        f.attack(self.energy, 3, 4, oponent)
+
     def special(self, oponent):
-        self.energy -= 6
         random_number = random.randrange(1, 10)
-        blow = random_number - oponent.defence
-        f.attacking(oponent, blow, random_number)
+        f.attack(self.energy, 6, random_number, oponent)
 
     def heal(self):
         self.energy -= 1

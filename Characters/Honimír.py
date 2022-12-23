@@ -10,14 +10,10 @@ class Honimír:
         self.regeneration = 2
 
     def attack(self, oponent):
-        self.energy -= 2
-        blow = 2 - oponent.defence
-        f.attacking(oponent, blow, 2)
+        f.attack(self.energy, 2, 2, oponent)
 
     def special(self, oponent):
-        self.energy -= 7
-        blow = 7 - oponent.defence
-        f.attacking(oponent, blow, 7)
+        f.attack(self.energy, 7, 7, oponent)
 
     def heal(self):
         self.energy -= 1

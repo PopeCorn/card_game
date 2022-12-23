@@ -10,14 +10,10 @@ class Matyas:
         self.regeneration = 2
 
     def attack(self, oponent):
-        self.energy -= 3
-        blow = 4 - oponent.defence
-        f.attacking(oponent, blow, 4)
+        f.attack(self.energy, 3, 4, oponent)
 
     def special(self, oponent):
-        self.energy -= 6
-        blow = 5 - oponent.defence
-        f.attacking(oponent, blow, 5)
+        f.attack(self.energy, 6, 5, oponent)
 
     def heal(self):
         self.energy -= 1
