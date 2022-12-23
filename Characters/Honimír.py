@@ -11,9 +11,9 @@ class Honimír:
     def honimír_attack(self, oponent):
         self.energy -= 2
         blow = 2 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 2)
 
     def honimír_special(self, oponent):
         self.energy -= 7
         blow = 7 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 7)
