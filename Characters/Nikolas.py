@@ -14,10 +14,12 @@ class Nikolas:
         blow = 4 - oponent.defence
         f.attacking(oponent, blow, 4)
     
-    def nikolas_special(self):
+    def nikolas_special(self, oponent):
+        self.energy -= 6
         random_number = random.randrange(1, 10)
-        return random_number
-        
+        blow = random_number - oponent.defence
+        f.attacking(oponent, blow, random_number)
+
     def nikolas_heal(self):
         self.energy -= 1
         f.healing(self)
