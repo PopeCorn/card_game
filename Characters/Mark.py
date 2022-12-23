@@ -11,9 +11,9 @@ class Marekec:
     def marekec_attack(self, oponent):
         self.energy -= 3
         blow = 3 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 3)
 
     def marekec_special(self, oponent):
         self.energy -= 6
         blow = 5 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 5)
