@@ -11,9 +11,9 @@ class Petr:
     def petr_attack(self, oponent):
         self.energy -= 3
         blow = 3 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 3)
 
     def petr_special(self, oponent):
         self.energy -= 6
         blow = 5 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 5)
