@@ -6,11 +6,11 @@ def regeneration(list):
             character.energy += 2
 
 
-def attacking(target, attack):
+def attacking(target, attack, original_attack):
     if attack == 0:
         target.defence = 0
     elif attack < 0:
-        target.defence -= attack
+        target.defence -= original_attack
     else:
         target.hp -= attack
         target.defence = 0
