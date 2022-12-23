@@ -11,7 +11,7 @@ class Honza:
     def honza_attack(self, oponent):
         self.energy -= 3
         blow = 3 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 3)
 
     def honza_special(self, oponent):
         self.energy -= 6
