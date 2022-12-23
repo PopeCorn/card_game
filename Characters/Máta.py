@@ -17,3 +17,7 @@ class Matyas:
         self.energy -= 6
         blow = 5 - oponent.defence
         f.attacking(oponent, blow, 5)
+
+    def matyas_heal(self):
+        self.energy -= 1
+        f.healing(self)

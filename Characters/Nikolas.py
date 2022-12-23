@@ -19,4 +19,7 @@ class Nikolas:
         random_number = random.randrange(1, 10)
         blow = random_number - oponent.defence
         f.attacking(oponent, blow, random_number)
-        
+
+    def nikolas_heal(self):
+        self.energy -= 1
+        f.healing(self)

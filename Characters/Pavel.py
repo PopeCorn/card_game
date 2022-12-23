@@ -17,3 +17,7 @@ class Pavel:
         self.energy -= 7
         blow = 8 - oponent.defence
         f.attacking(oponent, blow, 8)
+
+    def pavel_heal(self):
+        self.energy -= 1
+        f.healing(self)

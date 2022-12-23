@@ -17,3 +17,7 @@ class David:
         self.energy -= 6
         blow = 6 - oponent.defence
         f.attacking(oponent, blow, 6)
+
+    def david_heal(self):
+        self.energy -= 1
+        f.healing(self)

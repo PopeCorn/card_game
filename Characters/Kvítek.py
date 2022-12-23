@@ -17,3 +17,7 @@ class Kvitek:
         self.energy -= 7
         blow = 5 - oponent.defence
         f.attacking(oponent, blow, 5)
+
+    def kvitek_heal(self):
+        self.energy -= 1
+        f.healing(self)

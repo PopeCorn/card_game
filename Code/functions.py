@@ -14,3 +14,10 @@ def attacking(target, attack, original_attack):
     else:
         target.hp -= attack
         target.defence = 0
+
+
+def healing(character):
+    if character.hp == character.max_hp or character.hp == character.max_hp - 1:
+        character.hp = character.max_hp
+    else:
+        character.hp += 2

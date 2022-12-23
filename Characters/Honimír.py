@@ -17,3 +17,7 @@ class Honimír:
         self.energy -= 7
         blow = 7 - oponent.defence
         f.attacking(oponent, blow, 7)
+
+    def honimir_heal(self):
+        self.energy -= 1
+        f.healing(self)

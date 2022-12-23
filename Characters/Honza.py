@@ -17,3 +17,7 @@ class Honza:
         self.energy -= 6
         oponent.hp -= 2
         oponent.energy = 0
+
+    def honza_heal(self):
+        self.energy -= 1
+        f.healing(self)
