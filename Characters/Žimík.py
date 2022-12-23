@@ -11,9 +11,9 @@ class Zimik:
     def zimik_attack(self, oponent):
         self.energy -= 4
         blow = 3 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 3)
 
     def zimik_special(self, oponent):
         self.energy -= 6
         blow = 5 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 5)
