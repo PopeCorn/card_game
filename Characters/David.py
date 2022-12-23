@@ -11,9 +11,9 @@ class David:
     def david_attack(self, oponent):
         self.energy -= 3
         blow = 2 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 2)
 
     def david_special(self, oponent):
         self.energy -= 6
         blow = 6 - oponent.defence
-        f.attacking(oponent, blow)
+        f.attacking(oponent, blow, 6)
