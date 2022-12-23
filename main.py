@@ -2,6 +2,6 @@ from Characters import David, Honimír, Honza, Kvítek, Mark, Máta, Milan, Niko
 
 # Nic zatím nedělat
 
+# tohle je jen příklad
 davídek = David.David()
-
 print(davídek.hp)
