@@ -14,6 +14,9 @@ class Tom:
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
 
-    def heal(self):
+    def heal(self, member=None, not_self=False):
         self.energy -= 1
-        f.healing(self)
+        if not_self:
+            f.healing(member)
+        else:
+            f.healing(self)
