@@ -6,7 +6,7 @@ class Milan:
         self.max_hp = 15
         self.energy = 10
         self.max_energy = 10
-        self.defence = 1
+        self.defence = 4
 
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)

@@ -6,7 +6,7 @@ class Petr:
         self.max_hp = 11
         self.energy = 7
         self.max_energy = 7
-        self.defence = 1
+        self.defence = 9
 
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)

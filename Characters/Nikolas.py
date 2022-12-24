@@ -7,7 +7,7 @@ class Nikolas:
         self.max_hp = 15
         self.energy = 7
         self.max_energy = 7
-        self.defence = 1
+        self.defence = 10
     
     def attack(self, oponent):
         f.attack(self.energy, 3, 4, oponent)

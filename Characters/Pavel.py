@@ -6,7 +6,7 @@ class Pavel:
         self.max_hp = 10
         self.energy = 8
         self.max_energy = 8
-        self.defence = 1
+        self.defence = 8
 
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)

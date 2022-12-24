@@ -6,7 +6,7 @@ class David:
         self.max_hp = 13
         self.energy = 8
         self.max_energy = 8
-        self.defence = 1
+        self.defence = 6
 
     def attack(self, oponent):
         f.attack(self.energy, 3, 2, oponent)

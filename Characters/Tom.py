@@ -6,7 +6,7 @@ class Tom:
         self.max_hp = 10
         self.energy = 7
         self.max_energy = 7
-        self.defence = 1
+        self.defence = 7
     
     def attack(self, oponent):
         f.attack(self.energy, 4, 4, oponent)
