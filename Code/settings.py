@@ -1,0 +1,3 @@
+global count
+global david_defence
+global marekec_dodge
