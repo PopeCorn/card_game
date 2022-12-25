@@ -16,6 +16,9 @@ class Nikolas:
         random_number = random.randrange(1, 10)
         f.attack(self.energy, 6, random_number, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def defence_recovery(self):
+        self.energy -= 2
+        if self.defence == 10 or self.defence == 9:
+            self.defence = 10
+        else:
+            self.defence += 2
