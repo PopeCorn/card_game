@@ -3,3 +3,4 @@ global david_defence
 global marekec_dodge
 global mojmir_double_damage
 global mojmir_attack
+global mata_poison

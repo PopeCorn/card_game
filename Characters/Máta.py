@@ -1,4 +1,5 @@
 from Code import functions as f
+from Code import settings as s
 
 class Matyas:
     def __init__(self):
@@ -14,6 +15,8 @@ class Matyas:
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def poison(self, oponent):
+        self.energy -= 2
+        s.mata_poison = True
+        oponent.hp -= 2
+        

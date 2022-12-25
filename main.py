@@ -5,8 +5,13 @@ from Code import settings as s
 
 s.count = 0
 if __name__ == "__main__":
+    david = David.David()
+    mata = Máta.Matyas()
     while True:
         s.count += 1
+        if s.mata_poison is True:
+            mata.poison(david)
+            s.mata_poison = False
         exit()
         
         
