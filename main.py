@@ -10,7 +10,7 @@ if __name__ == "__main__":
     while True:
         s.count += 1
         if s.mata_poison is True:
-            mata.poison(david)
+            mata.poison(s.mata_poison_target)
             s.mata_poison = False
         exit()
         
