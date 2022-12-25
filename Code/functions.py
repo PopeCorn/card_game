@@ -12,6 +12,7 @@ def attacking(target, attack, original_attack):
     if target == "david":
         if s.david_defence is True:
             attack -= 3
+            original_attack -= 3
             s.david_defence = False
         else:
             pass
