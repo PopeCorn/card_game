@@ -9,7 +9,7 @@ class Matyas:
         self.defence = 3
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 4, oponent)
+        f.attack(self.energy, 3, 3, oponent)
 
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
