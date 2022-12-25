@@ -3,7 +3,7 @@ from Code import settings as s
 
 # Nic zatím nedělat
 
-# Toto je jen příklad
+s.count = 0
 if __name__ == "__main__":
     while True:
         s.count += 1
