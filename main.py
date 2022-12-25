@@ -7,8 +7,6 @@ from Code import settings as s
 if __name__ == "__main__":
     while True:
         s.count += 1
-        davídek = David.David()
-        print(davídek.hp)
         exit()
         
         
