@@ -10,7 +10,7 @@ class David:
         self.defence = 6
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 2, oponent)
+        f.attack(self.energy, 3, 3, oponent)
 
     def special(self, oponent):
         f.attack(self.energy, 6, 6, oponent)
