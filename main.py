@@ -1,4 +1,4 @@
-from Characters import David, Honimír, Honza, Kvítek, Mark, Máta, Milan, Nikolas, Pavel, Petr, Tom, Žimík
+from Characters import David, Mojmir, Honza, Kvítek, Mark, Máta, Milan, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 
 # Nic zatím nedělat
