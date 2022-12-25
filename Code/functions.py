@@ -20,7 +20,10 @@ def attacking(target, attack, original_attack):
     if attack == 0:
         target.defence = 0
     elif attack < 0:
-        target.defence -= original_attack
+        if original_attack == 0 or original_attack < 0:
+            pass
+        else:
+            target.defence -= original_attack
     else:
         target.hp -= attack
         target.defence = 0
