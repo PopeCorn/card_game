@@ -1,4 +1,5 @@
 from Code import functions as f
+from Code import settings as s
 
 class David:
     def __init__(self):
@@ -14,6 +15,6 @@ class David:
     def special(self, oponent):
         f.attack(self.energy, 6, 6, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def reduce_damage(self):
+        self.energy -= 3
+        s.david_defence = True
