@@ -1,3 +1,5 @@
+import settings as s
+
 def regeneration(list):
     for character in list:
         if character.energy == character.max_energy or character.energy == character.max_energy - 1:
@@ -7,6 +9,13 @@ def regeneration(list):
 
 
 def attacking(target, attack, original_attack):
+    if target == "david":
+        if s.david_defence is True:
+            attack -= 3
+            s.david_defence = False
+        else:
+            pass
+            
     if attack == 0:
         target.defence = 0
     elif attack < 0:
