@@ -1,5 +1,5 @@
 from Code import functions as f
-
+from Code import settings as s
 
 class Marekec:
     def __init__(self):
@@ -15,6 +15,6 @@ class Marekec:
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def dodge(self):
+        self.energy -= 3
+        s.marekec_dodge = True
