@@ -9,7 +9,7 @@ class Honimír:
         self.defence = 6
 
     def attack(self, oponent):
-        f.attack(self.energy, 2, 2, oponent)
+        f.attack(self.energy, 2, 3, oponent)
 
     def special(self, oponent):
         f.attack(self.energy, 7, 7, oponent)
