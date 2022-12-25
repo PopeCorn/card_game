@@ -1,4 +1,5 @@
 import settings as s
+import random
 
 def regeneration(list):
     for character in list:
@@ -16,7 +17,17 @@ def attacking(target, attack, original_attack):
             s.david_defence = False
         else:
             pass
-            
+    elif target == "marekec":
+        if s.marekec_dodge is True:
+            s.marekec_dodge = False
+            number = random.randrange(1, 3)
+            if number == 1:
+                original_attack = 0
+                attack = -1
+            else:
+                pass
+        else:
+            pass
     if attack == 0:
         target.defence = 0
     elif attack < 0:
