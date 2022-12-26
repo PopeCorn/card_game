@@ -1,5 +1,5 @@
-from Code import functions as f
-from Code import settings as s
+from card_game_code import functions as f
+from card_game_code import settings as s
 
 class Matyas:
     def __init__(self):
@@ -18,5 +18,6 @@ class Matyas:
     def poison(self, oponent):
         self.energy -= 2
         s.mata_poison = True
+        s.mata_poison_target = oponent.lower()
         oponent.hp -= 2
         
