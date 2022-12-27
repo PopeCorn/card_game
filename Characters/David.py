@@ -1,5 +1,5 @@
-from card_game_code import functions as f
-from card_game_code import settings as s
+from Code import functions as f
+from Code import settings as s
 
 class David:
     def __init__(self):

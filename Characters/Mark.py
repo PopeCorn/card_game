@@ -1,12 +1,13 @@
-from card_game_code import functions as f
+from Code import functions as f
+from Code import settings as s
 
-class Petr:
+class Marekec:
     def __init__(self):
-        self.hp = 11
-        self.max_hp = 11
+        self.hp = 13
+        self.max_hp = 13
         self.energy = 7
         self.max_energy = 7
-        self.defence = 9
+        self.defence = 7
 
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)
@@ -14,6 +15,6 @@ class Petr:
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def dodge(self):
+        self.energy -= 3
+        s.marekec_dodge = True

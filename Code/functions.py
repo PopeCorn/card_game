@@ -1,4 +1,4 @@
-from card_game_code import settings as s
+import settings as s
 import random
 
 def regeneration(list):

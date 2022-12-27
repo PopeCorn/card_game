@@ -1,4 +1,4 @@
-from card_game_code import functions as f
+from Code import functions as f
 
 class Kvitek:
     def __init__(self):
