@@ -6,4 +6,5 @@
             "args": ["-ExecutionPolicy", "Bypass"]
         }
         },
+        "python.analysis.typeCheckingMode": "off",
     }

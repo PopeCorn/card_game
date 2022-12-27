@@ -1,4 +1,4 @@
-import settings as s
+from Code import settings as s
 import random
 
 def regeneration(list):
