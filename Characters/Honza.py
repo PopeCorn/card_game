@@ -12,11 +12,17 @@ class Honza:
         f.attack(self.energy, 3, 3, oponent)
 
     def special(self, oponent):
-        self.energy -= 6
-        oponent.hp -= 2
-        oponent.energy = 0
+        if self.energy < 6:
+            print('You do not have enough energy!')
+        else:
+            self.energy -= 6
+            oponent.hp -= 2
+            oponent.energy = 0
 
     def calculations(self):
-        self.energy -= 4
-        self.max_hp += 2
-        self.hp += 2
+        if self.energy < 4:
+            print('You do not have enough energy!')
+        else:
+            self.energy -= 4
+            self.max_hp += 2
+            self.hp += 2
