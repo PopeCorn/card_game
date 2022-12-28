@@ -2,9 +2,6 @@ from Characters import David, Mojmir, Honza, Kvítek, Mark, Máta, Milan, Nikola
 from Code import settings as s
 from colorama import Fore
 
-available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
-first_player_collection = []
-second_player_collection = []
 
 def choose_character(player_list, number):
     for i in range(1, 4):
@@ -22,8 +19,13 @@ def choose_character(player_list, number):
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
                     continue
 
-s.count = 0
+
 if __name__ == "__main__":
+    s.kvitek_ultimate = False
+    s.count = 0
+    available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
+    first_player_collection = []
+    second_player_collection = []
     print('''Available characters:
         David
         Matyas
@@ -42,11 +44,13 @@ if __name__ == "__main__":
     choose_character(second_player_collection, 2)
     print(f'First player: {first_player_collection}')
     print(f'Second player: {second_player_collection}')
-    exit()
+    print('TESTING NOW//////////////////////')
+    
     while True:
         s.count += 1
         if s.mata_poison is True:
             mata.poison(s.mata_poison_target)
             s.mata_poison = False
+        exit()
         
         

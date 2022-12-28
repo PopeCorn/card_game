@@ -1,4 +1,5 @@
 from Code import functions as f
+from Code import settings as s
 
 class Kvitek:
     def __init__(self):
@@ -14,6 +15,11 @@ class Kvitek:
     def special(self, oponent):
         f.attack(self.energy, 7, 5, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def ultimate(self, oponent):
+        if s.count > 24 and s.kvitek_ultimate is not True:
+            oponent.hp = 0
+            self.energy = 0
+            s.kvitek_ultimate = True
+        else:
+            print('You can use this ability only once and the game has to be over 24 rounds long!')
+
