@@ -16,7 +16,7 @@ class Kvitek:
         f.attack(self.energy, 7, 5, oponent)
 
     def ultimate(self, oponent):
-        if s.count > 24 and s.kvitek_ultimate is not True:
+        if s.count > 5 and s.kvitek_ultimate is not True:
             oponent.hp = 0
             self.energy = 0
             s.kvitek_ultimate = True

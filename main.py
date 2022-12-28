@@ -51,6 +51,7 @@ if __name__ == "__main__":
         if s.mata_poison is True:
             mata.poison(s.mata_poison_target)
             s.mata_poison = False
+        # KAŽDÉ KOLO BUDOU OBA HRÁČI HRÁT SE VŠEMI SVÝMI CHARAKTERY POMOCÍ FOR LOOPU
         exit()
         
         
