@@ -16,5 +16,8 @@ class Marekec:
         f.attack(self.energy, 6, 5, oponent)
 
     def dodge(self):
-        self.energy -= 3
-        s.marekec_dodge = True
+        if self.energy < 3:
+            print('You do not have enough energy!')
+        else:
+            self.energy -= 3
+            s.marekec_dodge = True

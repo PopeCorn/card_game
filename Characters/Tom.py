@@ -15,8 +15,11 @@ class Tom:
         f.attack(self.energy, 6, 5, oponent)
 
     def heal(self, member=None, not_self=False):
-        self.energy -= 2
-        if not_self:
-            f.healing(member)
+        if self.energy < 2:
+            print('You do not have enough energy!')
         else:
-            f.healing(self)
+            self.energy -= 2
+            if not_self:
+                f.healing(member)
+            else:
+                f.healing(self)

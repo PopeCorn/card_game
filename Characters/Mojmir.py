@@ -18,5 +18,8 @@ class Mojmir:
         f.attack(self.energy, 7, s.mojmir_attack, oponent)
 
     def double_damage(self):
-        self.energy -= 5
-        s.mojmir_double_damage = True
+        if self.energy < 6:
+            print('You do not have enough energy to do that!')
+        else:
+            self.energy -= 6
+            s.mojmir_double_damage = True
