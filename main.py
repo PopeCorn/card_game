@@ -29,7 +29,7 @@ if __name__ == "__main__":
         Matyas
         Mojmir
         Honza
-        Zimikcl
+        Zimik
         Kvitek
         Mark
         Milan
