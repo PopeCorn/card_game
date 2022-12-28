@@ -17,3 +17,4 @@ class Zimik:
     def heal(self):
         self.energy -= 1
         f.healing(self)
+        # předělat heal na to, že tato postava může permanentně snížit něčí max. energy o 2 a obnovit si 2 defence.
