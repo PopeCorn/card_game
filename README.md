@@ -7,7 +7,7 @@ of our dear classmates, Nikolas - also featured in-game.
 
 ## What should you expect?
 **Not very much to be honest** - this is just a project made by two beginner python programmers who are working on it in their free time, sometimes not even knowing what they are doing.
-We know that most of our code could probably have been done better, but this is just a learning project that is supposed to help us dive deeper into Python and get some experience with collaborating using tools like Git, nothing special.
+We know that most of our code probably could have been done better, but this is just a learning project that is supposed to help us dive deeper into Python and get some experience with collaborating using tools like Git, nothing special.
 
 ### PS:
 *Switching from Pycharm to VSCode is pretty painful, let me tell you*
