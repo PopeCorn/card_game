@@ -16,5 +16,8 @@ class David:
         f.attack(self.energy, 6, 6, oponent)
 
     def reduce_damage(self):
-        self.energy -= 3
-        s.david_defence = True
+        if self.energy < 3:
+            print('You do not have enough energy!')
+        else:
+            self.energy -= 3
+            s.david_defence = True
