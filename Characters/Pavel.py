@@ -17,3 +17,4 @@ class Pavel:
     def heal(self):
         self.energy -= 1
         f.healing(self)
+    # předělat heal na to, že si tato postava může zvolit defence nebo hp recovery

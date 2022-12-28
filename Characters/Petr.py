@@ -14,6 +14,6 @@ class Petr:
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def touching(self, oponent):
+        self.max_energy += 3
+        f.attack(self.energy, 4, 2, oponent)

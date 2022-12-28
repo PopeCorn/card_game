@@ -1,5 +1,6 @@
 from Characters import David, Mojmir, Honza, Kvítek, Mark, Máta, Milan, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
+from Code import functions as f
 from colorama import Fore
 
 
@@ -45,8 +46,10 @@ if __name__ == "__main__":
     print(f'First player: {first_player_collection}')
     print(f'Second player: {second_player_collection}')
     print('TESTING NOW//////////////////////')
-    
+    all_characters = first_player_collection + second_player_collection
+
     while True:
+        f.regeneration(all_characters)
         s.count += 1
         if s.mata_poison is True:
             mata.poison(s.mata_poison_target)
