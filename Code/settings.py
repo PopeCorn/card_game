@@ -1,0 +1,9 @@
+global count
+global david_defence
+global marekec_dodge
+global mojmir_double_damage
+global mojmir_attack
+global mojmir_done
+global mata_poison
+global kvitek_ultimate
+global zimik_reduce_defence

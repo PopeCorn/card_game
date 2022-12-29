@@ -1,13 +1,13 @@
 from Code import functions as f
 from Code import settings as s
 
-class Matyas:
+class Marekec:
     def __init__(self):
-        self.hp = 12
-        self.max_hp = 12
+        self.hp = 13
+        self.max_hp = 13
         self.energy = 7
         self.max_energy = 7
-        self.defence = 3
+        self.defence = 7
 
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)
@@ -15,11 +15,9 @@ class Matyas:
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
 
-    def poison(self, oponent):
-        if self.energy < 4:
+    def dodge(self):
+        if self.energy < 3:
             print('You do not have enough energy!')
         else:
-            self.energy -= 4
-            s.mata_poison = True
-            oponent.hp -= 2
-        
+            self.energy -= 3
+            s.marekec_dodge = True
