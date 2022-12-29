@@ -16,10 +16,10 @@ class Matyas:
         f.attack(self.energy, 6, 5, oponent)
 
     def poison(self, oponent):
-        if self.energy < 2:
+        if self.energy < 4:
             print('You do not have enough energy!')
         else:
-            self.energy -= 2
+            self.energy -= 4
             s.mata_poison = True
             oponent.hp -= 2
         

@@ -14,7 +14,7 @@ class Pavel:
     def special(self, oponent):
         f.attack(self.energy, 7, 8, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
-    # předělat heal na to, že si tato postava může zvolit defence nebo hp recovery a zároveň zaútočit bez ubrání vlastní energy
+    def multiple_attacks(self, oponent):
+        self.energy -= 7
+        f.attack(self.energy, 0, 3, oponent)
+        f.attack(self.energy, 0, 3, oponent)

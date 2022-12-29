@@ -1,4 +1,5 @@
 from Code import functions as f
+from Code import settings as s
 
 class Zimik:
     def __init__(self):
@@ -14,7 +15,11 @@ class Zimik:
     def special(self, oponent):
         f.attack(self.energy, 6, 5, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
-        # předělat heal na to, že tato postava může permanentně snížit něčí max. energy o 2 a obnovit si 2 defence.
+    def reduce_energy(self, oponent):
+        if self.energy > 5 and s.zimik_reduce_defence is not True:
+            oponent.max_energy -= 2
+            oponent.energy -= 2
+            self.defence += 2
+            s.zimik_reduce_defence = True
+        else:
+            print('You can use this ability only once!')

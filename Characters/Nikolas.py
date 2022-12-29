@@ -17,10 +17,10 @@ class Nikolas:
         f.attack(self.energy, 6, random_number, oponent)
 
     def defence_recovery(self):
-        if self.energy < 3:
+        if self.energy < 4:
             print('You do not have enough energy to do that!')
         else:
-            self.energy -= 3
+            self.energy -= 4
             if self.defence == 10 or self.defence == 9:
                 self.defence = 10
             else:

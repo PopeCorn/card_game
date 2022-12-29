@@ -15,5 +15,5 @@ class Petr:
         f.attack(self.energy, 6, 5, oponent)
 
     def touching(self, oponent):
-        self.max_energy += 3
+        self.energy += 3
         f.attack(self.energy, 4, 2, oponent)

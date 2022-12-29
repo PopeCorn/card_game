@@ -24,5 +24,5 @@ class Honza:
             print('You do not have enough energy!')
         else:
             self.energy -= 4
-            self.max_hp += 2
+            self.max_hp += 1
             self.hp += 2

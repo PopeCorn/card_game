@@ -14,6 +14,8 @@ class Milan:
     def special(self, oponent):
         f.attack(self.energy, 4, 3, oponent)
 
-    def heal(self):
-        self.energy -= 1
-        f.healing(self)
+    def tiktok(self, oponent):
+        self.energy -= 7
+        self.max_energy += 1
+        self.defence += 2
+        f.attack(self.energy, 0, 5, oponent)
