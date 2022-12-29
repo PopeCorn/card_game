@@ -3,19 +3,12 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
-# testing
-david = David.David()
-print(s.david_defence)
-david.reduce_damage()
-print(s.david_defence)
-
 def poison_checking():
     if s.mata_poison is True:
         mata.poison(s.mata_poison_target)
         s.mata_poison = False
     else:
         pass
-
 
 def choose_character(player_list, number):
     for i in range(1, 4):
@@ -36,7 +29,7 @@ def choose_character(player_list, number):
                     continue
 
 
-
+exit()
 if __name__ == "__main__":
     available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
     first_player_collection = []
