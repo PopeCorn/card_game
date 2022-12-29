@@ -3,12 +3,20 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
+def poison_checking():
+    if s.mata_poison is True:
+        mata.poison(s.mata_poison_target)
+        s.mata_poison = False
+    else:
+        pass
 
 def choose_character(player_list, number):
     for i in range(1, 4):
         while True:
                 new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
                 if (new_character in available_characters):
+                    if new_character == 'mata':
+                        s.mata_here = True
                     if (new_character in player_list):
                         print(f'{Fore.RED}You already have that character!{Fore.RESET}')
                         continue
@@ -21,17 +29,8 @@ def choose_character(player_list, number):
                     continue
 
 
-tom = Tom.Tom()
-print(f"Tom's hp before damage: {tom.hp}")
-tom.hp -= 5
-print(f"Tom's hp after damage: {tom.hp}")
-tom.test_heal()
-print(f"Tom's hp after healing: {tom.hp}")
-
 exit()
 if __name__ == "__main__":
-    s.kvitek_ultimate = False
-    s.count = 0
     available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
     first_player_collection = []
     second_player_collection = []
@@ -57,11 +56,11 @@ if __name__ == "__main__":
     all_characters = first_player_collection + second_player_collection
 
     while True:
-        f.regeneration(all_characters)
         s.count += 1
-        if s.mata_poison is True:
-            mata.poison(s.mata_poison_target)
-            s.mata_poison = False
+        f.regeneration(all_characters)
+        if s.mata_here:
+            poison_checking
+        
         # KAŽDÉ KOLO BUDOU OBA HRÁČI HRÁT SE VŠEMI SVÝMI CHARAKTERY POMOCÍ FOR LOOPU
         exit()
         
