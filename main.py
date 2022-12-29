@@ -9,12 +9,21 @@ print(s.david_defence)
 david.reduce_damage()
 print(s.david_defence)
 
-exit()
+def poison_checking():
+    if s.mata_poison is True:
+        mata.poison(s.mata_poison_target)
+        s.mata_poison = False
+    else:
+        pass
+
+
 def choose_character(player_list, number):
     for i in range(1, 4):
         while True:
                 new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
                 if (new_character in available_characters):
+                    if new_character == 'mata':
+                        s.mata_here = True
                     if (new_character in player_list):
                         print(f'{Fore.RED}You already have that character!{Fore.RESET}')
                         continue
@@ -56,9 +65,9 @@ if __name__ == "__main__":
     while True:
         s.count += 1
         f.regeneration(all_characters)
-        if s.mata_poison is True:
-            mata.poison(s.mata_poison_target)
-            s.mata_poison = False
+        if s.mata_here:
+            poison_checking
+        
         # KAŽDÉ KOLO BUDOU OBA HRÁČI HRÁT SE VŠEMI SVÝMI CHARAKTERY POMOCÍ FOR LOOPU
         exit()
         
