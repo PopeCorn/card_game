@@ -3,7 +3,13 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
+# testing
+david = David.David()
+print(s.david_defence)
+david.reduce_damage()
+print(s.david_defence)
 
+exit()
 def choose_character(player_list, number):
     for i in range(1, 4):
         while True:
@@ -21,10 +27,8 @@ def choose_character(player_list, number):
                     continue
 
 
-exit()
+
 if __name__ == "__main__":
-    s.kvitek_ultimate = False
-    s.count = 0
     available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
     first_player_collection = []
     second_player_collection = []
@@ -50,8 +54,8 @@ if __name__ == "__main__":
     all_characters = first_player_collection + second_player_collection
 
     while True:
-        f.regeneration(all_characters)
         s.count += 1
+        f.regeneration(all_characters)
         if s.mata_poison is True:
             mata.poison(s.mata_poison_target)
             s.mata_poison = False
