@@ -21,13 +21,6 @@ def choose_character(player_list, number):
                     continue
 
 
-tom = Tom.Tom()
-print(f"Tom's hp before damage: {tom.hp}")
-tom.hp -= 5
-print(f"Tom's hp after damage: {tom.hp}")
-tom.test_heal()
-print(f"Tom's hp after healing: {tom.hp}")
-
 exit()
 if __name__ == "__main__":
     s.kvitek_ultimate = False
