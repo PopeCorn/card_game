@@ -7,15 +7,21 @@ class Milan:
         self.energy = 10
         self.max_energy = 10
         self.defence = 4
+        self.cooldown = 0
+        self.special_cooldown = 0
 
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)
 
     def special(self, oponent):
-        f.attack(self.energy, 4, 3, oponent)
+        f.attack(self.energy, 4, 3, oponent, 2, self.cooldown, special=True)
 
     def tiktok(self, oponent):
-        self.energy -= 7
-        self.max_energy += 1
-        self.defence += 2
-        f.attack(self.energy, 0, 5, oponent)
+        if self.special_cooldown > 0:
+            print(f'You can use this ability in {self.special_cooldown} rounds!')
+        else:
+            self.special_cooldown += 2
+            self.energy -= 7
+            self.max_energy += 1
+            self.defence += 2
+            f.attack(self.energy, 0, 2, oponent)

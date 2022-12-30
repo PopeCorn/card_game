@@ -8,20 +8,26 @@ class Nikolas:
         self.energy = 7
         self.max_energy = 7
         self.defence = 10
+        self.cooldown = 0
+        self.special_cooldown = 0
     
     def attack(self, oponent):
         f.attack(self.energy, 3, 4, oponent)
 
     def special(self, oponent):
         random_number = random.randrange(1, 10)
-        f.attack(self.energy, 6, random_number, oponent)
+        f.attack(self.energy, 6, random_number, oponent, 2, self.cooldown, special=True)
 
     def defence_recovery(self):
-        if self.energy < 4:
-            print('You do not have enough energy to do that!')
+        if self.special_cooldown > 0:
+            print(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
-            self.energy -= 4
-            if self.defence == 10 or self.defence == 9:
-                self.defence = 10
+            if self.energy < 4:
+                print('You do not have enough energy to do that!')
             else:
-                self.defence += 2
+                self.special_cooldown += 1
+                self.energy -= 4
+                if self.defence == 10 or self.defence == 9:
+                    self.defence = 10
+                else:
+                    self.defence += 2
