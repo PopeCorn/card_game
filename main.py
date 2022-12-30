@@ -4,7 +4,6 @@ from Code import functions as f
 from colorama import Fore
 
 
-
 def poison_checking():
     if s.mata_poison is True:
         mata.poison(s.mata_poison_target)
@@ -34,7 +33,9 @@ if __name__ == "__main__":
     print('---------------------------------------')
     f.choose_character(second_player_collection, 2, available_characters)
     print(f'First player: {first_player_collection}')
+
    # tohle udělat s těmi actual moduly a ne jenom jmény: all_characters = first_player_collection + second_player_collection
+
     exit()
     while True:
         s.count += 1
