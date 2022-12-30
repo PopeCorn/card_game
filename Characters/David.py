@@ -18,9 +18,12 @@ class David:
         f.attack(self.energy, 6, 6, oponent, 2, self.cooldown, special=True)
 
     def reduce_damage(self):
-        if self.energy < 4:
-            print('You do not have enough energy!')
+        if self.special_cooldown > 0:
+            print(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
-            self.special_cooldown += 2
-            self.energy -= 4
+            if self.energy < 4:
+                print('You do not have enough energy!')
+            else:
+                self.special_cooldown += 2
+                self.energy -= 4
             s.david_defence = True

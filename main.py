@@ -17,6 +17,7 @@ def poison_checking():
         s.mata_poison = False
     else:
         pass
+    
 
 def choose_character(player_list, number):
     for i in range(1, 4):
