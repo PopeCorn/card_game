@@ -4,11 +4,11 @@ from Code import functions as f
 from colorama import Fore
 
 def cooldowns():
-        for character in all_characters:
-            if character.cooldown > 0:
-                character.cooldown -= 1
-            else:
-                pass
+    for character in all_characters:
+        if character.cooldown > 0:
+            character.cooldown -= 1
+        if character.special_cooldown > 0:
+            character.special_cooldown -= 1
 
 
 def poison_checking():

@@ -40,13 +40,22 @@ def attacking(target, attack, original_attack):
         target.defence = 0
 
 
-def attack(energy, energy_taken, damage, defender):
+def attack(energy, energy_taken, damage, defender, cooldown_increase=None, cooldown=None, special=False):
     if energy < energy_taken:
             print('You do not have enough energy!')
     else:
-        energy -= energy_taken
-        blow = damage - defender.defence
-        attacking(defender, blow, damage)
+        if special:
+            if cooldown > 0:
+                print(f'You can use this ability in {cooldown} rounds!')
+            else:
+                cooldown += cooldown_increase
+                energy -= energy_taken
+                blow = damage - defender.defence
+                attacking(defender, blow, damage)
+        else:
+            energy -= energy_taken
+            blow = damage - defender.defence
+            attacking(defender, blow, damage)
 
 def healing(character):
     if character.hp == character.max_hp or character.hp == character.max_hp - 1:
