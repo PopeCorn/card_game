@@ -19,6 +19,11 @@ def choose_character(player_list, number, available_list):
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
                     continue
 
+# After action is done, values in the dictionary turn True
+def initialize_dict(dictionary, list):
+        for i in range(0, 6):
+            dictionary[list[i]] = False
+
 # Energy regeneration for all characters
 def regeneration(list):
     for character in list:

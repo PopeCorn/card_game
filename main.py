@@ -47,8 +47,8 @@ if __name__ == "__main__":
             all_playable.append(mark)
         elif unused == 'matyas':
             s.mata_here = True
-            mata = Matyas.Matyas()
-            all_playable.append(mata)
+            matyas = Matyas.Matyas()
+            all_playable.append(matyas)
         elif unused == 'milan':
             milan = Milan.Milan()
             all_playable.append(milan)
@@ -71,11 +71,13 @@ if __name__ == "__main__":
             zimik = Žimík.Zimik()
             all_playable.append(zimik)
 
+    action_finish = {}
+    f.initialize_dict(action_finish, all_playable)
     exit()
     while True:
         s.count += 1
-        f.cooldowns(all_characters)
-        f.regeneration(all_characters)
+        f.cooldowns(all_playable)
+        f.regeneration(all_playable)
         if s.mata_here:
             poison_checking()
         
