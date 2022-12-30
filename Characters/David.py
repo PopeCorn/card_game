@@ -26,4 +26,4 @@ class David:
             else:
                 self.special_cooldown += 2
                 self.energy -= 4
-            s.david_defence = True
+                s.david_defence = True
