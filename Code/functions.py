@@ -8,8 +8,6 @@ def choose_character(player_list, number, available_list):
         while True:
                 new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
                 if (new_character in available_list):
-                    if new_character == 'mata':
-                        s.mata_here = True
                     if (new_character in player_list):
                         print(f'{Fore.RED}You already have that character!{Fore.RESET}')
                         continue

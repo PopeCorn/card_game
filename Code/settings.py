@@ -1,5 +1,4 @@
 # variables used throughout the project
-
 count = 0
 david_defence = False
 marekec_dodge = False
