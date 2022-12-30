@@ -3,6 +3,14 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
+def cooldowns():
+        for character in all_characters:
+            if character.cooldown > 0:
+                character.cooldown -= 1
+            else:
+                pass
+
+
 def poison_checking():
     if s.mata_poison is True:
         mata.poison(s.mata_poison_target)
@@ -28,6 +36,9 @@ def choose_character(player_list, number):
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
                     continue
 
+david = David.David()
+s.count = 1
+print(david.cooldown)
 
 exit()
 if __name__ == "__main__":
@@ -57,6 +68,7 @@ if __name__ == "__main__":
 
     while True:
         s.count += 1
+        cooldowns()
         f.regeneration(all_characters)
         if s.mata_here:
             poison_checking

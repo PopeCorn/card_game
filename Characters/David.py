@@ -8,6 +8,7 @@ class David:
         self.energy = 8
         self.max_energy = 8
         self.defence = 6
+        self.cooldown = s.count
 
     def attack(self, oponent):
         f.attack(self.energy, 3, 2, oponent)
