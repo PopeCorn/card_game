@@ -101,19 +101,21 @@ if __name__ == "__main__":
     f.initialize_dict(action_finish, all_playable)
 
 
-    index = 0
+    idnex = 0
     while True:
         s.count += 1
         f.cooldowns(all_playable)
         f.regeneration(all_playable)
         if s.mata_here:
             poison_checking()
-        for character in all_playable[0, 4]:
-            print(f'''Player 1, choose your action with {str(first_player_collection[index]).capitalize} (TYPE ITS NUMBER):
+        for character in all_playable[0:4]:
+            character_name = first_player_collection[idnex].capitalize()
+            print(f'''------------------------------------------------------------------------------------
+            Player 1, choose your action with {character_name} (TYPE ITS NUMBER):
             1. Attack
             2. Special attack
             3. Special action''')
-            index += 1
+            idnex += 1
             while True:
                 action = input('Type here: ')
                 if action == '1' or action == '2':
@@ -146,13 +148,16 @@ if __name__ == "__main__":
                                         print('That player either does not exist or is not on your team!')
                                         continue
                                     break
+                                break
                             else:
                                 print('That is not an option!')
                                 continue
-                            break
+                else:
+                    print('That is not an option!')
+                    continue
                 break
         index = 0
-        for character in all_playable[4, 7]:
+        for character in all_playable[4:7]:
             pass
         exit()
         

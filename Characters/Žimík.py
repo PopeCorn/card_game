@@ -9,6 +9,7 @@ class Zimik:
         self.max_energy = 10
         self.defence = 2
         self.cooldown = 0
+        self.special_cooldown = 0
 
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)
