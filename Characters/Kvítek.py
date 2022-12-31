@@ -9,14 +9,15 @@ class Kvitek:
         self.max_energy = 9
         self.defence = 5
         self.cooldown = 0
+        self.special_cooldown = 0
 
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         f.attack(self.energy, 7, 5, oponent, 2, self.cooldown, special=True)
 
-    def ultimate(self, oponent):
+    def special(self, oponent):
         if s.count > 5 and s.kvitek_ultimate is not True:
             oponent.hp = 0
             self.energy = 0

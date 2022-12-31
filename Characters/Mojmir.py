@@ -15,11 +15,11 @@ class Mojmir:
         f.double_attack(4, 2)
         f.attack(self.energy, 2, s.mojmir_attack, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         f.double_attack(12, 6)
         f.attack(self.energy, 7, s.mojmir_attack, oponent, 2, self.cooldown, special=True)
 
-    def double_damage(self):
+    def special(self):
         if self.energy < 6 and s.mojmir_done is True:
             print('You do not have enough energy and you can do this only once!')
         else:

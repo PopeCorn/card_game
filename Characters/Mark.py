@@ -14,10 +14,10 @@ class Marekec:
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
-    def dodge(self):
+    def special(self):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
         else:

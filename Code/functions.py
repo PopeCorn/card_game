@@ -8,8 +8,6 @@ def choose_character(player_list, number, available_list):
         while True:
                 new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
                 if (new_character in available_list):
-                    if new_character == 'mata':
-                        s.mata_here = True
                     if (new_character in player_list):
                         print(f'{Fore.RED}You already have that character!{Fore.RESET}')
                         continue
@@ -20,6 +18,11 @@ def choose_character(player_list, number, available_list):
                 else:
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
                     continue
+
+# After action is done, values in the dictionary turn True
+def initialize_dict(dictionary, list):
+        for i in range(0, 6):
+            dictionary[list[i]] = False
 
 # Energy regeneration for all characters
 def regeneration(list):
@@ -92,6 +95,40 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             energy -= energy_taken
             blow = damage - defender.defence
             attacking(defender, blow, damage)
+
+# Funkce pro normální útoky, vázáno na main.py
+def normal_attacks(main_character, transfered, all_list):
+    while True:
+        oponent = input('Who do you want to attack: ')
+        if oponent in all_list:
+            main_character.special_attack(transfered[oponent])
+            break
+        else:
+            print('That character is not in the game!')
+            continue
+
+# Funkce pro speciální útoky, vázáno na main.py
+def special_attacks(main_character, transfered, all_list):
+    while True:
+        oponent = input('Who do you want to attack: ')
+        if oponent in all_list:
+            main_character.special_attack(transfered[oponent])
+            break
+        else:
+            print('That character is not in the game!')
+            continue
+
+# Funkce pro speciální akce, vázáno na main.py
+def specials(main_character, transfered, all_list):
+    while True:
+        oponent = input('Who do you want to attack: ')
+        if oponent in all_list:
+            main_character.special(transfered[oponent])
+            break
+        else:
+            print('That character is not in the game!')
+            continue
+
 
 # Mojmir's double attack function, checking his every attack
 def double_attack(doubled, not_doubled):

@@ -13,9 +13,9 @@ class Petr:
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
-    def touching(self, oponent):
+    def special(self, oponent):
         self.energy += 3
         f.attack(self.energy, 4, 2, oponent, 1, self.special_cooldown, special=True)

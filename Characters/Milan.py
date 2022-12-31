@@ -13,10 +13,10 @@ class Milan:
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent, 2, self.cooldown, special=True)
 
-    def tiktok(self, oponent):
+    def special(self, oponent):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
