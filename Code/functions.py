@@ -96,6 +96,40 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             blow = damage - defender.defence
             attacking(defender, blow, damage)
 
+# Funkce pro normální útoky, vázáno na main.py
+def normal_attacks(main_character, transfered, all_list):
+    while True:
+        oponent = input('Who do you want to attack: ')
+        if oponent in all_list:
+            main_character.special_attack(transfered[oponent])
+            break
+        else:
+            print('That character is not in the game!')
+            continue
+
+# Funkce pro speciální útoky, vázáno na main.py
+def special_attacks(main_character, transfered, all_list):
+    while True:
+        oponent = input('Who do you want to attack: ')
+        if oponent in all_list:
+            main_character.special_attack(transfered[oponent])
+            break
+        else:
+            print('That character is not in the game!')
+            continue
+
+# Funkce pro speciální akce, vázáno na main.py
+def specials(main_character, transfered, all_list):
+    while True:
+        oponent = input('Who do you want to attack: ')
+        if oponent in all_list:
+            main_character.special(transfered[oponent])
+            break
+        else:
+            print('That character is not in the game!')
+            continue
+
+
 # Mojmir's double attack function, checking his every attack
 def double_attack(doubled, not_doubled):
     if s.mojmir_double_damage is True:

@@ -3,17 +3,6 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
-def special_attacks(main_character):
-    while True:
-        oponent = input('Who do you want to attack: ')
-        if oponent in all_unplayable:
-            main_character.special(transfer[oponent])
-            break
-        else:
-            print('That character is not in the game!')
-            continue
-
-
 def poison_checking():
     if s.mata_poison is True:
         mata.poison(s.mata_poison_target)
@@ -101,7 +90,7 @@ if __name__ == "__main__":
     f.initialize_dict(action_finish, all_playable)
 
 
-    idnex = 0
+    index_of_character = 0
     while True:
         s.count += 1
         f.cooldowns(all_playable)
@@ -109,29 +98,26 @@ if __name__ == "__main__":
         if s.mata_here:
             poison_checking()
         for character in all_playable[0:4]:
-            character_name = first_player_collection[idnex].capitalize()
+            character_name = first_player_collection[index_of_character].capitalize()
             print(f'''------------------------------------------------------------------------------------
             Player 1, choose your action with {character_name} (TYPE ITS NUMBER):
             1. Attack
             2. Special attack
             3. Special action''')
-            idnex += 1
+            index_of_character += 1
             while True:
                 action = input('Type here: ')
-                if action == '1' or action == '2':
-                    target = input('Who do you want to attack: ').lower()
-                    if target in all_unplayable:
-                        character.attack(transfer[target])
-                    else:
-                        print('That character is not in the game!')
-                        continue
+                if action == '1':
+                    f.normal_attacks(character, transfer, all_unplayable)
+
+                elif action == '2':
+                    f.special_attacks(character, transfer, all_unplayable)
 
                 elif action == '3':
                     if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
                         character.special()
-
                     elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                        special_attacks(character)
+                        f.specials(character, transfer, all_unplayable)
 
                     elif inverted_transfer[character] == 'tom':
                         while True:
@@ -156,7 +142,8 @@ if __name__ == "__main__":
                     print('That is not an option!')
                     continue
                 break
-        index = 0
+        index_of_character = 0
+        
         for character in all_playable[4:7]:
             pass
         exit()
