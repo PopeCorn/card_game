@@ -13,7 +13,7 @@ class Honza:
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         if self.cooldown > 0:
             print(f'You can use this ability in {self.cooldown} rounds!')
         else:
@@ -25,7 +25,7 @@ class Honza:
                 oponent.hp -= 2
                 oponent.energy = 0
 
-    def calculations(self):
+    def special(self):
         if self.cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
         else:

@@ -13,10 +13,10 @@ class Zimik:
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
-    def reduce_energy(self, oponent):
+    def special(self, oponent):
         if self.energy > 5 and s.zimik_reduce_defence is not True:
             oponent.max_energy -= 2
             oponent.energy -= 2

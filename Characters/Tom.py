@@ -13,10 +13,10 @@ class Tom:
     def attack(self, oponent):
         f.attack(self.energy, 4, 4, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
-    def heal(self, member=None, not_self=False):
+    def special(self, member=None, not_self=False):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
         else:

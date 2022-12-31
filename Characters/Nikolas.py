@@ -14,11 +14,11 @@ class Nikolas:
     def attack(self, oponent):
         f.attack(self.energy, 3, 4, oponent)
 
-    def special(self, oponent):
+    def special_attack(self, oponent):
         random_number = random.randrange(1, 10)
         f.attack(self.energy, 6, random_number, oponent, 2, self.cooldown, special=True)
 
-    def defence_recovery(self):
+    def special(self):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
