@@ -8,4 +8,4 @@ mojmir_done = False
 mata_poison = False
 mata_here = False
 kvitek_ultimate = False
-zimik_reduce_defence = False
+zimik_reduce_energy = False

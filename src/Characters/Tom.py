@@ -16,6 +16,7 @@ class Tom:
     def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
+    # Tom stays behind friendly lines, ready to heal others or himself
     def special(self, member=None, not_self=False):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')

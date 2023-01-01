@@ -16,6 +16,7 @@ class Petr:
     def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
+    # Petr uses his unmatched speed give himself energy and attack at the same time
     def special(self, oponent):
         self.energy += 3
         f.attack(self.energy, 4, 2, oponent, 1, self.special_cooldown, special=True)

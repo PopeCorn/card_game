@@ -19,6 +19,7 @@ class Mojmir:
         f.double_attack(12, 6)
         f.attack(self.energy, 7, s.mojmir_attack, oponent, 2, self.cooldown, special=True)
 
+    # Mojmir positions himself behind enemy lines, ready to strike twice as hard
     def special(self):
         if self.energy < 6 and s.mojmir_done is True:
             print('You do not have enough energy and you can do this only once!')

@@ -17,11 +17,12 @@ class Zimik:
     def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
+    # Zimik takes off his shirt and shows the hottest body on the planet, instantly weaking one chosen oponent
     def special(self, oponent):
-        if self.energy > 5 and s.zimik_reduce_defence is not True:
+        if self.energy > 5 and s.zimik_reduce_energy is not True:
             oponent.max_energy -= 2
             oponent.energy -= 2
             self.defence += 2
-            s.zimik_reduce_defence = True
+            s.zimik_reduce_energy = True
         else:
             print('You can use this ability only once!')

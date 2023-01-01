@@ -3,21 +3,23 @@ import random
 from colorama import Fore
 
 # Basic function, enabling both players to choose their characters at the start of the game
-def choose_character(player_list, number, available_list):
+def choose_character(player_list, number, available_list, all_list):
     for i in range(1, 4):
         while True:
                 new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
                 if (new_character in available_list):
-                    if (new_character in player_list):
-                        print(f'{Fore.RED}You already have that character!{Fore.RESET}')
+                    if (new_character in all_list):
+                        print(f'{Fore.RED}You or someone else already have that character!{Fore.RESET}')
                         continue
                     else:
                         print(f'{Fore.BLUE}{new_character.capitalize()} added! {Fore.RESET}')
                         player_list.append(new_character)
+                        all_list.append(new_character)
                         break
                 else:
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
                     continue
+    print(f'{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}')
 
 # After action is done, values in the dictionary turn True
 def initialize_dict(dictionary, list):
@@ -96,37 +98,37 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             blow = damage - defender.defence
             attacking(defender, blow, damage)
 
-# Funkce pro normální útoky, vázáno na main.py
-def normal_attacks(main_character, transfered, all_list):
+# Function for normal attacks, tied to main.py, needs revisiting
+def normal_attacks(main_character, transfered, friendly_list):
     while True:
         oponent = input('Who do you want to attack: ')
-        if oponent in all_list:
+        if oponent not in friendly_list:
+            main_character.attack(transfered[oponent])
+            break
+        else:
+            print('That character is not in the game or is on your team!')
+            continue
+
+# Function for special attacks, tied to main.py, needs revisiting
+def special_attacks(main_character, transfered, friendly_list):
+    while True:
+        oponent = input('Who do you want to attack: ')
+        if oponent not in friendly_list:
             main_character.special_attack(transfered[oponent])
             break
         else:
-            print('That character is not in the game!')
+            print('That character is not in the game or is on your team!')
             continue
 
-# Funkce pro speciální útoky, vázáno na main.py
-def special_attacks(main_character, transfered, all_list):
+# Function for special actions, tied to main.py, needs revisiting
+def specials(main_character, transfered, friendly_list):
     while True:
         oponent = input('Who do you want to attack: ')
-        if oponent in all_list:
-            main_character.special_attack(transfered[oponent])
-            break
-        else:
-            print('That character is not in the game!')
-            continue
-
-# Funkce pro speciální akce, vázáno na main.py
-def specials(main_character, transfered, all_list):
-    while True:
-        oponent = input('Who do you want to attack: ')
-        if oponent in all_list:
+        if oponent not in friendly_list:
             main_character.special(transfered[oponent])
             break
         else:
-            print('That character is not in the game!')
+            print('That character is not in the game or is on your team!')
             continue
 
 
