@@ -11,52 +11,55 @@ def poison_checking():
         pass
 
 def both_players(range_start, range_end, player_collection, player_number, wanted_index):
-            for character in all_playable[range_start:range_end]:
-                character_name = player_collection[wanted_index]
-                print(f'{Fore.GREEN}{character_name.upper()} turn{Fore.RESET}')
-                print(f'''------------------------------------------------------------------------------------
-                Player {player_number}, choose your action (TYPE ITS NUMBER):
-                1. Attack
-                2. Special attack
-                3. Special action''')
-                wanted_index += 1
-                while True:
-                    action = input('Type here: ')
-                    if action == '1':
-                        f.normal_attacks(character, transfer, all_playable[range_start:range_end])
+    print(f'{len(all_playable)} - délka listu, indexy jsou vždy o 1 menší')
+    for character in all_playable[range_start:range_end]:
+        wanted_index += 1
+        print(f'{wanted_index} - právě používaný index')
+        print()
+        character_name = player_collection[wanted_index]
+        print(f'{Fore.GREEN}{character_name.upper()} turn{Fore.RESET}')
+        print(f'''------------------------------------------------------------------------------------
+    Player {player_number}, choose your action (TYPE ITS NUMBER):
+        1. Attack
+        2. Special attack
+        3. Special action''')
+        while True:
+            action = input('Type here: ')
+            if action == '1':
+                f.normal_attacks(character, transfer, all_unplayable)
 
-                    elif action == '2':
-                        f.special_attacks(character, transfer, all_playable[range_start:range_end])
+            elif action == '2':
+                f.special_attacks(character, transfer, all_unplayable)
 
-                    elif action == '3':
-                        if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
+            elif action == '3':
+                if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
+                    character.special()
+                elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
+                    f.specials(character, transfer, all_unplayable)
+
+                elif inverted_transfer[character] == 'tom':
+                    while True:
+                        healing = input('Do you want to heal yourself [1] or someone other[2] (Type the number): ')
+                        if healing == '1':
                             character.special()
-                        elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                            f.specials(character, transfer, all_playable[range_start:range_end])
-
-                        elif inverted_transfer[character] == 'tom':
+                            break
+                        elif healing == '2':
                             while True:
-                                healing = input('Do you want to heal yourself [1] or someone other[2] (Type the number): ')
-                                if healing == '1':
-                                    character.special()
-                                    break
-                                elif healing == '2':
-                                    while True:
-                                        member = input('Who do you want to heal: ')
-                                        if member in first_player_collection:
-                                            character.special(transfer[member], not_self=True)
-                                        else:
-                                            print('That player either does not exist or is not on your team!')
-                                            continue
-                                        break
-                                    break
+                                member = input('Who do you want to heal: ')
+                                if member in first_player_collection:
+                                    character.special(transfer[member], not_self=True)
                                 else:
-                                    print('That is not an option!')
+                                    print('That player either does not exist or is not on your team!')
                                     continue
-                    else:
-                        print('That is not an option!')
-                        continue
-                    break
+                                break
+                            break
+                        else:
+                            print('That is not an option!')
+                            continue
+            else:
+                print('That is not an option!')
+                continue
+            break
 
 available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
 first_player_collection = []
@@ -64,7 +67,7 @@ second_player_collection = []
 all_unplayable = []
 
 if __name__ == "__main__":
-    index_of_character = 0
+    index_of_character = -1
     print('''Available characters:
         David
         Matyas
@@ -78,8 +81,8 @@ if __name__ == "__main__":
         Pavel
         Petr
         Tom''')
-    f.choose_character(first_player_collection, 1, available_characters)
-    f.choose_character(second_player_collection, 2, available_characters)
+    f.choose_character(first_player_collection, 1, available_characters, all_unplayable)
+    f.choose_character(second_player_collection, 2, available_characters, all_unplayable)
     transfer = {}
     all_playable = []
     for unused in all_unplayable:
