@@ -18,6 +18,7 @@ def choose_character(player_list, number, available_list):
                 else:
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
                     continue
+    print(f'{Fore.BLUE}---------------------------------------{Fore.RESET}')
 
 # After action is done, values in the dictionary turn True
 def initialize_dict(dictionary, list):
@@ -96,7 +97,7 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             blow = damage - defender.defence
             attacking(defender, blow, damage)
 
-# Funkce pro normální útoky, vázáno na main.py
+# Function for normal attacks, tied to main.py, needs revisiting
 def normal_attacks(main_character, transfered, all_list):
     while True:
         oponent = input('Who do you want to attack: ')
@@ -107,7 +108,7 @@ def normal_attacks(main_character, transfered, all_list):
             print('That character is not in the game!')
             continue
 
-# Funkce pro speciální útoky, vázáno na main.py
+# Function for special attacks, tied to main.py, needs revisiting
 def special_attacks(main_character, transfered, all_list):
     while True:
         oponent = input('Who do you want to attack: ')
@@ -118,7 +119,7 @@ def special_attacks(main_character, transfered, all_list):
             print('That character is not in the game!')
             continue
 
-# Funkce pro speciální akce, vázáno na main.py
+# Function for special actions, tied to main.py, needs revisiting
 def specials(main_character, transfered, all_list):
     while True:
         oponent = input('Who do you want to attack: ')
