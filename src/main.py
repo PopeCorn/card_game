@@ -10,11 +10,61 @@ def poison_checking():
     else:
         pass
 
+def both_players(range_start, range_end, player_collection, player_number, wanted_index):
+            for character in all_playable[range_start:range_end]:
+                character_name = player_collection[wanted_index]
+                print(f'{Fore.GREEN}{character_name.upper()} turn{Fore.RESET}')
+                print(f'''------------------------------------------------------------------------------------
+                Player {player_number}, choose your action (TYPE ITS NUMBER):
+                1. Attack
+                2. Special attack
+                3. Special action''')
+                wanted_index += 1
+                while True:
+                    action = input('Type here: ')
+                    if action == '1':
+                        f.normal_attacks(character, transfer, all_playable[range_start:range_end])
+
+                    elif action == '2':
+                        f.special_attacks(character, transfer, all_playable[range_start:range_end])
+
+                    elif action == '3':
+                        if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
+                            character.special()
+                        elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
+                            f.specials(character, transfer, all_playable[range_start:range_end])
+
+                        elif inverted_transfer[character] == 'tom':
+                            while True:
+                                healing = input('Do you want to heal yourself [1] or someone other[2] (Type the number): ')
+                                if healing == '1':
+                                    character.special()
+                                    break
+                                elif healing == '2':
+                                    while True:
+                                        member = input('Who do you want to heal: ')
+                                        if member in first_player_collection:
+                                            character.special(transfer[member], not_self=True)
+                                        else:
+                                            print('That player either does not exist or is not on your team!')
+                                            continue
+                                        break
+                                    break
+                                else:
+                                    print('That is not an option!')
+                                    continue
+                    else:
+                        print('That is not an option!')
+                        continue
+                    break
+
 available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
 first_player_collection = []
 second_player_collection = []
+all_unplayable = []
 
 if __name__ == "__main__":
+    index_of_character = 0
     print('''Available characters:
         David
         Matyas
@@ -30,7 +80,6 @@ if __name__ == "__main__":
         Tom''')
     f.choose_character(first_player_collection, 1, available_characters)
     f.choose_character(second_player_collection, 2, available_characters)
-    all_unplayable = (first_player_collection + second_player_collection)
     transfer = {}
     all_playable = []
     for unused in all_unplayable:
@@ -88,63 +137,14 @@ if __name__ == "__main__":
     action_finish = {}
     f.initialize_dict(action_finish, all_playable)
 
-
-    index_of_character = 0
     while True:
         s.count += 1
         f.cooldowns(all_playable)
         f.regeneration(all_playable)
         if s.mata_here:
             poison_checking()
-        for character in all_playable[0:4]:
-            character_name = first_player_collection[index_of_character].capitalize()
-            print(f'''------------------------------------------------------------------------------------
-            Player 1, choose your action with {character_name} (TYPE ITS NUMBER):
-            1. Attack
-            2. Special attack
-            3. Special action''')
-            index_of_character += 1
-            while True:
-                action = input('Type here: ')
-                if action == '1':
-                    f.normal_attacks(character, transfer, all_unplayable)
-
-                elif action == '2':
-                    f.special_attacks(character, transfer, all_unplayable)
-
-                elif action == '3':
-                    if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
-                        character.special()
-                    elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                        f.specials(character, transfer, all_unplayable)
-
-                    elif inverted_transfer[character] == 'tom':
-                        while True:
-                            healing = input('Do you want to heal yourself [1] or someone other[2] (Type the number): ')
-                            if healing == '1':
-                                character.special()
-                                break
-                            elif healing == '2':
-                                while True:
-                                    member = input('Who do you want to heal: ')
-                                    if member in first_player_collection:
-                                        character.special(transfer[member], not_self=True)
-                                    else:
-                                        print('That player either does not exist or is not on your team!')
-                                        continue
-                                    break
-                                break
-                            else:
-                                print('That is not an option!')
-                                continue
-                else:
-                    print('That is not an option!')
-                    continue
-                break
-        index_of_character = 0
-        
-        for character in all_playable[4:7]:
-            pass
+        both_players(0, 4, first_player_collection, '1', index_of_character)
+        both_players(4, 7, second_player_collection, '2', index_of_character)
         exit()
         
         

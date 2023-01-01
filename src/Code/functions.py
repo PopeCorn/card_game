@@ -3,17 +3,18 @@ import random
 from colorama import Fore
 
 # Basic function, enabling both players to choose their characters at the start of the game
-def choose_character(player_list, number, available_list):
+def choose_character(player_list, number, available_list, all_list):
     for i in range(1, 4):
         while True:
                 new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
                 if (new_character in available_list):
-                    if (new_character in player_list):
-                        print(f'{Fore.RED}You already have that character!{Fore.RESET}')
+                    if (new_character in all_list):
+                        print(f'{Fore.RED}You or someone else already have that character!{Fore.RESET}')
                         continue
                     else:
                         print(f'{Fore.BLUE}{new_character.capitalize()} added! {Fore.RESET}')
                         player_list.append(new_character)
+                        all_list.append(new_character)
                         break
                 else:
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
