@@ -17,6 +17,7 @@ class Marekec:
     def special_attack(self, oponent):
         f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
+    # Marekec prepares for an upcoming attack with his dodging skills
     def special(self):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
