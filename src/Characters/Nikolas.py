@@ -18,6 +18,7 @@ class Nikolas:
         random_number = random.randrange(1, 10)
         f.attack(self.energy, 6, random_number, oponent, 2, self.cooldown, special=True)
 
+    # In the chaos of battle, Nikolas stops to have Beef Jerky and replenish his defence 
     def special(self):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
