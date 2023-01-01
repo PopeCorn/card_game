@@ -19,7 +19,7 @@ def choose_character(player_list, number, available_list, all_list):
                 else:
                     print(f'{Fore.RED}That character is not available!{Fore.RESET}')
                     continue
-    print(f'{Fore.BLUE}---------------------------------------{Fore.RESET}')
+    print(f'{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}')
 
 # After action is done, values in the dictionary turn True
 def initialize_dict(dictionary, list):
@@ -99,36 +99,36 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             attacking(defender, blow, damage)
 
 # Function for normal attacks, tied to main.py, needs revisiting
-def normal_attacks(main_character, transfered, all_list):
+def normal_attacks(main_character, transfered, friendly_list):
     while True:
         oponent = input('Who do you want to attack: ')
-        if oponent in all_list:
+        if oponent not in friendly_list:
             main_character.attack(transfered[oponent])
             break
         else:
-            print('That character is not in the game!')
+            print('That character is not in the game or is on your team!')
             continue
 
 # Function for special attacks, tied to main.py, needs revisiting
-def special_attacks(main_character, transfered, all_list):
+def special_attacks(main_character, transfered, friendly_list):
     while True:
         oponent = input('Who do you want to attack: ')
-        if oponent in all_list:
+        if oponent not in friendly_list:
             main_character.special_attack(transfered[oponent])
             break
         else:
-            print('That character is not in the game!')
+            print('That character is not in the game or is on your team!')
             continue
 
 # Function for special actions, tied to main.py, needs revisiting
-def specials(main_character, transfered, all_list):
+def specials(main_character, transfered, friendly_list):
     while True:
         oponent = input('Who do you want to attack: ')
-        if oponent in all_list:
+        if oponent not in friendly_list:
             main_character.special(transfered[oponent])
             break
         else:
-            print('That character is not in the game!')
+            print('That character is not in the game or is on your team!')
             continue
 
 

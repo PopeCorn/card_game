@@ -11,30 +11,30 @@ def poison_checking():
         pass
 
 def both_players(range_start, range_end, player_collection, player_number, wanted_index):
-    print(f'momentální seznam: {player_collection}')
     for character in all_playable[range_start:range_end]:
         wanted_index += 1
-        print(f'momentální index  - {wanted_index}')
         character_name = player_collection[wanted_index]
-        print(f'{Fore.GREEN}{character_name.upper()} turn{Fore.RESET}')
-        print(f'''------------------------------------------------------------------------------------
-    Player {player_number}, choose your action (TYPE ITS NUMBER):
+        print(f'''
+                            {Fore.GREEN}{character_name.upper()} turn{Fore.RESET}
+            
+{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}''')
+        print(f'''  Player {player_number}, choose your action (TYPE ITS NUMBER):
         1. Attack
         2. Special attack
         3. Special action''')
         while True:
             action = input('Type here: ')
             if action == '1':
-                f.normal_attacks(character, transfer, all_unplayable)
+                f.normal_attacks(character, transfer, player_collection)
 
             elif action == '2':
-                f.special_attacks(character, transfer, all_unplayable)
+                f.special_attacks(character, transfer, player_collection)
 
             elif action == '3':
                 if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
                     character.special()
                 elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                    f.specials(character, transfer, all_unplayable)
+                    f.specials(character, transfer, player_collection)
 
                 elif inverted_transfer[character] == 'tom':
                     while True:
@@ -146,11 +146,11 @@ if __name__ == "__main__":
         f.regeneration(all_playable)
         if s.mata_here:
             poison_checking()
-        both_players(1, 4, first_player_collection, '1', index_of_character)
+        both_players(0, 3, first_player_collection, '1', index_of_character)
         print('--------------2ND PLAYER----------------')
         index_of_character = -1
-        both_players(4, 7, second_player_collection, '2', index_of_character)
-        
+        both_players(3, 6, second_player_collection, '2', index_of_character)
+        print('FINISHED')
         exit()
         
         
