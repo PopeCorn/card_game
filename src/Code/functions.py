@@ -103,7 +103,7 @@ def normal_attacks(main_character, transfered, all_list):
     while True:
         oponent = input('Who do you want to attack: ')
         if oponent in all_list:
-            main_character.special_attack(transfered[oponent])
+            main_character.attack(transfered[oponent])
             break
         else:
             print('That character is not in the game!')

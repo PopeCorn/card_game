@@ -11,11 +11,10 @@ def poison_checking():
         pass
 
 def both_players(range_start, range_end, player_collection, player_number, wanted_index):
-    print(f'{len(all_playable)} - délka listu, indexy jsou vždy o 1 menší')
+    print(f'momentální seznam: {player_collection}')
     for character in all_playable[range_start:range_end]:
         wanted_index += 1
-        print(f'{wanted_index} - právě používaný index')
-        print()
+        print(f'momentální index  - {wanted_index}')
         character_name = player_collection[wanted_index]
         print(f'{Fore.GREEN}{character_name.upper()} turn{Fore.RESET}')
         print(f'''------------------------------------------------------------------------------------
@@ -60,6 +59,7 @@ def both_players(range_start, range_end, player_collection, player_number, wante
                 print('That is not an option!')
                 continue
             break
+    wanted_index = -1
 
 available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
 first_player_collection = []
@@ -146,8 +146,11 @@ if __name__ == "__main__":
         f.regeneration(all_playable)
         if s.mata_here:
             poison_checking()
-        both_players(0, 4, first_player_collection, '1', index_of_character)
+        both_players(1, 4, first_player_collection, '1', index_of_character)
+        print('--------------2ND PLAYER----------------')
+        index_of_character = -1
         both_players(4, 7, second_player_collection, '2', index_of_character)
+        
         exit()
         
         
