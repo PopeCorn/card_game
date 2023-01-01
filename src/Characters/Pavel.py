@@ -16,6 +16,7 @@ class Pavel:
     def special_attack(self, oponent):
         f.attack(self.energy, 7, 8, oponent, 2, self.cooldown, special=True)
 
+    # Pavel unleashes his powerful and logical arguments, unlike Matyas' ones
     def special(self, oponent):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
