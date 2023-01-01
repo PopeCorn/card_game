@@ -146,6 +146,7 @@ if __name__ == "__main__":
         f.regeneration(all_playable)
         if s.mata_here:
             poison_checking()
+        print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
         both_players(0, 3, first_player_collection, '1', index_of_character)
         print('--------------2ND PLAYER----------------')
         index_of_character = -1
