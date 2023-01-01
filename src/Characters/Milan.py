@@ -16,6 +16,7 @@ class Milan:
     def special_attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent, 2, self.cooldown, special=True)
 
+    # Milan becomes empowered thanks to his harem
     def special(self, oponent):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
