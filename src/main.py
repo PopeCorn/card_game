@@ -10,11 +10,11 @@ def poison_checking():
     else:
         pass
 
+available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
+first_player_collection = []
+second_player_collection = []
 
 if __name__ == "__main__":
-    available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
-    first_player_collection = []
-    second_player_collection = []
     print('''Available characters:
         David
         Matyas
@@ -29,7 +29,6 @@ if __name__ == "__main__":
         Petr
         Tom''')
     f.choose_character(first_player_collection, 1, available_characters)
-    print('---------------------------------------')
     f.choose_character(second_player_collection, 2, available_characters)
     all_unplayable = (first_player_collection + second_player_collection)
     transfer = {}
