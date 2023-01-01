@@ -17,6 +17,7 @@ class David:
     def special_attack(self, oponent):
         f.attack(self.energy, 6, 6, oponent, 2, self.cooldown, special=True)
 
+    # David uses his special Big Chungus powers to reduce damage of the next attack aimed at him
     def special(self):
         if self.special_cooldown > 0:
             print(f'You can use this ability in {self.special_cooldown} rounds!')
