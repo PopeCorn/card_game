@@ -121,15 +121,18 @@ def special_attacks(main_character, transfered, friendly_list):
             continue
 
 # Function for special actions, tied to main.py, needs revisiting
-def specials(main_character, transfered, friendly_list):
-    while True:
-        oponent = input('Who do you want to attack: ')
-        if oponent not in friendly_list:
-            main_character.special(transfered[oponent])
-            break
-        else:
-            print('That character is not in the game or is on your team!')
-            continue
+def specials(main_character, transfered=None, friendly_list=None, aggresive=False):
+    if aggresive:
+        while True:
+            oponent = input('Who do you want to attack: ')
+            if oponent not in friendly_list:
+                main_character.special(transfered[oponent])
+                break
+            else:
+                print('That character is not in the game or is on your team!')
+                continue
+    else:
+        main_character.special()
 
 
 # Mojmir's double attack function, checking his every attack
