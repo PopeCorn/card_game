@@ -19,7 +19,7 @@ class Kvitek:
 
     # After a long preparation, Kvitek unleashes his sigma male grindset upon one unsuspecting enemy, killing them instantly
     def special(self, oponent):
-        if s.count > 5 and s.kvitek_ultimate is not True:
+        if s.count > 6 and s.kvitek_ultimate is not True:
             oponent.hp = 0
             self.energy = 0
             s.kvitek_ultimate = True

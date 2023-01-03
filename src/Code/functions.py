@@ -69,6 +69,7 @@ def attacking(target, attack, original_attack):
                 pass
         else:
             pass
+
     if attack == 0:
         target.defence = 0
     elif attack < 0:
@@ -98,42 +99,16 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             blow = damage - defender.defence
             attacking(defender, blow, damage)
 
-# Function for normal attacks, tied to main.py, needs revisiting
-def normal_attacks(main_character, transfered, friendly_list):
-    while True:
+
+def initialize_attack(transfered, friendly_list, action):
+     while True:
         oponent = input('Who do you want to attack: ')
         if oponent not in friendly_list:
-            main_character.attack(transfered[oponent])
+            action(transfered[oponent])
             break
         else:
             print('That character is not in the game or is on your team!')
             continue
-
-# Function for special attacks, tied to main.py, needs revisiting
-def special_attacks(main_character, transfered, friendly_list):
-    while True:
-        oponent = input('Who do you want to attack: ')
-        if oponent not in friendly_list:
-            main_character.special_attack(transfered[oponent])
-            break
-        else:
-            print('That character is not in the game or is on your team!')
-            continue
-
-# Function for special actions, tied to main.py, needs revisiting
-def specials(main_character, transfered=None, friendly_list=None, aggresive=False):
-    if aggresive:
-        while True:
-            oponent = input('Who do you want to attack: ')
-            if oponent not in friendly_list:
-                main_character.special(transfered[oponent])
-                break
-            else:
-                print('That character is not in the game or is on your team!')
-                continue
-    else:
-        main_character.special()
-
 
 # Mojmir's double attack function, checking his every attack
 def double_attack(doubled, not_doubled):

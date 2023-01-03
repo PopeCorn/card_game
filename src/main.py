@@ -25,16 +25,16 @@ def both_players(range_start, range_end, player_collection, player_number, wante
         while True:
             action = input('Type here: ')
             if action == '1':
-                f.normal_attacks(character, transfer, player_collection)
+                f.initialize_attack(transfer, player_collection, character.attack)
 
             elif action == '2':
-                f.special_attacks(character, transfer, player_collection)
+                f.initialize_attack(transfer, player_collection, character.special_attack)
 
             elif action == '3':
                 if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
-                    f.specials(character)
+                    character.special()
                 elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                    f.specials(character, transfer, player_collection, aggresive=True)
+                    f.initialize_attack(transfer, player_collection, character.special)
 
                 elif inverted_transfer[character] == 'tom':
                     while True:
