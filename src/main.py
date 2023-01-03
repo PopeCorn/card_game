@@ -61,6 +61,13 @@ def both_players(range_start, range_end, player_collection, player_number, wante
             break
     wanted_index = -1
 
+
+tom = Tom.Tom()
+tom.hp -= 5; print(tom.hp, "- tomovo hp po ubrání v main.py")
+tom.special()
+print(tom.hp, "- tomovo hp po healu v main.py")
+
+exit()
 available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
 first_player_collection = []
 second_player_collection = []
