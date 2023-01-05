@@ -8,6 +8,7 @@ class Nikolas:
         self.energy = 7
         self.max_energy = 7
         self.defence = 10
+        self.max_defence = 10
         self.cooldown = 0
         self.special_cooldown = 0
     
@@ -28,7 +29,4 @@ class Nikolas:
             else:
                 self.special_cooldown += 1
                 self.energy -= 4
-                if self.defence == 10 or self.defence == 9:
-                    self.defence = 10
-                else:
-                    self.defence += 2
+                self.defence = f.recovery_actions(self.defence, self.max_defence)

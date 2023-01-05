@@ -25,16 +25,16 @@ def both_players(range_start, range_end, player_collection, player_number, wante
         while True:
             action = input('Type here: ')
             if action == '1':
-                f.normal_attacks(character, transfer, player_collection)
+                f.initialize_attack(transfer, player_collection, character.attack)
 
             elif action == '2':
-                f.special_attacks(character, transfer, player_collection)
+                f.initialize_attack(transfer, player_collection, character.special_attack)
 
             elif action == '3':
                 if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
                     character.special()
                 elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                    f.specials(character, transfer, player_collection)
+                    f.initialize_attack(transfer, player_collection, character.special)
 
                 elif inverted_transfer[character] == 'tom':
                     while True:
@@ -61,6 +61,13 @@ def both_players(range_start, range_end, player_collection, player_number, wante
             break
     wanted_index = -1
 
+
+tom = Tom.Tom()
+tom.hp -= 5; print(tom.hp, "- tomovo hp po ubrání v main.py")
+tom.special()
+print(tom.hp, "- tomovo hp po healu v main.py")
+
+exit()
 available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
 first_player_collection = []
 second_player_collection = []
@@ -143,7 +150,7 @@ if __name__ == "__main__":
     while True:
         s.count += 1
         f.cooldowns(all_playable)
-        f.regeneration(all_playable)
+        f.energy_regen(all_playable)
         if s.mata_here:
             poison_checking()
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')

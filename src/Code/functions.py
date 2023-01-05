@@ -27,12 +27,9 @@ def initialize_dict(dictionary, list):
             dictionary[list[i]] = False
 
 # Energy regeneration for all characters
-def regeneration(list):
+def energy_regen(list):
     for character in list:
-        if character.energy == character.max_energy or character.energy == character.max_energy - 1:
-            character.energy = character.max_energy
-        else:
-            character.energy += 2
+        character.energy = recovery_actions(character.energy, character.max_energy)
 
 # Cooldowns reducing for all characters
 def cooldowns(list):
@@ -42,12 +39,14 @@ def cooldowns(list):
         if character.special_cooldown > 0:
             character.special_cooldown -= 1
 
-# Health regeneration for all characters
-def healing(character):
-    if character.hp == character.max_hp or character.hp == character.max_hp - 1:
-        character.hp = character.max_hp
+# Regeneration of attributes for all characters
+def recovery_actions(attribute, max_attribute):
+    if attribute == max_attribute or attribute == max_attribute - 1:
+        attribute = max_attribute
     else:
-        character.hp += 2
+        return attribute + 2
+    return attribute
+
 
 # Defence usage while defending from an attack
 def attacking(target, attack, original_attack):
@@ -69,6 +68,7 @@ def attacking(target, attack, original_attack):
                 pass
         else:
             pass
+
     if attack == 0:
         target.defence = 0
     elif attack < 0:
@@ -98,39 +98,16 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             blow = damage - defender.defence
             attacking(defender, blow, damage)
 
-# Function for normal attacks, tied to main.py, needs revisiting
-def normal_attacks(main_character, transfered, friendly_list):
-    while True:
+
+def initialize_attack(transfered, friendly_list, action):
+     while True:
         oponent = input('Who do you want to attack: ')
         if oponent not in friendly_list:
-            main_character.attack(transfered[oponent])
+            action(transfered[oponent])
             break
         else:
             print('That character is not in the game or is on your team!')
             continue
-
-# Function for special attacks, tied to main.py, needs revisiting
-def special_attacks(main_character, transfered, friendly_list):
-    while True:
-        oponent = input('Who do you want to attack: ')
-        if oponent not in friendly_list:
-            main_character.special_attack(transfered[oponent])
-            break
-        else:
-            print('That character is not in the game or is on your team!')
-            continue
-
-# Function for special actions, tied to main.py, needs revisiting
-def specials(main_character, transfered, friendly_list):
-    while True:
-        oponent = input('Who do you want to attack: ')
-        if oponent not in friendly_list:
-            main_character.special(transfered[oponent])
-            break
-        else:
-            print('That character is not in the game or is on your team!')
-            continue
-
 
 # Mojmir's double attack function, checking his every attack
 def double_attack(doubled, not_doubled):

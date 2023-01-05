@@ -27,6 +27,6 @@ class Tom:
                 self.energy -= 3
                 self.special_cooldown += 1
                 if not_self:
-                    f.healing(member)
+                    member.hp = f.recovery_actions(member.hp, member.max_hp)
                 else:
-                    f.healing(self)
+                    self.hp = f.recovery_actions(self.hp, self.max_hp)
