@@ -53,11 +53,8 @@ def recovery_actions(attribute, max_attribute):
     if attribute == max_attribute or attribute == max_attribute - 1:
         attribute = max_attribute
     else:
-        print('Dostali jsme se k recovery_actions ve functions.py')
-        print(attribute, "- attribute ve functions.py")
-        attribute += 2
-        print(attribute, "- attribute po přidání 2 functions.py")
-        return attribute
+        return attribute + 2
+    return attribute
 
 
 # Defence usage while defending from an attack
