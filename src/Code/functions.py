@@ -27,12 +27,9 @@ def initialize_dict(dictionary, list):
             dictionary[list[i]] = False
 
 # Energy regeneration for all characters
-def regeneration(list):
+def energy_regen(list):
     for character in list:
-        if character.energy == character.max_energy or character.energy == character.max_energy - 1:
-            character.energy = character.max_energy
-        else:
-            character.energy += 2
+        character.energy = recovery_actions(character.energy, character.max_energy)
 
 # Cooldowns reducing for all characters
 def cooldowns(list):
@@ -42,13 +39,7 @@ def cooldowns(list):
         if character.special_cooldown > 0:
             character.special_cooldown -= 1
 
-# Health regeneration for all characters
-def healing(character):
-    if character.hp == character.max_hp or character.hp == character.max_hp - 1:
-        character.hp = character.max_hp
-    else:
-        character.hp += 2
-
+# Regeneration of attributes for all characters
 def recovery_actions(attribute, max_attribute):
     if attribute == max_attribute or attribute == max_attribute - 1:
         attribute = max_attribute

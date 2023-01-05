@@ -150,7 +150,7 @@ if __name__ == "__main__":
     while True:
         s.count += 1
         f.cooldowns(all_playable)
-        f.regeneration(all_playable)
+        f.energy_regen(all_playable)
         if s.mata_here:
             poison_checking()
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')

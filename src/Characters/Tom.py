@@ -18,16 +18,15 @@ class Tom:
 
     # Tom stays behind friendly lines, ready to heal others or himself
     def special(self, member=None, not_self=False):
-        f.recovery_actions(self.hp, self.max_hp)
-        #if self.special_cooldown > 0:
-         #   print(f'You can use this ability in {self.special_cooldown} rounds!')
-        #else:
-         #   if self.energy < 3:
-          #      print('You do not have enough energy!')
-           # else:
-            #    self.energy -= 3
-             #   self.special_cooldown += 1
-              #  if not_self:
-               #     f.healing(member)
-                #else:
-                 #   f.healing(self)
+        if self.special_cooldown > 0:
+            print(f'You can use this ability in {self.special_cooldown} rounds!')
+        else:
+            if self.energy < 3:
+                print('You do not have enough energy!')
+            else:
+                self.energy -= 3
+                self.special_cooldown += 1
+                if not_self:
+                    member.hp = f.recovery_actions(member.hp, member.max_hp)
+                else:
+                    self.hp = f.recovery_actions(self.hp, self.max_hp)
