@@ -67,7 +67,6 @@ tom.hp -= 5; print(tom.hp, "- tomovo hp po ubrání v main.py")
 tom.special()
 print(tom.hp, "- tomovo hp po healu v main.py")
 
-exit()
 available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
 first_player_collection = []
 second_player_collection = []
@@ -150,7 +149,8 @@ if __name__ == "__main__":
     while True:
         s.count += 1
         f.cooldowns(all_playable)
-        f.energy_regen(all_playable)
+        for character in all_playable:
+            character.energy = f.recovery_actions(character.energy, character.max_energy)
         if s.mata_here:
             poison_checking()
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')

@@ -26,11 +26,6 @@ def initialize_dict(dictionary, list):
         for i in range(0, 6):
             dictionary[list[i]] = False
 
-# Energy regeneration for all characters
-def energy_regen(list):
-    for character in list:
-        character.energy = recovery_actions(character.energy, character.max_energy)
-
 # Cooldowns reducing for all characters
 def cooldowns(list):
     for character in list:
