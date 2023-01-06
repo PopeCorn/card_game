@@ -3,15 +3,11 @@ import random
 
 class Nikolas:
     def __init__(self):
-        self.hp = 15
-        self.max_hp = 15
-        self.energy = 7
-        self.max_energy = 7
-        self.defence = 10
-        self.max_defence = 10
-        self.cooldown = 0
-        self.special_cooldown = 0
-    
+        self.hp, self.max_hp = 15, 15
+        self.energy, self.max_energy = 7, 7
+        self.defence, self.max_defence = 10, 10
+        self.cooldown, self.special_cooldown = 0, 0
+        
     def attack(self, oponent):
         f.attack(self.energy, 3, 4, oponent)
 

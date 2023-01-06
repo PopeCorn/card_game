@@ -2,14 +2,11 @@ from Code import functions as f
 
 class Tom:
     def __init__(self):
-        self.hp = 10
-        self.max_hp = 10
-        self.energy = 7
-        self.max_energy = 7
+        self.hp, self.max_hp = 10, 10
+        self.energy, self.max_energy = 7, 7
         self.defence = 7
-        self.cooldown = 0
-        self.special_cooldown = 0
-    
+        self.cooldown, self.special_cooldown = 0, 0
+
     def attack(self, oponent):
         f.attack(self.energy, 4, 4, oponent)
 

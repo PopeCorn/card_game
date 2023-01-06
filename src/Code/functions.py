@@ -26,11 +26,6 @@ def initialize_dict(dictionary, list):
         for i in range(0, 6):
             dictionary[list[i]] = False
 
-# Energy regeneration for all characters
-def energy_regen(list):
-    for character in list:
-        character.energy = recovery_actions(character.energy, character.max_energy)
-
 # Cooldowns reducing for all characters
 def cooldowns(list):
     for character in list:
@@ -38,6 +33,29 @@ def cooldowns(list):
             character.cooldown -= 1
         if character.special_cooldown > 0:
             character.special_cooldown -= 1
+
+# A short function to determine who won
+def winning(string, list):
+    if len(list) == 0:
+        s.end = True
+        s.winner = string
+
+# System checking for the death of characters
+def death_system(character, list, list_2, inv_transfer, end_index, end_index_2, first_player, second_player):
+    for character in list:
+        if character.hp == 0:
+            if inv_transfer[character] in first_player:
+                end_index -= 1
+            elif inv_transfer[character] in second_player:
+                end_index_2 -= 2
+            list.remove(character)
+            list_2.remove(inv_transfer[character])
+            del character
+            winning(first_player, 'PLAYER 1')
+            winning(second_player, 'PLAYER 2')
+        else:
+            pass
+
 
 # Regeneration of attributes for all characters
 def recovery_actions(attribute, max_attribute):
