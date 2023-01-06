@@ -6,7 +6,7 @@ class Kvitek:
         self.hp, self.max_hp = 11, 11
         self.energy, self.max_energy = 9, 9
         self.defence = 5
-        self.cooldown, self.special_cooldown = 0
+        self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)

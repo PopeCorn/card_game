@@ -155,10 +155,10 @@ if __name__ == "__main__":
             poison_checking()
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
         both_players(0, end_index, first_player_collection, '1', index_of_character)
-        print('--------------2ND PLAYER----------------')
+        print(f''' 
+              {Fore.CYAN}--------------2ND PLAYER----------------{Fore.GREEN}''')
         index_of_character = -1
         both_players(end_index, end_index_2, second_player_collection, '2', index_of_character)
         print('FINISHED')
-        exit()
         
         
