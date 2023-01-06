@@ -11,6 +11,11 @@ class Matyas:
         self.cooldown = 0
         self.special_cooldown = 0
 
+        self.hp, self.max_hp = 12, 12
+        self.energy, self.max_energy = 7, 7
+        self.defence = 3
+        self.cooldown, self.special_cooldown = 0, 0
+
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)
 

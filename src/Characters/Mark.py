@@ -3,14 +3,10 @@ from Code import settings as s
 
 class Marekec:
     def __init__(self):
-        self.hp = 13
-        self.max_hp = 13
-        self.energy = 7
-        self.max_energy = 7
+        self.hp, self.max_hp = 13, 13
+        self.energy, self.max_energy = 7, 7
         self.defence = 7
-        self.cooldown = 0
-        self.special_cooldown = 0
-
+        self.cooldown, self.special_cooldown = 0, 0
     def attack(self, oponent):
         f.attack(self.energy, 3, 3, oponent)
 

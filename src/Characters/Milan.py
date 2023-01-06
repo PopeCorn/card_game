@@ -2,13 +2,10 @@ from Code import functions as f
 
 class Milan:
     def __init__(self):
-        self.hp = 15
-        self.max_hp = 15
-        self.energy = 10
-        self.max_energy = 10
+        self.hp, self.max_hp = 15, 15
+        self.energy, self.max_energy = 10, 10
         self.defence = 4
-        self.cooldown = 0
-        self.special_cooldown = 0
+        self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
         f.attack(self.energy, 4, 3, oponent)
