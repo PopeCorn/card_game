@@ -10,10 +10,10 @@ def poison_checking():
     else:
         pass
 
-def both_players(range_start, range_end, player_collection, player_number, wanted_index, enemy_collection):
-    for character in all_playable[range_start:range_end]:
+def both_players(player_playable, player_collection, player_number, wanted_index, enemy_collection):
+    for character in player_playable:
         wanted_index += 1
-        character_name = player_collection[wanted_index]
+        character_name = player_collection[inverted_transfer[character]]
         print(f'''
                             {Fore.GREEN}{character_name.upper()} turn{Fore.RESET}
             
@@ -58,8 +58,7 @@ def both_players(range_start, range_end, player_collection, player_number, wante
             else:
                 print('That is not an option!')
                 continue
-            f.death_system(character, all_playable, all_unplayable, inverted_transfer, end_index, end_index_2, first_player_collection, second_player_collection)
-            
+            f.death_system(character, all_playable, inverted_transfer, first_player_collection, first_player_playable, second_player_collection, second_player_playable)
             if s.end is True:
                 print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
                 exit()
@@ -142,22 +141,25 @@ if __name__ == "__main__":
                 all_playable.append(zimik)
 
     inverted_transfer = {v: k for k, v in transfer.items()}
-    action_finish = {}
-    f.initialize_dict(action_finish, all_playable)
-    end_index = 3
-    end_index_2 = 6
+    first_player_playable = []
+    second_player_playable = []
+    f.making_playables(first_player_collection, first_player_playable, transfer)
+    f.making_playables(second_player_collection, second_player_playable, transfer)
+
     while True:
+        all_unplayable = first_player_collection + second_player_collection
         s.count += 1
         f.cooldowns(all_playable)
         for character in all_playable:
             character.energy = f.recovery_actions(character.energy, character.max_energy)
         if s.mata_here:
             poison_checking()
+        print('')
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
-        both_players(0, end_index, first_player_collection, '1', index_of_character, second_player_collection)
+        both_players(first_player_playable, first_player_collection, '1', index_of_character, second_player_collection)
         print(f''' 
               {Fore.CYAN}--------------2ND PLAYER----------------{Fore.GREEN}''')
         index_of_character = -1
-        both_players(end_index, end_index_2, second_player_collection, '2', index_of_character, first_player_collection)
+        both_players(second_player_playable, second_player_collection, '2', index_of_character, first_player_collection)
         
         
