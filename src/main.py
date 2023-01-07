@@ -38,7 +38,7 @@ def both_players(player_playable, player_collection, player_number, wanted_index
                         elif healing == '2':
                             while True:
                                 member = input('Who do you want to heal: ')
-                                if member in first_player_collection:
+                                if member in s.first_player_collection:
                                     character.special(transfer[member], not_self=True)
                                 else:
                                     print('That player either does not exist or is not on your team!')
@@ -51,17 +51,12 @@ def both_players(player_playable, player_collection, player_number, wanted_index
             else:
                 print('That is not an option!')
                 continue
-            f.death_system(all_playable, inverted_transfer, first_player_collection, first_player_playable, second_player_collection, second_player_playable)
+            f.death_system(all_playable, inverted_transfer, s.first_player_collection, first_player_playable, s.second_player_collection, second_player_playable)
             if s.end is True:
                 print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
                 exit()
             break
     wanted_index = -1
-
-available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
-first_player_collection = []
-second_player_collection = []
-all_unplayable = []
 
 if __name__ == "__main__":
     print('''Available characters:
@@ -77,11 +72,11 @@ if __name__ == "__main__":
         Pavel
         Petr
         Tom''')
-    f.choose_character(first_player_collection, 1, available_characters, all_unplayable)
-    f.choose_character(second_player_collection, 2, available_characters, all_unplayable)
+    f.choose_character(s.first_player_collection, 1, s.available_characters, s.all_unplayable)
+    f.choose_character(s.second_player_collection, 2, s.available_characters, s.all_unplayable)
     transfer = {}
     all_playable = []
-    for unused in all_unplayable:
+    for unused in s.all_unplayable:
             if unused == 'david':
                 david = David.David()
                 transfer['david'] = david
@@ -135,11 +130,11 @@ if __name__ == "__main__":
     inverted_transfer = {v: k for k, v in transfer.items()}
     first_player_playable = []
     second_player_playable = []
-    f.making_playables(first_player_collection, first_player_playable, transfer)
-    f.making_playables(second_player_collection, second_player_playable, transfer)
+    f.making_playables(s.first_player_collection, first_player_playable, transfer)
+    f.making_playables(s.second_player_collection, second_player_playable, transfer)
 
     while True:
-        all_unplayable = first_player_collection + second_player_collection
+        all_unplayable = s.first_player_collection + s.second_player_collection
         s.count += 1
         f.cooldowns(all_playable)
         for character in all_playable:
@@ -149,9 +144,9 @@ if __name__ == "__main__":
         print('')
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
         index_of_character = -1
-        both_players(first_player_playable, first_player_collection, '1', index_of_character, second_player_collection)
+        both_players(first_player_playable, s.first_player_collection, '1', index_of_character, s.second_player_collection)
         print(f''' 
               {Fore.CYAN}--------------2ND PLAYER----------------{Fore.GREEN}''')
-        both_players(second_player_playable, second_player_collection, '2', index_of_character, first_player_collection)
+        both_players(second_player_playable, s.second_player_collection, '2', index_of_character, s.first_player_collection)
         
         
