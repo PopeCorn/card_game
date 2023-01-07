@@ -117,10 +117,10 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             attacking(defender, blow, damage)
 
 
-def initialize_attack(transfered, friendly_list, action):
+def initialize_attack(transfered, enemy_list, action):
      while True:
         oponent = input('Who do you want to attack: ')
-        if oponent not in friendly_list:
+        if oponent in enemy_list:
             action(transfered[oponent])
             break
         else:

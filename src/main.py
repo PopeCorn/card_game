@@ -10,7 +10,7 @@ def poison_checking():
     else:
         pass
 
-def both_players(range_start, range_end, player_collection, player_number, wanted_index):
+def both_players(range_start, range_end, player_collection, player_number, wanted_index, enemy_collection):
     for character in all_playable[range_start:range_end]:
         wanted_index += 1
         character_name = player_collection[wanted_index]
@@ -25,16 +25,16 @@ def both_players(range_start, range_end, player_collection, player_number, wante
         while True:
             action = input('Type here: ')
             if action == '1':
-                f.initialize_attack(transfer, player_collection, character.attack)
+                f.initialize_attack(transfer, enemy_collection, character.attack)
 
             elif action == '2':
-                f.initialize_attack(transfer, player_collection, character.special_attack)
+                f.initialize_attack(transfer, enemy_collection, character.special_attack)
 
             elif action == '3':
                 if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
                     character.special()
                 elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                    f.initialize_attack(transfer, player_collection, character.special)
+                    f.initialize_attack(transfer, player_collection, character.special, enemy_collection)
 
                 elif inverted_transfer[character] == 'tom':
                     while True:
@@ -154,11 +154,10 @@ if __name__ == "__main__":
         if s.mata_here:
             poison_checking()
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
-        both_players(0, end_index, first_player_collection, '1', index_of_character)
+        both_players(0, end_index, first_player_collection, '1', index_of_character, second_player_collection)
         print(f''' 
               {Fore.CYAN}--------------2ND PLAYER----------------{Fore.GREEN}''')
         index_of_character = -1
-        both_players(end_index, end_index_2, second_player_collection, '2', index_of_character)
-        print('FINISHED')
+        both_players(end_index, end_index_2, second_player_collection, '2', index_of_character, first_player_collection)
         
         
