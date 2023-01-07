@@ -51,7 +51,7 @@ def both_players(player_playable, player_collection, player_number, wanted_index
             else:
                 print('That is not an option!')
                 continue
-            f.death_system(character, all_playable, inverted_transfer, first_player_collection, first_player_playable, second_player_collection, second_player_playable)
+            f.death_system(all_playable, inverted_transfer, first_player_collection, first_player_playable, second_player_collection, second_player_playable)
             if s.end is True:
                 print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
                 exit()

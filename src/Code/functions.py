@@ -39,20 +39,22 @@ def winning(string, list):
     if len(list) == 0:
         s.end = True
         s.winner = string
+        
+# A function for removing dead characters
+def removing_characters(unplayable, playable, unplayable_list, playable_list):
+    if unplayable in unplayable_list:
+        unplayable_list.remove(unplayable)
+        playable_list.remove(playable)
+        del character
 
 # System checking for the death of characters
-def death_system(character, list, inv_transfer, first_player, first_playable, second_player, second_playable):
+def death_system(list, inv_transfer, first_player, first_playable, second_player, second_playable):
     for character in list:
         inverted = inv_transfer[character]
         if character.hp == 0:
             list.remove(character)
-            if inverted in first_player:
-                first_player.remove(inverted)
-                first_playable.remove(character)
-                del character
-            elif inverted in second_player:
-                second_player.remove(character)
-                second_playable.remove(character)
+            removing_characters(inverted, character, first_player, first_playable)
+            removing_characters(inverted, character, second_player, second_playable)
             winning(first_player, 'PLAYER 1')
             winning(second_player, 'PLAYER 2')
         else:
