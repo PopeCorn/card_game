@@ -71,7 +71,6 @@ second_player_collection = []
 all_unplayable = []
 
 if __name__ == "__main__":
-    index_of_character = -1
     print('''Available characters:
         David
         Matyas
@@ -156,10 +155,10 @@ if __name__ == "__main__":
             poison_checking()
         print('')
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
+        index_of_character = -1
         both_players(first_player_playable, first_player_collection, '1', index_of_character, second_player_collection)
         print(f''' 
               {Fore.CYAN}--------------2ND PLAYER----------------{Fore.GREEN}''')
-        index_of_character = -1
         both_players(second_player_playable, second_player_collection, '2', index_of_character, first_player_collection)
         
         
