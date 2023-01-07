@@ -3,13 +3,6 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
-def poison_checking():
-    if s.mata_poison is True:
-        mata.poison(s.mata_poison_target)
-        s.mata_poison = False
-    else:
-        pass
-
 def both_players(player_playable, player_collection, player_number, wanted_index, enemy_collection):
     for character in player_playable:
         wanted_index += 1
@@ -152,7 +145,7 @@ if __name__ == "__main__":
         for character in all_playable:
             character.energy = f.recovery_actions(character.energy, character.max_energy)
         if s.mata_here:
-            poison_checking()
+            f.poison_checking(matyas)
         print('')
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
         index_of_character = -1

@@ -140,3 +140,11 @@ def double_attack(doubled, not_doubled):
         s.mojmir_attack = doubled
     else:
         s.mojmir_attack = not_doubled
+
+# Checking if Matyas threw his poison at anybody during the last round
+def poison_checking(name):
+    if s.mata_poison is True:
+        name.poison(s.mata_poison_target)
+        s.mata_poison = False
+    else:
+        pass
