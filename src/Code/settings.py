@@ -10,4 +10,5 @@ mata_here = False
 kvitek_ultimate = False
 zimik_reduce_energy = False
 end = False
+mata_poison_target = ''
 winner = ''
