@@ -41,21 +41,22 @@ def winning(string, list):
         s.winner = string
 
 # System checking for the death of characters
-def death_system(character, list, list_2, inv_transfer, end_index, end_index_2, first_player, second_player):
+def death_system(character, list, inv_transfer, first_player, first_playable, second_player, second_playable):
     for character in list:
+        inverted = inv_transfer[character]
         if character.hp == 0:
-            if inv_transfer[character] in first_player:
-                end_index -= 1
-            elif inv_transfer[character] in second_player:
-                end_index_2 -= 2
             list.remove(character)
-            list_2.remove(inv_transfer[character])
-            del character
+            if inverted in first_player:
+                first_player.remove(inverted)
+                first_playable.remove(character)
+                del character
+            elif inverted in second_player:
+                second_player.remove(character)
+                second_playable.remove(character)
             winning(first_player, 'PLAYER 1')
             winning(second_player, 'PLAYER 2')
         else:
             pass
-
 
 # Regeneration of attributes for all characters
 def recovery_actions(attribute, max_attribute):
@@ -117,16 +118,21 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
             attacking(defender, blow, damage)
 
 
-def initialize_attack(transfered, friendly_list, action):
+def initialize_attack(transfered, enemy_list, action):
      while True:
         oponent = input('Who do you want to attack: ')
-        if oponent not in friendly_list:
+        if oponent in enemy_list:
             action(transfered[oponent])
             break
         else:
             print('That character is not in the game or is on your team!')
             continue
 
+def making_playables(collection, playable, transfered):
+    for not_transfered in collection:
+        playable.append(transfered[not_transfered])
+
+        
 # Mojmir's double attack function, checking his every attack
 def double_attack(doubled, not_doubled):
     if s.mojmir_double_damage is True:
@@ -134,3 +140,11 @@ def double_attack(doubled, not_doubled):
         s.mojmir_attack = doubled
     else:
         s.mojmir_attack = not_doubled
+
+# Checking if Matyas threw his poison at anybody during the last round
+def poison_checking(name):
+    if s.mata_poison is True:
+        name.poison(s.mata_poison_target)
+        s.mata_poison = False
+    else:
+        pass

@@ -3,14 +3,6 @@ from Code import settings as s
 
 class Matyas:
     def __init__(self):
-        self.hp = 12
-        self.max_hp = 12
-        self.energy = 7
-        self.max_energy = 7
-        self.defence = 3
-        self.cooldown = 0
-        self.special_cooldown = 0
-
         self.hp, self.max_hp = 12, 12
         self.energy, self.max_energy = 7, 7
         self.defence = 3
@@ -33,5 +25,6 @@ class Matyas:
                 self.special_cooldown += 2
                 self.energy -= 4
                 s.mata_poison = True
+                s.mata_poison_target = oponent
                 oponent.hp -= 2
         

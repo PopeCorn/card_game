@@ -3,17 +3,10 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
-def poison_checking():
-    if s.mata_poison is True:
-        mata.poison(s.mata_poison_target)
-        s.mata_poison = False
-    else:
-        pass
-
-def both_players(range_start, range_end, player_collection, player_number, wanted_index):
-    for character in all_playable[range_start:range_end]:
+def both_players(player_playable, player_collection, player_number, wanted_index, enemy_collection):
+    for character in player_playable:
         wanted_index += 1
-        character_name = player_collection[wanted_index]
+        character_name = inverted_transfer[character]
         print(f'''
                             {Fore.GREEN}{character_name.upper()} turn{Fore.RESET}
             
@@ -25,16 +18,16 @@ def both_players(range_start, range_end, player_collection, player_number, wante
         while True:
             action = input('Type here: ')
             if action == '1':
-                f.initialize_attack(transfer, player_collection, character.attack)
+                f.initialize_attack(transfer, enemy_collection, character.attack)
 
             elif action == '2':
-                f.initialize_attack(transfer, player_collection, character.special_attack)
+                f.initialize_attack(transfer, enemy_collection, character.special_attack)
 
             elif action == '3':
                 if inverted_transfer[character] == 'david' or inverted_transfer[character] == 'honza' or inverted_transfer[character] == 'mark' or inverted_transfer[character] == 'nikolas' or inverted_transfer[character] == 'mojmir':
                     character.special()
                 elif inverted_transfer[character] == 'kvitek' or inverted_transfer[character] == 'matyas' or inverted_transfer[character] == 'milan' or inverted_transfer[character] == 'pavel' or inverted_transfer[character] == 'petr' or inverted_transfer[character] == 'zimik':
-                    f.initialize_attack(transfer, player_collection, character.special)
+                    f.initialize_attack(transfer, player_collection, character.special, enemy_collection)
 
                 elif inverted_transfer[character] == 'tom':
                     while True:
@@ -58,19 +51,12 @@ def both_players(range_start, range_end, player_collection, player_number, wante
             else:
                 print('That is not an option!')
                 continue
-            f.death_system(character, all_playable, all_unplayable, inverted_transfer, end_index, end_index_2, first_player_collection, second_player_collection)
-            
+            f.death_system(character, all_playable, inverted_transfer, first_player_collection, first_player_playable, second_player_collection, second_player_playable)
             if s.end is True:
                 print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
                 exit()
             break
     wanted_index = -1
-
-
-tom = Tom.Tom()
-tom.hp -= 5; print(tom.hp, "- tomovo hp po ubrání v main.py")
-tom.special()
-print(tom.hp, "- tomovo hp po healu v main.py")
 
 available_characters = ['david', 'matyas', 'mojmir', 'honza', 'zimik', 'kvitek', 'mark', 'milan', 'nikolas', 'pavel', 'petr', 'tom']
 first_player_collection = []
@@ -78,7 +64,6 @@ second_player_collection = []
 all_unplayable = []
 
 if __name__ == "__main__":
-    index_of_character = -1
     print('''Available characters:
         David
         Matyas
@@ -148,23 +133,25 @@ if __name__ == "__main__":
                 all_playable.append(zimik)
 
     inverted_transfer = {v: k for k, v in transfer.items()}
-    action_finish = {}
-    f.initialize_dict(action_finish, all_playable)
-    end_index = 3
-    end_index_2 = 6
+    first_player_playable = []
+    second_player_playable = []
+    f.making_playables(first_player_collection, first_player_playable, transfer)
+    f.making_playables(second_player_collection, second_player_playable, transfer)
+
     while True:
+        all_unplayable = first_player_collection + second_player_collection
         s.count += 1
         f.cooldowns(all_playable)
         for character in all_playable:
             character.energy = f.recovery_actions(character.energy, character.max_energy)
         if s.mata_here:
-            poison_checking()
+            f.poison_checking(matyas)
+        print('')
         print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
-        both_players(0, end_index, first_player_collection, '1', index_of_character)
-        print('--------------2ND PLAYER----------------')
         index_of_character = -1
-        both_players(end_index, end_index_2, second_player_collection, '2', index_of_character)
-        print('FINISHED')
-        exit()
+        both_players(first_player_playable, first_player_collection, '1', index_of_character, second_player_collection)
+        print(f''' 
+              {Fore.CYAN}--------------2ND PLAYER----------------{Fore.GREEN}''')
+        both_players(second_player_playable, second_player_collection, '2', index_of_character, first_player_collection)
         
         
