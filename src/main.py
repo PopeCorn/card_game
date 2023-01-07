@@ -13,7 +13,7 @@ def poison_checking():
 def both_players(player_playable, player_collection, player_number, wanted_index, enemy_collection):
     for character in player_playable:
         wanted_index += 1
-        character_name = player_collection[inverted_transfer[character]]
+        character_name = inverted_transfer[character]
         print(f'''
                             {Fore.GREEN}{character_name.upper()} turn{Fore.RESET}
             
