@@ -3,22 +3,22 @@ import random
 from colorama import Fore
 
 # Basic function, enabling both players to choose their characters at the start of the game
-def choose_character(player_list, number, available_list, all_list):
+def choose_character(player_list, number):
     for i in range(1, 4):
         while True:
-                new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
-                if (new_character in available_list):
-                    if (new_character in all_list):
-                        print(f'{Fore.RED}You or someone else already have that character!{Fore.RESET}')
-                        continue
-                    else:
-                        print(f'{Fore.BLUE}{new_character.capitalize()} added! {Fore.RESET}')
-                        player_list.append(new_character)
-                        all_list.append(new_character)
-                        break
-                else:
-                    print(f'{Fore.RED}That character is not available!{Fore.RESET}')
+            new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
+            if (new_character in s.available_characters):
+                if (new_character in s.all_unplayable):
+                    print(f'{Fore.RED}You or someone else already have that character!{Fore.RESET}')
                     continue
+                else:
+                    print(f'{Fore.BLUE}{new_character.capitalize()} added! {Fore.RESET}')
+                    player_list.append(new_character)
+                    s.all_unplayable.append(new_character)
+                    break
+            else:
+                print(f'{Fore.RED}That character is not available!{Fore.RESET}')
+                continue
     print(f'{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}')
 
 # After action is done, values in the dictionary turn True
@@ -27,13 +27,14 @@ def initialize_dict(dictionary, list):
             dictionary[list[i]] = False
 
 # Cooldowns reducing for all characters
-def cooldowns(list):
-    for character in list:
+def cooldowns():
+    for character in s.all_playable:
         if character.cooldown > 0:
             character.cooldown -= 1
         if character.special_cooldown > 0:
             character.special_cooldown -= 1
 
+# A short function for calling other ones
 def calling_functions(inverted, character, first_player, second_player, first_playable, second_playable, name_1, name_2):
     removing_characters(inverted, character, first_player, first_playable)
     removing_characters(inverted, character, second_player, second_playable)
@@ -54,11 +55,11 @@ def removing_characters(unplayable, playable, unplayable_list, playable_list):
         del character
 
 # System checking for the death of characters
-def death_system(list, inv_transfer, first_player, first_playable, second_player, second_playable):
-    for character in list:
-        inverted = inv_transfer[character]
+def death_system(first_player, first_playable, second_player, second_playable):
+    for character in s.all_playable:
+        inverted = s.inverted_transfer[character]
         if character.hp == 0:
-            list.remove(character)
+            s.all_playable.remove(character)
             calling_functions(inverted, character, first_player, second_player, first_playable, second_playable, 'PLAYER 1', 'PLAYER 2')
         else:
             pass
@@ -70,7 +71,6 @@ def recovery_actions(attribute, max_attribute):
     else:
         return attribute + 2
     return attribute
-
 
 # Defence usage while defending from an attack
 def attacking(target, attack, original_attack):

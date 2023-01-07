@@ -52,7 +52,7 @@ def both_players(player_playable, player_collection, player_number, wanted_index
             else:
                 print('That is not an option!')
                 continue
-            f.death_system(s.all_playable, s.inverted_transfer, s.first_player_collection, s.first_player_playable, s.second_player_collection, s.second_player_playable)
+            f.death_system(s.first_player_collection, s.first_player_playable, s.second_player_collection, s.second_player_playable)
             if s.end is True:
                 print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
                 exit()
@@ -73,8 +73,8 @@ if __name__ == "__main__":
         Pavel
         Petr
         Tom''')
-    f.choose_character(s.first_player_collection, 1, s.available_characters, s.all_unplayable)
-    f.choose_character(s.second_player_collection, 2, s.available_characters, s.all_unplayable)
+    f.choose_character(s.first_player_collection, 1)
+    f.choose_character(s.second_player_collection, 2)
     for unused in s.all_unplayable:
             if unused == 'david':
                 david = David.David()
@@ -132,13 +132,13 @@ if __name__ == "__main__":
     while True:
         all_unplayable = s.first_player_collection + s.second_player_collection
         s.count += 1
-        f.cooldowns(s.all_playable)
+        f.cooldowns()
         for character in s.all_playable:
             character.energy = f.recovery_actions(character.energy, character.max_energy)
         if s.mata_here:
             f.poison_checking(matyas)
-        print('')
-        print(f'                             {Fore.RED}ROUND {s.count}!{Fore.RESET}')
+        print(f'''                        
+         {Fore.RED}ROUND {s.count}!{Fore.RESET}''')
         index_of_character = -1
         both_players(s.first_player_playable, s.first_player_collection, '1', index_of_character, s.second_player_collection)
         print(f''' 
