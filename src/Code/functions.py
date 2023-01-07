@@ -34,12 +34,18 @@ def cooldowns(list):
         if character.special_cooldown > 0:
             character.special_cooldown -= 1
 
+def calling_functions(inverted, character, first_player, second_player, first_playable, second_playable, name_1, name_2):
+    removing_characters(inverted, character, first_player, first_playable)
+    removing_characters(inverted, character, second_player, second_playable)
+    winning(first_player, name_1)
+    winning(second_player, name_2)
+
 # A short function to determine who won
 def winning(string, list):
     if len(list) == 0:
         s.end = True
         s.winner = string
-        
+
 # A function for removing dead characters
 def removing_characters(unplayable, playable, unplayable_list, playable_list):
     if unplayable in unplayable_list:
@@ -53,10 +59,7 @@ def death_system(list, inv_transfer, first_player, first_playable, second_player
         inverted = inv_transfer[character]
         if character.hp == 0:
             list.remove(character)
-            removing_characters(inverted, character, first_player, first_playable)
-            removing_characters(inverted, character, second_player, second_playable)
-            winning(first_player, 'PLAYER 1')
-            winning(second_player, 'PLAYER 2')
+            calling_functions(inverted, character, first_player, second_player, first_playable, second_playable, 'PLAYER 1', 'PLAYER 2')
         else:
             pass
 
