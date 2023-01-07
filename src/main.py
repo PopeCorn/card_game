@@ -130,7 +130,7 @@ if __name__ == "__main__":
     f.making_playables(s.second_player_collection, s.second_player_playable, s.transfer)
 
     while True:
-        all_unplayable = s.first_player_collection + s.second_player_collection
+        s.all_unplayable = s.first_player_collection + s.second_player_collection
         s.count += 1
         f.cooldowns()
         for character in s.all_playable:
