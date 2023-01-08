@@ -3,62 +3,6 @@ from Code import settings as s
 from Code import functions as f
 from colorama import Fore
 
-def both_players(player_playable, player_collection, player_number, wanted_index, enemy_collection):
-    for character in player_playable:
-        wanted_index += 1
-        character_name = s.inverted_transfer[character]
-        print(f'''
-                            {Fore.GREEN}{character_name.upper()} turn{Fore.RESET}
-            
-{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}''')
-        print(f'''  Player {player_number}, choose your action (TYPE ITS NUMBER):
-        1. Attack
-        2. Special attack
-        3. Special action''')
-        while True:
-            action = input('Type here: ')
-            if action == '1':
-                f.initialize_attack(s.transfer, enemy_collection, character.attack)
-
-            elif action == '2':
-                f.initialize_attack(s.transfer, enemy_collection, character.special_attack)
-
-            elif action == '3':
-                inv = s.inverted_transfer[character]
-                if inv == 'david' or inv == 'honza' or inv == 'mark' or inv == 'nikolas' or inv == 'mojmir':
-                    character.special()
-                elif inv == 'kvitek' or inv == 'matyas' or inv == 'milan' or inv == 'pavel' or inv == 'petr' or inv == 'zimik':
-                    f.initialize_attack(s.transfer, player_collection, character.special, enemy_collection)
-
-                elif inv == 'tom':
-                    while True:
-                        healing = input('Do you want to heal yourself [1] or someone other[2] (Type the number): ')
-                        if healing == '1':
-                            character.special()
-                            break
-                        elif healing == '2':
-                            while True:
-                                member = input('Who do you want to heal: ')
-                                if member in s.first_player_collection:
-                                    character.special(s.transfer[member], not_self=True)
-                                else:
-                                    print('That player either does not exist or is not on your team!')
-                                    continue
-                                break
-                            break
-                        else:
-                            print('That is not an option!')
-                            continue
-            else:
-                print('That is not an option!')
-                continue
-            f.death_system(s.first_player_collection, s.first_player_playable, s.second_player_collection, s.second_player_playable)
-            if s.end is True:
-                print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
-                exit()
-            break
-    wanted_index = -1
-
 if __name__ == "__main__":
     print('''Available characters:
         David
@@ -141,7 +85,7 @@ if __name__ == "__main__":
         print(f'''                        
                              {Fore.RED}ROUND {s.count}!{Fore.RESET}''')
         index_of_character = -1
-        both_players(s.first_player_playable, s.first_player_collection, '1', index_of_character, s.second_player_collection)
+        f.both_players(s.first_player_playable, s.first_player_collection, '1', index_of_character, s.second_player_collection)
         print(f''' 
               {Fore.CYAN}--------------2ND PLAYER----------------{Fore.RESET}''')
-        both_players(s.second_player_playable, s.second_player_collection, '2', index_of_character, s.first_player_collection)
+        f.both_players(s.second_player_playable, s.second_player_collection, '2', index_of_character, s.first_player_collection)
