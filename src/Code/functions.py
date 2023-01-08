@@ -2,23 +2,81 @@ from Code import settings as s
 import random
 from colorama import Fore
 
+
+def both_players(player_playable, player_collection, player_number, wanted_index, enemy_collection):
+    for character in player_playable:
+        wanted_index += 1
+        character_name = s.inverted_transfer[character]
+        print(f'''
+                            {Fore.GREEN}{character_name.upper()} turn{Fore.RESET}
+            
+{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}''')
+        print(f'''  Player {player_number}, choose your action (TYPE ITS NUMBER):
+        1. Attack
+        2. Special attack
+        3. Special action''')
+        while True:
+            action = input('Type here: ')
+            if action == '1':
+                initialize_attack(s.transfer, enemy_collection, character.attack)
+
+            elif action == '2':
+                initialize_attack(s.transfer, enemy_collection, character.special_attack)
+
+            elif action == '3':
+                inv = s.inverted_transfer[character]
+                if inv == 'david' or inv == 'honza' or inv == 'mark' or inv == 'nikolas' or inv == 'mojmir':
+                    character.special()
+                elif inv == 'kvitek' or inv == 'matyas' or inv == 'milan' or inv == 'pavel' or inv == 'petr' or inv == 'zimik':
+                    initialize_attack(s.transfer, enemy_collection, character.special)
+
+                elif inv == 'tom':
+                    while True:
+                        healing = input('Do you want to heal yourself [1] or someone other[2] (Type the number): ')
+                        if healing == '1':
+                            character.special()
+                            break
+                        elif healing == '2':
+                            while True:
+                                member = input('Who do you want to heal: ')
+                                if member in player_collection:
+                                    character.special(s.transfer[member], not_self=True)
+                                else:
+                                    print('That player either does not exist or is not on your team!')
+                                    continue
+                                break
+                            break
+                        else:
+                            print('That is not an option!')
+                            continue
+            else:
+                print('That is not an option!')
+                continue
+            death_system(s.first_player_collection, s.first_player_playable, s.second_player_collection, s.second_player_playable)
+            if s.end is True:
+                print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
+                exit()
+            break
+    wanted_index = -1
+
+
 # Basic function, enabling both players to choose their characters at the start of the game
-def choose_character(player_list, number, available_list, all_list):
+def choose_character(player_list, number):
     for i in range(1, 4):
         while True:
-                new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
-                if (new_character in available_list):
-                    if (new_character in all_list):
-                        print(f'{Fore.RED}You or someone else already have that character!{Fore.RESET}')
-                        continue
-                    else:
-                        print(f'{Fore.BLUE}{new_character.capitalize()} added! {Fore.RESET}')
-                        player_list.append(new_character)
-                        all_list.append(new_character)
-                        break
-                else:
-                    print(f'{Fore.RED}That character is not available!{Fore.RESET}')
+            new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
+            if (new_character in s.available_characters):
+                if (new_character in s.all_unplayable):
+                    print(f'{Fore.RED}You or someone else already have that character!{Fore.RESET}')
                     continue
+                else:
+                    print(f'{Fore.BLUE}{new_character.capitalize()} added! {Fore.RESET}')
+                    player_list.append(new_character)
+                    s.all_unplayable.append(new_character)
+                    break
+            else:
+                print(f'{Fore.RED}That character is not available!{Fore.RESET}')
+                continue
     print(f'{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}')
 
 # After action is done, values in the dictionary turn True
@@ -27,12 +85,19 @@ def initialize_dict(dictionary, list):
             dictionary[list[i]] = False
 
 # Cooldowns reducing for all characters
-def cooldowns(list):
-    for character in list:
+def cooldowns():
+    for character in s.all_playable:
         if character.cooldown > 0:
             character.cooldown -= 1
         if character.special_cooldown > 0:
             character.special_cooldown -= 1
+
+# A short function for calling other ones
+def calling_functions(inverted, character, first_player, second_player, first_playable, second_playable, name_1, name_2):
+    removing_characters(inverted, character, first_player, first_playable)
+    removing_characters(inverted, character, second_player, second_playable)
+    winning(first_player, name_1)
+    winning(second_player, name_2)
 
 # A short function to determine who won
 def winning(string, list):
@@ -40,21 +105,19 @@ def winning(string, list):
         s.end = True
         s.winner = string
 
+# A function for removing dead characters
+def removing_characters(unplayable, playable, unplayable_list, playable_list):
+    if unplayable in unplayable_list:
+        unplayable_list.remove(unplayable)
+        playable_list.remove(playable)
+
 # System checking for the death of characters
-def death_system(character, list, inv_transfer, first_player, first_playable, second_player, second_playable):
-    for character in list:
-        inverted = inv_transfer[character]
+def death_system(first_player, first_playable, second_player, second_playable):
+    for character in s.all_playable:
+        inverted = s.inverted_transfer[character]
         if character.hp == 0:
-            list.remove(character)
-            if inverted in first_player:
-                first_player.remove(inverted)
-                first_playable.remove(character)
-                del character
-            elif inverted in second_player:
-                second_player.remove(character)
-                second_playable.remove(character)
-            winning(first_player, 'PLAYER 1')
-            winning(second_player, 'PLAYER 2')
+            s.all_playable.remove(character)
+            calling_functions(inverted, character, first_player, second_player, first_playable, second_playable, 'PLAYER 1', 'PLAYER 2')
         else:
             pass
 
@@ -65,7 +128,6 @@ def recovery_actions(attribute, max_attribute):
     else:
         return attribute + 2
     return attribute
-
 
 # Defence usage while defending from an attack
 def attacking(target, attack, original_attack):
