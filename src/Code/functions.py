@@ -39,7 +39,7 @@ def both_players(player_playable, player_collection, player_number, wanted_index
                         elif healing == '2':
                             while True:
                                 member = input('Who do you want to heal: ')
-                                if member in s.first_player_collection:
+                                if member in player_collection:
                                     character.special(s.transfer[member], not_self=True)
                                 else:
                                     print('That player either does not exist or is not on your team!')
