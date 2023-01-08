@@ -126,6 +126,7 @@ if __name__ == "__main__":
                 s.transfer['zimik'] = zimik
                 s.all_playable.append(zimik)
 
+    s.inverted_transfer = {v: k for k, v in s.transfer.items()}
     f.making_playables(s.first_player_collection, s.first_player_playable, s.transfer)
     f.making_playables(s.second_player_collection, s.second_player_playable, s.transfer)
 
@@ -138,9 +139,9 @@ if __name__ == "__main__":
         if s.mata_here:
             f.poison_checking(matyas)
         print(f'''                        
-         {Fore.RED}ROUND {s.count}!{Fore.RESET}''')
+                             {Fore.RED}ROUND {s.count}!{Fore.RESET}''')
         index_of_character = -1
         both_players(s.first_player_playable, s.first_player_collection, '1', index_of_character, s.second_player_collection)
         print(f''' 
-              {Fore.CYAN}--------------2ND PLAYER----------------{Fore.GREEN}''')
+              {Fore.CYAN}--------------2ND PLAYER----------------{Fore.RESET}''')
         both_players(s.second_player_playable, s.second_player_collection, '2', index_of_character, s.first_player_collection)
