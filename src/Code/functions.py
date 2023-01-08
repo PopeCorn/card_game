@@ -28,7 +28,7 @@ def both_players(player_playable, player_collection, player_number, wanted_index
                 if inv == 'david' or inv == 'honza' or inv == 'mark' or inv == 'nikolas' or inv == 'mojmir':
                     character.special()
                 elif inv == 'kvitek' or inv == 'matyas' or inv == 'milan' or inv == 'pavel' or inv == 'petr' or inv == 'zimik':
-                    initialize_attack(s.transfer, player_collection, character.special, enemy_collection)
+                    initialize_attack(s.transfer, enemy_collection, character.special)
 
                 elif inv == 'tom':
                     while True:
@@ -110,7 +110,6 @@ def removing_characters(unplayable, playable, unplayable_list, playable_list):
     if unplayable in unplayable_list:
         unplayable_list.remove(unplayable)
         playable_list.remove(playable)
-        del character
 
 # System checking for the death of characters
 def death_system(first_player, first_playable, second_player, second_playable):
