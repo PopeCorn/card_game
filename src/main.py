@@ -1,7 +1,6 @@
 from Characters import David, Matyas, Mojmir, Honza, Kvítek, Mark, Milan, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 from Code import functions as f
-from colorama import Fore
 
 if __name__ == "__main__":
     print('''Available characters:
@@ -83,9 +82,9 @@ if __name__ == "__main__":
         if s.mata_here:
             f.poison_checking(matyas)
         print(f'''                        
-                             {Fore.RED}ROUND {s.count}!{Fore.RESET}''')
+                                 ROUND {s.count}!''')
         index_of_character = -1
         f.both_players(s.first_player_playable, s.first_player_collection, '1', index_of_character, s.second_player_collection)
         print(f''' 
-              {Fore.CYAN}--------------2ND PLAYER----------------{Fore.RESET}''')
+                    --------------2ND PLAYER----------------''')
         f.both_players(s.second_player_playable, s.second_player_collection, '2', index_of_character, s.first_player_collection)

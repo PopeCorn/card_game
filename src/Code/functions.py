@@ -1,6 +1,5 @@
 from Code import settings as s
 import random
-from colorama import Fore
 
 
 def both_players(player_playable, player_collection, player_number, wanted_index, enemy_collection):
@@ -8,9 +7,9 @@ def both_players(player_playable, player_collection, player_number, wanted_index
         wanted_index += 1
         character_name = s.inverted_transfer[character]
         print(f'''
-                            {Fore.GREEN}{character_name.upper()} turn{Fore.RESET}
+                                {character_name.upper()} turn
             
-{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}''')
+        ------------------------------------------------------------------------------------''')
         print(f'''  Player {player_number}, choose your action (TYPE ITS NUMBER):
         1. Attack
         2. Special attack
@@ -54,7 +53,7 @@ def both_players(player_playable, player_collection, player_number, wanted_index
                 continue
             death_system(s.first_player_collection, s.first_player_playable, s.second_player_collection, s.second_player_playable)
             if s.end is True:
-                print(f'{Fore.RED}The game has ended and the winner is {s.winner}!')
+                print(f'The game has ended and the winner is {s.winner}!')
                 exit()
             break
     wanted_index = -1
@@ -67,17 +66,17 @@ def choose_character(player_list, number):
             new_character = input(f'PLAYER {number}, select your new character (You will have 3 of them in total): ').lower()
             if (new_character in s.available_characters):
                 if (new_character in s.all_unplayable):
-                    print(f'{Fore.RED}You or someone else already have that character!{Fore.RESET}')
+                    print('You or someone else already have that character!')
                     continue
                 else:
-                    print(f'{Fore.BLUE}{new_character.capitalize()} added! {Fore.RESET}')
+                    print(f'{new_character.capitalize()} added!')
                     player_list.append(new_character)
                     s.all_unplayable.append(new_character)
                     break
             else:
-                print(f'{Fore.RED}That character is not available!{Fore.RESET}')
+                print(f'That character is not available!')
                 continue
-    print(f'{Fore.BLUE}------------------------------------------------------------------------------------{Fore.RESET}')
+    print(f'------------------------------------------------------------------------------------')
 
 # After action is done, values in the dictionary turn True
 def initialize_dict(dictionary, list):
