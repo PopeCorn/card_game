@@ -2,45 +2,35 @@ import customtkinter as cstki
 
 cstki.set_appearance_mode('dark')
 cstki.set_default_color_theme('green')
+players = []
 
-first_player = []
-second_player = []
-def adding(player):
-    player.append(entry)
+class App(cstki.CTk):
+    def __init__(self):
+        super().__init__()
+
+        self.geometry("500x300")
+        self.title("Card Game")
+        self.minsize(300, 200)
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure((0, 1), weight=1)
+
+        self.textbox = cstki.CTkTextbox(master=self)
+        self.textbox.grid(row=0, column=0, columnspan=2, padx=20, pady=(20, 0), sticky="nsew")
+
+        self.combobox = cstki.CTkComboBox(master=self, values=["David", "Honza", "Kvítek", "Mark", "Matyas", "Milan", "Mojmir", "Nikolas", "Pavel", "Petr", "Tom", "Žimík"])
+        self.combobox.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
+        self.button = cstki.CTkButton(master=self, command=self.button_callback, text="Add character")
+        self.button.grid(row=1, column=1, padx=20, pady=20, sticky="ew")
+
+    def button_callback(self):
+        if self.combobox.get() in players:
+            self.textbox.insert("insert", "You or someone else already already have that character!\n")
+        else:
+            self.textbox.insert("insert", self.combobox.get() + " added\n")
+            players.append(self.combobox.get())
+            print(players)
 
 
-root = cstki.CTk()
-root.geometry('500x300')
-
-frame = cstki.CTkFrame(master=root)
-frame.pack(pady=20, padx=60, fill='both', expand=True)
-
-label = cstki.CTkLabel(master=frame, text='Card game')
-label.pack(pady=12, padx=10)
-
-entry = cstki.CTkEntry(master=frame, placeholder_text='New character')
-entry.pack(pady=12, padx=10)
-
-button = cstki.CTkButton(master=frame, text='Add', command=adding(first_player))
-button.pack(pady=12, padx=10)
-
-textbox = cstki.CTkTextbox(master=root)
-textbox.insert("0.0", '''Available characters:
-        David
-        Matyas
-        Mojmir
-        Honza
-        Zimik
-        Kvitek
-        Mark
-        Milan
-        Nikolas
-        Pavel
-        Petr
-        Tom''')
-text = textbox.get("0.0", "end")
-textbox.pack(pady=20, padx=20)
-
-if __name__ == '__main__':
-    root.mainloop()
-    print(first_player)
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
