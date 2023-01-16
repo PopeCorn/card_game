@@ -11,6 +11,3 @@ First version of the game has been released here: https://www.mediafire.com/file
 
 Run the .exe file, it will create a directory for the game (in the same location as you downloaded the .exe to). Go to the new directory, then go into "src" subdirectory and run main.exe. 
 It runs on the command line. Right now, it's being reworked so it would run as a normal application in a separate window.
-
-### PS:
-*Switching from Pycharm to VSCode is pretty painful, let me tell you*
