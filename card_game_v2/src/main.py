@@ -3,8 +3,22 @@ from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikol
 from Code import settings as s
 from Code import functions as f
 
-layout = [[sg.Button('Add character for 1st player'), sg.Button('Add character for 2nd player'), sg.Button('Proceed'), sg.Button('Exit')]]
-window = sg.Window('Card Game - choose characters', layout, background_color='#000000', size=(500, 50))
+layout = [[sg.Text('Add character for 1st player'), sg.Text('Add character for 2nd player'), sg.Button('Proceed'), sg.Button('Exit')]]
+
+window = sg.Window('Card Game - choose characters', layout, background_color='#617713', size=(500, 500))
+window.add_row([sg.Button('Add David to 1st player'), sg.Button('Add David to 2nd player')], 
+[sg.Button('Add David to 1st player'), sg.Button('Add David to 2nd player')], 
+[sg.Button('Add Honza to 1st player'), sg.Button('Add Honza to 2nd player')], 
+[sg.Button('Add Kvítek to 1st player'), sg.Button('Add Kvítek to 2nd player')], 
+[sg.Button('Add Mark to 1st player'), sg.Button('Add Mark to 2nd player')], 
+[sg.Button('Add Matyáš to 1st player'), sg.Button('Add Matyáš to 2nd player')], 
+[sg.Button('Add Milan to 1st player'), sg.Button('Add Milan to 2nd player')], 
+[sg.Button('Add Mojmír to 1st player'), sg.Button('Add Mojmír to 2nd player')], 
+[sg.Button('Add Nikolas to 1st player'), sg.Button('Add Nikolas to 2nd player')], 
+[sg.Button('Add Pavel to 1st player'), sg.Button('Add Pavel to 2nd player')], 
+[sg.Button('Add Petr to 1st player'), sg.Button('Add Petr to 2nd player')], 
+[sg.Button('Add Tom to 1st player'), sg.Button('Add Tom to 2nd player')],
+[sg.Button('Add Žimík to 1st player'), sg.Button('Add Žimík to 2nd player')])
 
 if __name__ == '__main__':
     while True:
@@ -13,10 +27,7 @@ if __name__ == '__main__':
             s.choosing_finish = True
         if event == 'Exit' or event == sg.WIN_CLOSED:
             break
-        elif event == 'Add character for 1st player':
-            f.choose_character(s.first_collection)
-        elif event == 'Add character for 2nd player':
-            f.choose_character(s.second_collection)
+        # funkce na checkování jaké button bylo stisknuto(event)
         elif event == 'Proceed':
             if s.choosing_finish:
                 break
