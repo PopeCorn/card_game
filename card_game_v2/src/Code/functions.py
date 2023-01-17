@@ -7,7 +7,7 @@ def choose_character(collection):
             sg.popup('That player already has 3 characters!')
             break
         else:
-            character = sg.popup_get_text('Add a new character (write "exit" to quit)').lower()
+            character = sg.popup_no_buttons()
             if character == 'exit':
                     break
             elif character in s.all_available:
