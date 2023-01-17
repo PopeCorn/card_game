@@ -2,3 +2,4 @@ all_available = ['david', 'honza', 'kvitek', 'mark', 'matyas', 'milan', 'mojmir'
 first_collection = []
 second_collection = []
 all_characters = []
+choosing_finish = False

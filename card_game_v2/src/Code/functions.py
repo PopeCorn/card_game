@@ -1,10 +1,11 @@
 import PySimpleGUI as sg
-import settings as s
+from Code import settings as s
 
 def choose_character(collection):
     while True:
         if len(collection) == 3:
             sg.popup('That player already has 3 characters!')
+            break
         else:
             character = sg.popup_get_text('Add a new character (write "exit" to quit)').lower()
             if character == 'exit':
@@ -16,3 +17,5 @@ def choose_character(collection):
                     s.all_characters.append(character)
                     collection.append(character)
                     break
+            else:
+                sg.popup('That character is not available!')
