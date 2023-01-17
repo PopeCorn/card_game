@@ -8,8 +8,6 @@ Every round both players put all of their characters in action but can only exec
 To know how to actually play the game, read the in-depth guide in .pdf format in doc/, where I go over all characters and their usage.
 
 First version of the game has been released here: https://www.mediafire.com/file/83jup6111fpr43j/card_game.exe/file
-Go to the file created in the same directory you downloaded the .exe to. Go to it, then go into "src" directory and run main.py.
-It runs in the command line. Later, I'll rework it.
 
-### PS:
-*Switching from Pycharm to VSCode is pretty painful, let me tell you*
+Run the .exe file, it will create a directory for the game (in the same location as you downloaded the .exe to). Go to the new directory, then go into "src" subdirectory and run main.exe. 
+It runs on the command line. Right now, it's being reworked so it would run as a normal application in a separate window.
