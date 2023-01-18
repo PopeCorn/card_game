@@ -29,54 +29,54 @@ if __name__ == '__main__':
     print('first collection:', s.first_collection, '   second collection:', s.second_collection)
 
     for unused in s.all_characters:
-        if unused == 'david':
+        if unused == 'David':
             david = David.David()
-            s.transfer['david'] = david
+            s.transfer['David'] = david
             s.all_playable.append(david)
-        elif unused == 'honza':
+        elif unused == 'Honza':
             honza = Honza.Honza()
-            s.transfer['honza'] = honza
+            s.transfer['Honza'] = honza
             s.all_playable.append(honza)
-        elif unused == 'kvitek':
+        elif unused == 'Kvítek':
             kvitek = Kvítek.Kvitek()
-            s.transfer['kvitek'] = kvitek
+            s.transfer['Kvítek'] = kvitek
             s.all_playable.append(kvitek)
-        elif unused == 'mark':
+        elif unused == 'Mark':
             mark = Mark.Marekec()
-            s.transfer['mark'] = mark
+            s.transfer['Mark'] = mark
             s.all_playable.append(mark)
-        elif unused == 'matyas':
+        elif unused == 'Matyáš':
             s.mata_here = True
             matyas = Matyas.Matyas()
-            s.transfer['matyas'] = matyas
+            s.transfer['Matyáš'] = matyas
             s.all_playable.append(matyas)
-        elif unused == 'milan':
+        elif unused == 'Milan':
             milan = Milan.Milan()
-            s.transfer['milan'] = milan
+            s.transfer['Milan'] = milan
             s.all_playable.append(milan)
-        elif unused == 'mojmir':
+        elif unused == 'Mojmír':
             mojmir = Mojmir.Mojmir()
-            s.transfer['mojmir'] = mojmir
+            s.transfer['Mojmír'] = mojmir
             s.all_playable.append(mojmir)
-        elif unused == 'nikolas':
+        elif unused == 'Nikolas':
             nikolas = Nikolas.Nikolas()
-            s.transfer['nikolas'] = nikolas
+            s.transfer['Nikolas'] = nikolas
             s.all_playable.append(nikolas)
-        elif unused == 'pavel':
+        elif unused == 'Pavel':
             pavel = Pavel.Pavel()
-            s.transfer['pavel'] = pavel
+            s.transfer['Pavel'] = pavel
             s.all_playable.append(pavel)
-        elif unused == 'petr':
+        elif unused == 'Petr':
             petr = Petr.Petr()
-            s.transfer['petr'] = petr
+            s.transfer['Petr'] = petr
             s.all_playable.append(petr)
-        elif unused == 'tom':
+        elif unused == 'Tom':
             tom = Tom.Tom()
-            s.transfer['tom'] = tom
+            s.transfer['Tom'] = tom
             s.all_playable.append(tom)
-        elif unused == 'zimik':
+        elif unused == 'Žimík':
             zimik = Žimík.Zimik()
-            s.transfer['zimik'] = zimik
+            s.transfer['Žimík'] = zimik
             s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
