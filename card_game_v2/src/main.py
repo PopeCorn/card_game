@@ -2,23 +2,13 @@ import PySimpleGUI as sg
 from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 from Code import functions as f
+sg.theme('SandyBeach')
+layout = [[sg.Text('Add for 1st player'), sg.Button('Proceed'), sg.Button('Exit')],
+[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
+[sg.Text('Add for 2nd player')],
+[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')]]
 
-layout = [[sg.Text('Add character for 1st player'), sg.Text('Add character for 2nd player'), sg.Button('Proceed'), sg.Button('Exit')]]
-
-window = sg.Window('Card Game - choose characters', layout, background_color='#617713', size=(500, 500))
-window.add_row([sg.Button('Add David to 1st player'), sg.Button('Add David to 2nd player')], 
-[sg.Button('Add David to 1st player'), sg.Button('Add David to 2nd player')], 
-[sg.Button('Add Honza to 1st player'), sg.Button('Add Honza to 2nd player')], 
-[sg.Button('Add Kvítek to 1st player'), sg.Button('Add Kvítek to 2nd player')], 
-[sg.Button('Add Mark to 1st player'), sg.Button('Add Mark to 2nd player')], 
-[sg.Button('Add Matyáš to 1st player'), sg.Button('Add Matyáš to 2nd player')], 
-[sg.Button('Add Milan to 1st player'), sg.Button('Add Milan to 2nd player')], 
-[sg.Button('Add Mojmír to 1st player'), sg.Button('Add Mojmír to 2nd player')], 
-[sg.Button('Add Nikolas to 1st player'), sg.Button('Add Nikolas to 2nd player')], 
-[sg.Button('Add Pavel to 1st player'), sg.Button('Add Pavel to 2nd player')], 
-[sg.Button('Add Petr to 1st player'), sg.Button('Add Petr to 2nd player')], 
-[sg.Button('Add Tom to 1st player'), sg.Button('Add Tom to 2nd player')],
-[sg.Button('Add Žimík to 1st player'), sg.Button('Add Žimík to 2nd player')])
+window = sg.Window('Card Game - choose characters', layout, size=(500, 500))
 
 if __name__ == '__main__':
     while True:
@@ -27,14 +17,16 @@ if __name__ == '__main__':
             s.choosing_finish = True
         if event == 'Exit' or event == sg.WIN_CLOSED:
             break
-        # funkce na checkování jaké button bylo stisknuto(event)
         elif event == 'Proceed':
             if s.choosing_finish:
                 break
             else:
                 sg.popup('All players have not chosen their characters yet!')
-
-    window.close()
+        elif event == 'Add for 1st player':
+            f.choose_character(s.first_collection, values['first'])
+        elif event == 'Add for 2nd player':
+            f.choose_character(s.second_collection, values['second'])
+    print('first collection:', s.first_collection, '   second collection:', s.second_collection)
 
     for unused in s.all_characters:
         if unused == 'david':
@@ -88,6 +80,7 @@ if __name__ == '__main__':
             s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
+    exit()
     layout = [[sg.Button('Play'), sg.Button('Exit')]]
     window = sg.Window('Card Game - game', layout, background_color='#000000', size=(500, 50))
     while True:
