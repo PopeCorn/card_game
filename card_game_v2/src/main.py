@@ -80,8 +80,15 @@ if __name__ == '__main__':
             s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
-    exit()
+    f.making_playables(s.first_collection, s.first_playable)
+    f.making_playables(s.second_collection, s.second_playable)
+    
     layout = [[sg.Button('Play'), sg.Button('Exit')]]
     window = sg.Window('Card Game - game', layout, background_color='#000000', size=(500, 50))
     while True:
         event, values = window.read()
+        if event == 'Exit' or event == sg.WIN_CLOSED:
+            break
+        elif event == 'Play':
+            f.both_players()
+            f.both_players()
