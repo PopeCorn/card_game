@@ -1,4 +1,4 @@
-all_available = ['david', 'honza', 'kvitek', 'mark', 'matyas', 'milan', 'mojmir', 'nikolas', 'pavel', 'petr', 'tom', 'zimik']
+all_available = ['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík']
 first_collection = []
 second_collection = []
 all_characters = []

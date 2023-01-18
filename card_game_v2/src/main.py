@@ -2,9 +2,13 @@ import PySimpleGUI as sg
 from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 from Code import functions as f
+sg.theme('DarkTeal10')
+layout = [[sg.Text('Add for 1st player'), sg.Button('Proceed'), sg.Button('Exit')],
+[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
+[sg.Text('Add for 2nd player')],
+[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')]]
 
-layout = [[sg.Button('Add character for 1st player'), sg.Button('Add character for 2nd player'), sg.Button('Proceed'), sg.Button('Exit')]]
-window = sg.Window('Card Game - choose characters', layout, background_color='#000000', size=(500, 50))
+window = sg.Window('Card Game - choose characters', layout, size=(500, 500))
 
 if __name__ == '__main__':
     while True:
@@ -13,17 +17,16 @@ if __name__ == '__main__':
             s.choosing_finish = True
         if event == 'Exit' or event == sg.WIN_CLOSED:
             break
-        elif event == 'Add character for 1st player':
-            f.choose_character(s.first_collection)
-        elif event == 'Add character for 2nd player':
-            f.choose_character(s.second_collection)
         elif event == 'Proceed':
             if s.choosing_finish:
                 break
             else:
                 sg.popup('All players have not chosen their characters yet!')
-
-    window.close()
+        elif event == 'Add for 1st player':
+            f.choose_character(s.first_collection, values['first'])
+        elif event == 'Add for 2nd player':
+            f.choose_character(s.second_collection, values['second'])
+    print('first collection:', s.first_collection, '   second collection:', s.second_collection)
 
     for unused in s.all_characters:
         if unused == 'david':
@@ -77,6 +80,7 @@ if __name__ == '__main__':
             s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
+    exit()
     layout = [[sg.Button('Play'), sg.Button('Exit')]]
     window = sg.Window('Card Game - game', layout, background_color='#000000', size=(500, 50))
     while True:
