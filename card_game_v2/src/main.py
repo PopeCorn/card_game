@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 from Code import functions as f
-sg.theme('SandyBeach')
+sg.theme('DarkTeal10')
 layout = [[sg.Text('Add for 1st player'), sg.Button('Proceed'), sg.Button('Exit')],
 [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
 [sg.Text('Add for 2nd player')],
