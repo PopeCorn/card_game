@@ -17,9 +17,8 @@ def choose_character(collection, character):
             sg.popup('That character does not exist!')
         break
 
-def both_players(player_playable, player_number, wanted_index):
+def both_players(player_playable, player_number):
     for character in player_playable:
-        wanted_index += 1
         character_name = s.inv_transfer[character]
         print(f'''
                                 {character_name.upper()} turn

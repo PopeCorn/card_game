@@ -3,12 +3,13 @@ from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikol
 from Code import settings as s
 from Code import functions as f
 sg.theme('DarkTeal10')
-layout = [[sg.Text('Add for 1st player'), sg.Button('Proceed'), sg.Button('Exit')],
-[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
-[sg.Text('Add for 2nd player')],
-[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')]]
 
-window = sg.Window('Card Game - choose characters', layout, size=(500, 500))
+layout = [[sg.Button('Proceed to the game'), sg.Button('Exit')],
+[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
+[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')],
+[sg.Text('(ONE PLAYER CAN ONLY HAVE 3 CHARACTERS)')]]
+
+window = sg.Window('Card Game - choose characters', layout, size=(350, 130))
 
 if __name__ == '__main__':
     while True:
@@ -16,7 +17,7 @@ if __name__ == '__main__':
         if len(s.all_characters) == 6:
             s.choosing_finish = True
         if event == 'Exit' or event == sg.WIN_CLOSED:
-            break
+            quit()
         elif event == 'Proceed':
             if s.choosing_finish:
                 break
@@ -26,7 +27,7 @@ if __name__ == '__main__':
             f.choose_character(s.first_collection, values['first'])
         elif event == 'Add for 2nd player':
             f.choose_character(s.second_collection, values['second'])
-    print('first collection:', s.first_collection, '   second collection:', s.second_collection)
+    window.close()
 
     for unused in s.all_characters:
         if unused == 'David':
@@ -83,12 +84,14 @@ if __name__ == '__main__':
     f.making_playables(s.first_collection, s.first_playable)
     f.making_playables(s.second_collection, s.second_playable)
     
-    layout = [[sg.Button('Play'), sg.Button('Exit')]]
-    window = sg.Window('Card Game - game', layout, background_color='#000000', size=(500, 50))
+    layout = [[sg.Button('1st player PLAY'), sg.Button('Exit')],
+    [sg.Button('2nd player PLAY')]]
+    window = sg.Window('Card Game - game', layout, size=(500, 100))
     while True:
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
-            break
-        elif event == 'Play':
-            f.both_players()
-            f.both_players()
+            quit()
+        elif event == '1st player PLAY':
+            f.both_players(s.first_playable, '1')
+        elif event == '2nd player PLAY':
+            f.both_players(s.second_playable, '2')
