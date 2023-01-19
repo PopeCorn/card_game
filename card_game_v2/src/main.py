@@ -4,12 +4,12 @@ from Code import settings as s
 from Code import functions as f
 sg.theme('DarkTeal10')
 
-layout = [[sg.Button('Proceed to the game'), sg.Button('Exit')],
+layout = [[sg.Button('Proceed to the game')],
 [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
 [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')],
-[sg.Text('(ONE PLAYER CAN ONLY HAVE 3 CHARACTERS)')]]
+[sg.Text('(ONE PLAYER CAN ONLY HAVE 3 CHARACTERS)'), sg.Button('Exit')]]
 
-window = sg.Window('Card Game - choose characters', layout, size=(350, 130))
+window = sg.Window('Card Game - choose characters', layout, size=(380, 150))
 
 if __name__ == '__main__':
     while True:
@@ -18,7 +18,7 @@ if __name__ == '__main__':
             s.choosing_finish = True
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
-        elif event == 'Proceed':
+        elif event == 'Proceed to the game':
             if s.choosing_finish:
                 break
             else:
@@ -84,14 +84,20 @@ if __name__ == '__main__':
     f.making_playables(s.first_collection, s.first_playable)
     f.making_playables(s.second_collection, s.second_playable)
     
-    layout = [[sg.Button('1st player PLAY'), sg.Button('Exit')],
-    [sg.Button('2nd player PLAY')]]
-    window = sg.Window('Card Game - game', layout, size=(500, 100))
+    layout = [[sg.Text('1st player')],
+    [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
+    [sg.Text('')],
+    [sg.Button('2nd player')],
+    [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
+    [sg.Text('')],
+    [sg.Button('Exit')]]
+    window = sg.Window('Card Game - game', layout, size=(300, 400))
+
     while True:
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
-        elif event == '1st player PLAY':
+        elif event == '1st player - Play with this character':
             f.both_players(s.first_playable, '1')
-        elif event == '2nd player PLAY':
+        elif event == '2nd player - Play with this character':
             f.both_players(s.second_playable, '2')
