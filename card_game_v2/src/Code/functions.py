@@ -17,18 +17,10 @@ def choose_character(collection, character):
             sg.popup('That character does not exist!')
         break
 
-def both_players(player_playable, player_number):
-    for character in player_playable:
-        character_name = s.inv_transfer[character]
-        print(f'''
-                                {character_name.upper()} turn
-            
-        ------------------------------------------------------------------------------------''')
-        print(f'''  Player {player_number}, choose your action (TYPE ITS NUMBER):
-        1. Attack
-        2. Special attack
-        3. Special action''')
-
+def both_players(character_name, window):
+    character = s.transfer[character]
+    sg.popup_menu(window=window, element=window['action'], menu_def=[[''], ['Normal Attack', 'Special Attack', 'Special Action']], title=f'{character_name} turn')
+    window['action'].update()
 
 def making_playables(collection, playable):
     for character in collection:

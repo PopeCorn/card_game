@@ -90,14 +90,15 @@ if __name__ == '__main__':
     [sg.Button('2nd player')],
     [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
     [sg.Text('')],
+    [sg.Text('You did: '), sg.Text(key='action')],
     [sg.Button('Exit')]]
-    window = sg.Window('Card Game - game', layout, size=(300, 400))
+    window = sg.Window('Card Game - game', layout, size=(500, 500))
 
     while True:
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
         elif event == '1st player - Play with this character':
-            f.both_players(s.first_playable, '1')
+            f.both_players(values['1stplayer_character'], window)
         elif event == '2nd player - Play with this character':
-            f.both_players(s.second_playable, '2')
+            f.both_players(values['1stplayer_character'], window)
