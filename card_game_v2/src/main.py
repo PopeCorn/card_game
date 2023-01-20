@@ -103,10 +103,10 @@ if __name__ == '__main__':
             [sg.Button('Proceed')]]
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
-                character = values['1stplayer_character']
-                window2.TKroot.title(character)
-                f.action(window2, character)
+                character_name = values['1stplayer_character']
+                window2.TKroot.title(character_name)
+                f.action(window2, character_name, s.second_collection)
             elif event == '2nd player - Play with this character':
-                character = values['1stplayer_character']
-                window2.TKroot.title(character)
-                f.action(window2, character)
+                character_name = values['1stplayer_character']
+                window2.TKroot.title(character_name)
+                f.action(window2, character_name, s.first_collection)

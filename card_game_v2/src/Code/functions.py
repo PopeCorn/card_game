@@ -21,15 +21,24 @@ def making_playables(collection, playable):
     for character in collection:
         playable.append(s.transfer[character])
 
-def action(window, character_name):
+def action(window, character_name, enemy_collection):
     while True:
+        character = s.transfer[character_name]
         event, values = window.read()
+        layout3 = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')]]
+        window3 = sg.Window('Oponent', layout3, size=(300, 300))
         if event == sg.WIN_CLOSED:
             break
         if event == 'Select this':
-            if values['action'] == 'Normal Attack':
+            if values['action'] == 'Normal attack':
+                while True:
+                    event2, values2 = window3.read()
+                    if event2 == sg.WIN_CLOSED:
+                        break
+                    elif event2 == 'Attack this':
+                        oponent = s.transfer[values2['oponent']]
+                        character.attack(oponent)
+            if values['action'] == 'Special attack':
                 pass
-            if values['action'] == 'Special Attack':
-                pass
-            if values['action'] == 'Special Action':
+            if values['action'] == 'Special action':
                 pass
