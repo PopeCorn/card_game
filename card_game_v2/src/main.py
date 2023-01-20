@@ -104,7 +104,9 @@ if __name__ == '__main__':
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
                 character = values['1stplayer_character']
+                window2.TKroot.title(character)
                 f.action(window2, character)
             elif event == '2nd player - Play with this character':
                 character = values['1stplayer_character']
+                window2.TKroot.title(character)
                 f.action(window2, character)
