@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import time as t
 from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 from Code import functions as f
@@ -84,6 +85,9 @@ if __name__ == '__main__':
     f.making_playables(s.first_collection, s.first_playable)
     f.making_playables(s.second_collection, s.second_playable)
 
+    for unbound in s.all_characters:
+            s.already_played[unbound] = False
+
     while True:
         layout = [[sg.Text('1st player')],
         [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
@@ -92,11 +96,24 @@ if __name__ == '__main__':
         [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
         [sg.Text('')],
         [sg.Button('Exit')]]
-
-        window = sg.Window('Card Game - game', layout, size=(500, 500))
+        window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
+
+        res = True
+        played = list(s.already_played.values())
+        for bound in played:
+            if bound is False:
+                res = False
+                break
+        if res is True:
+            for unbound in s.all_characters:
+                s.already_played[unbound] = False
+            s.count += 1
+            sg.popup_quick_message(f'Round {s.count} Begins!')
+            t.sleep(2)
+            window.TKroot.title(f'Card Game - Round {s.count}')
         if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
             layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')]]
             window2 = sg.Window('Turn', layout2).finalize()
@@ -104,13 +121,19 @@ if __name__ == '__main__':
                 if values['1stplayer_character'] == '':
                     sg.popup('You have not selected a character yet!')
                 else:
-                    character_name = values['1stplayer_character']
-                    window2.TKroot.title(character_name)
-                    f.action(window2, character_name, s.second_collection)
+                    if s.already_played[values['1stplayer_character']]:
+                        sg.popup('That character has already played this round!')
+                    else:
+                        character_name = values['1stplayer_character']
+                        window2.TKroot.title(character_name)
+                        f.action(window2, character_name, s.second_collection)
             elif event == '2nd player - Play with this character':
                 if values['1stplayer_character'] == '':
                     sg.popup('You have not selected a character yet!')
                 else:
-                    character_name = values['1stplayer_character']
-                    window2.TKroot.title(character_name)
-                    f.action(window2, character_name, s.first_collection)
+                    if s.already_played[values['2ndplayer_character']]:
+                        sg.popup('That character has already played this round!')
+                    else:
+                        character_name = values['1stplayer_character']
+                        window2.TKroot.title(character_name)
+                        f.action(window2, character_name, s.first_collection)

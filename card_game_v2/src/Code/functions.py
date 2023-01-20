@@ -41,6 +41,7 @@ def action(window2, character_name, enemy_collection):
                     init_attack(window3, character.special_attack)
                 elif values2['action'] == 'Special action':
                     pass
+                s.already_played[character_name] = True
 
 def init_attack(window3, action):
     while True:

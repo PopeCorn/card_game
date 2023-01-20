@@ -2,5 +2,7 @@ all_available = ['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojm
 first_collection, second_collection, first_playable, second_playable = [], [], [], []
 all_characters, all_playable = [], []
 transfer, inv_transfer = {}, {}
+already_played = {}
 choosing_finish = False
 mata_here = False
+count = 1
