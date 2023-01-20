@@ -57,3 +57,14 @@ def init_attack(window3, action):
             action(oponent)
             print('oponent', values3['oponent'], 'hp', oponent.hp)
             break
+
+def playing(values, window2, key):
+    if values[key] == '':
+        sg.popup('You have not selected a character yet!')
+    else:
+        if s.already_played[values[key]]:
+            sg.popup('That character has already played this round!')
+        else:
+            character_name = values[key]
+            window2.TKroot.title(character_name)
+            action(window2, character_name, s.first_collection)

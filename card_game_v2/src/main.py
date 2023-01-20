@@ -118,22 +118,6 @@ if __name__ == '__main__':
             layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')]]
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
-                if values['1stplayer_character'] == '':
-                    sg.popup('You have not selected a character yet!')
-                else:
-                    if s.already_played[values['1stplayer_character']]:
-                        sg.popup('That character has already played this round!')
-                    else:
-                        character_name = values['1stplayer_character']
-                        window2.TKroot.title(character_name)
-                        f.action(window2, character_name, s.second_collection)
+                f.playing(values, window2, '1stplayer_character')
             elif event == '2nd player - Play with this character':
-                if values['1stplayer_character'] == '':
-                    sg.popup('You have not selected a character yet!')
-                else:
-                    if s.already_played[values['2ndplayer_character']]:
-                        sg.popup('That character has already played this round!')
-                    else:
-                        character_name = values['1stplayer_character']
-                        window2.TKroot.title(character_name)
-                        f.action(window2, character_name, s.first_collection)
+                f.playing(values, window, '2ndplayer_character')
