@@ -98,15 +98,19 @@ if __name__ == '__main__':
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
         if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
-            window.close()
-            layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
-            [sg.Button('Proceed')]]
+            layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')]]
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
-                character_name = values['1stplayer_character']
-                window2.TKroot.title(character_name)
-                f.action(window2, character_name, s.second_collection)
+                if values['1stplayer_character'] == '':
+                    sg.popup('You have not selected a character yet!')
+                else:
+                    character_name = values['1stplayer_character']
+                    window2.TKroot.title(character_name)
+                    f.action(window2, character_name, s.second_collection)
             elif event == '2nd player - Play with this character':
-                character_name = values['1stplayer_character']
-                window2.TKroot.title(character_name)
-                f.action(window2, character_name, s.first_collection)
+                if values['1stplayer_character'] == '':
+                    sg.popup('You have not selected a character yet!')
+                else:
+                    character_name = values['1stplayer_character']
+                    window2.TKroot.title(character_name)
+                    f.action(window2, character_name, s.first_collection)
