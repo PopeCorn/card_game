@@ -83,22 +83,28 @@ if __name__ == '__main__':
 
     f.making_playables(s.first_collection, s.first_playable)
     f.making_playables(s.second_collection, s.second_playable)
-    
-    layout = [[sg.Text('1st player')],
-    [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-    [sg.Text('')],
-    [sg.Button('2nd player')],
-    [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-    [sg.Text('')],
-    [sg.Text('You did: '), sg.Text(key='action')],
-    [sg.Button('Exit')]]
-    window = sg.Window('Card Game - game', layout, size=(500, 500))
 
     while True:
+        layout = [[sg.Text('1st player')],
+        [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
+        [sg.Text('')],
+        [sg.Text('2nd player')],
+        [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
+        [sg.Text('')],
+        [sg.Button('Exit')]]
+
+        window = sg.Window('Card Game - game', layout, size=(500, 500))
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
-        elif event == '1st player - Play with this character':
-            f.both_players(values['1stplayer_character'], window)
-        elif event == '2nd player - Play with this character':
-            f.both_players(values['1stplayer_character'], window)
+        if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
+            window.close()
+            layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
+            [sg.Button('Proceed')]]
+            window2 = sg.Window('Turn', layout2).finalize()
+            if event == '1st player - Play with this character':
+                character = values['1stplayer_character']
+                f.action(window2, character)
+            elif event == '2nd player - Play with this character':
+                character = values['1stplayer_character']
+                f.action(window2, character)

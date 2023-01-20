@@ -17,11 +17,19 @@ def choose_character(collection, character):
             sg.popup('That character does not exist!')
         break
 
-def both_players(character_name, window):
-    character = s.transfer[character]
-    sg.popup_menu(window=window, element=window['action'], menu_def=[[''], ['Normal Attack', 'Special Attack', 'Special Action']], title=f'{character_name} turn')
-    window['action'].update()
-
 def making_playables(collection, playable):
     for character in collection:
         playable.append(s.transfer[character])
+
+def action(window, character_name):
+    while True:
+        event, values = window.read()
+        if event == sg.WIN_CLOSED:
+            break
+        if event == 'Select this':
+            if values['action'] == 'Normal Attack':
+                pass
+            if values['action'] == 'Special Attack':
+                pass
+            if values['action'] == 'Special Action':
+                pass
