@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 from Code import settings as s
 
+# Function for choosing characters from sg combo menu that is tied to the first while loop in main.py and is handling all situations that could happen
 def choose_character(collection, character):
     while True:
         if len(collection) == 3:
@@ -17,14 +18,10 @@ def choose_character(collection, character):
             sg.popup('That character does not exist!')
         break
 
-def making_playables(collection, playable):
-    for character in collection:
-        playable.append(s.transfer[character])
-
+# Function that handles a character doing some action and using other functions such as init_attack()
 def action(window2, character_name, enemy_collection):
     while True:
         event2, values2 = window2.read()
-
         character = s.transfer[character_name]
         layout3 = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')]]
         window3 = sg.Window('Oponent', layout3, size=(300, 300))
@@ -43,6 +40,20 @@ def action(window2, character_name, enemy_collection):
                     pass
                 s.already_played[character_name] = True
 
+
+# Function that checks if the input is empty or the character has already played, then passes the necessary arguments to action()
+def playing(values, window2, key):
+    if values[key] == '':
+        sg.popup('You have not selected a character yet!')
+    else:
+        if s.already_played[values[key]]:
+            sg.popup('That character has already played this round!')
+        else:
+            character_name = values[key]
+            window2.TKroot.title(character_name)
+            action(window2, character_name, s.first_collection)
+
+# Simple function for selecting an enemy (oponent) that the playing character is going to target
 def init_attack(window3, action):
     while True:
         event3, values3 = window3.read()
@@ -58,13 +69,7 @@ def init_attack(window3, action):
             print('oponent', values3['oponent'], 'hp', oponent.hp)
             break
 
-def playing(values, window2, key):
-    if values[key] == '':
-        sg.popup('You have not selected a character yet!')
-    else:
-        if s.already_played[values[key]]:
-            sg.popup('That character has already played this round!')
-        else:
-            character_name = values[key]
-            window2.TKroot.title(character_name)
-            action(window2, character_name, s.first_collection)
+# Simple function for finishing the process of converting strings to actual, playable characters (instances of classes)
+def making_playables(collection, playable):
+    for character in collection:
+        playable.append(s.transfer[character])
