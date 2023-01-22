@@ -93,7 +93,7 @@ if __name__ == '__main__':
         [sg.Text('2nd player')],
         [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
         [sg.Text('')],
-        [sg.Button('NEXT ROUND!')],
+        [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
         [sg.Text('')],
         [sg.Button('Exit')]]
     window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
