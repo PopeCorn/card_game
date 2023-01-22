@@ -1,3 +1,4 @@
+import PySimpleGUI as sg
 from Code import functions as f
 
 class Pavel:
@@ -16,10 +17,10 @@ class Pavel:
     # Pavel unleashes his powerful and logical arguments, unlike Matyas' ones
     def special(self, oponent):
         if self.special_cooldown > 0:
-            print(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
             if self.energy < 7:
-                print('You do not have enough energy!')
+                sg.popup('You do not have enough energy!')
             else:
                 self.special_cooldown += 2
                 self.energy -= 7

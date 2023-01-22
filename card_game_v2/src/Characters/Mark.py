@@ -1,3 +1,4 @@
+import PySimpleGUI as sg
 from Code import functions as f
 from Code import settings as s
 
@@ -16,10 +17,10 @@ class Marekec:
     # Marekec prepares for an upcoming attack with his dodging skills
     def special(self):
         if self.special_cooldown > 0:
-            print(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
             if self.energy < 3:
-                print('You do not have enough energy!')
+                sg.popup('You do not have enough energy!')
             else:
                 self.special_cooldown += 2
                 self.energy -= 3

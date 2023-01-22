@@ -1,3 +1,4 @@
+import PySimpleGUI as sg
 from Code import functions as f
 
 class Tom:
@@ -16,10 +17,10 @@ class Tom:
     # Tom stays behind friendly lines, ready to heal others or himself
     def special(self, member=None, not_self=False):
         if self.special_cooldown > 0:
-            print(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
             if self.energy < 3:
-                print('You do not have enough energy!')
+                sg.popup('You do not have enough energy!')
             else:
                 self.energy -= 3
                 self.special_cooldown += 1

@@ -37,21 +37,25 @@ def action(window2, character_name, enemy_collection):
                 elif values2['action'] == 'Special attack':
                     init_attack(window3, character.special_attack)
                 elif values2['action'] == 'Special action':
-                    pass
+                    if character_name == 'David' or character_name == 'Honza' or character_name == 'Mark' or character_name == 'Nikolas' or character_name == 'Mojmír':
+                        character.special()
+                    else:
+                        init_attack(window3, character.special)
                 s.already_played[character_name] = True
+        window2.close()
 
 
 # Function that checks if the input is empty or the character has already played, then passes the necessary arguments to action()
-def playing(values, window2, key):
-    if values[key] == '':
+def playing(values, window2, key, enemy_collection):
+    character_name = values[key]
+    if character_name == '':
         sg.popup('You have not selected a character yet!')
     else:
-        if s.already_played[values[key]]:
+        if s.already_played[character_name]:
             sg.popup('That character has already played this round!')
         else:
-            character_name = values[key]
             window2.TKroot.title(character_name)
-            action(window2, character_name, s.first_collection)
+            action(window2, character_name, enemy_collection)
 
 # Simple function for selecting an enemy (oponent) that the playing character is going to target
 def init_attack(window3, action):
@@ -64,9 +68,14 @@ def init_attack(window3, action):
                 sg.popup('You have not selected an enemy!')
                 continue
             oponent = s.transfer[values3['oponent']]
+            original_hp, original_defence = oponent.hp, oponent.defence
             print('oponent', values3['oponent'], 'hp', oponent.hp)
             action(oponent)
+            sg.popup(f'''You attacked {values3['oponent']} with damage:
+            HP: - {original_hp - oponent.hp}
+            Defence: - {original_defence - oponent.defence}''')
             print('oponent', values3['oponent'], 'hp', oponent.hp)
+            window3.close()
             break
 
 # Simple function for finishing the process of converting strings to actual, playable characters (instances of classes)

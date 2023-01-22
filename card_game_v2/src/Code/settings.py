@@ -5,4 +5,7 @@ transfer, inv_transfer = {}, {}
 already_played = {}
 choosing_finish = False
 mata_here = False
+mata_poison = False
+global mata_poison_target
+marekec_dodge = False
 count = 1

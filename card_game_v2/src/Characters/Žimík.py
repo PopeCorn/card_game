@@ -1,3 +1,4 @@
+import PySimpleGUI as sg
 from Code import functions as f
 from Code import settings as s
 
@@ -30,4 +31,4 @@ class Zimik:
             self.defence += 2
             s.zimik_reduce_energy = True
         else:
-            print('You can use this ability only once!')
+            sg.popup('You can use this ability only once!')

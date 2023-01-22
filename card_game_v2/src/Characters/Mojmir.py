@@ -1,3 +1,4 @@
+import PySimpleGUI as sg
 from Code import functions as f
 from Code import settings as s
 
@@ -19,7 +20,7 @@ class Mojmir:
     # Mojmir positions himself behind enemy lines, ready to strike twice as hard
     def special(self):
         if self.energy < 6 and s.mojmir_done is True:
-            print('You do not have enough energy and you can do this only once!')
+            sg.popup('You do not have enough energy and you can do this only once!')
         else:
             self.cooldown += 3
             self.energy -= 6
