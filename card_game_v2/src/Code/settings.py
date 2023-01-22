@@ -4,6 +4,7 @@ all_characters, all_playable = [], []
 transfer, inv_transfer = {}, {}
 already_played = {}
 choosing_finish = False
+david_defence = False
 mata_here = False
 mata_poison = False
 global mata_poison_target

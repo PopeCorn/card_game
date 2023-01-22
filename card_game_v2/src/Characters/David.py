@@ -26,3 +26,10 @@ class David:
                 self.special_cooldown += 2
                 self.energy -= 4
                 s.david_defence = True
+    
+    def poison_checking(name):
+        if s.mata_poison is True:
+            name.poison(s.mata_poison_target)
+            s.mata_poison = False
+        else:
+            pass

@@ -100,7 +100,8 @@ if __name__ == '__main__':
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
-
+        if s.mata_here:
+            f.poison_checking(matyas)
         res = True
         played = list(s.already_played.values())
         for bound in played:

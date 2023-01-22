@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import random
 from Code import settings as s
 
 # Function for choosing characters from sg combo menu that is tied to the first while loop in main.py and is handling all situations that could happen
@@ -17,6 +18,25 @@ def choose_character(collection, character):
         else:
             sg.popup('That character does not exist!')
         break
+
+# A function which wraps all other functions to attack enemies
+def init_attack(window3, action):
+    while True:
+        event3, values3 = window3.read()
+        if event3 == sg.WIN_CLOSED:
+            break
+        elif event3 == 'Attack this enemy':
+            if values3['oponent'] == '':
+                sg.popup('You have not selected an enemy!')
+                continue
+            oponent = s.transfer[values3['oponent']]
+            original_hp, original_defence = oponent.hp, oponent.defence
+            action(oponent)
+            sg.popup(f'''You attacked {values3['oponent']} with damage:
+            HP: - {original_hp - oponent.hp}
+            Defence: - {original_defence - oponent.defence}''')
+            window3.close()
+            break
 
 # Function that handles a character doing some action and using other functions such as init_attack()
 def action(window2, character_name, enemy_collection):
@@ -44,7 +64,6 @@ def action(window2, character_name, enemy_collection):
                 s.already_played[character_name] = True
         window2.close()
 
-
 # Function that checks if the input is empty or the character has already played, then passes the necessary arguments to action()
 def playing(values, window2, key, enemy_collection):
     character_name = values[key]
@@ -57,26 +76,54 @@ def playing(values, window2, key, enemy_collection):
             window2.TKroot.title(character_name)
             action(window2, character_name, enemy_collection)
 
-# Simple function for selecting an enemy (oponent) that the playing character is going to target
-def init_attack(window3, action):
-    while True:
-        event3, values3 = window3.read()
-        if event3 == sg.WIN_CLOSED:
-            break
-        elif event3 == 'Attack this enemy':
-            if values3['oponent'] == '':
-                sg.popup('You have not selected an enemy!')
-                continue
-            oponent = s.transfer[values3['oponent']]
-            original_hp, original_defence = oponent.hp, oponent.defence
-            print('oponent', values3['oponent'], 'hp', oponent.hp)
-            action(oponent)
-            sg.popup(f'''You attacked {values3['oponent']} with damage:
-            HP: - {original_hp - oponent.hp}
-            Defence: - {original_defence - oponent.defence}''')
-            print('oponent', values3['oponent'], 'hp', oponent.hp)
-            window3.close()
-            break
+def attack(energy, energy_taken, damage, defender, cooldown_increase=None, cooldown=None, special=False):
+    if energy < energy_taken:
+        sg.popup('You do not have enough energy!')
+    else:
+        if special:
+            if cooldown > 0:
+                sg.popup(f'You can use this ability in {cooldown} rounds!')
+            else:
+                cooldown += cooldown_increase
+                energy -= energy_taken
+                blow = damage - defender.defence
+                attacking(defender, blow, damage)
+        else:
+            energy -= energy_taken
+            blow = damage - defender.defence
+            attacking(defender, blow, damage)
+
+def attacking(target, attack, original_attack):
+    target_name = s.inv_transfer[target]
+    if target_name == "David":
+        if s.david_defence is True:
+            s.david_defence = False
+            attack -= 3
+            original_attack -= 3
+        else:
+            pass
+    elif target_name == "marekec":
+        if s.marekec_dodge is True:
+            s.marekec_dodge = False
+            number = random.randrange(1, 3)
+            if number == 1:
+                original_attack = 0
+                attack = -1
+            else:
+                pass
+        else:
+            pass
+
+    if attack == 0:
+        target.defence = 0
+    elif attack < 0:
+        if original_attack == 0 or original_attack < 0:
+            pass
+        else:
+            target.defence -= original_attack
+    else:
+        target.hp -= attack
+        target.defence = 0
 
 # Simple function for finishing the process of converting strings to actual, playable characters (instances of classes)
 def making_playables(collection, playable):
