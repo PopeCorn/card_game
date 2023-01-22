@@ -1,3 +1,4 @@
+import PySimpleGUI as sg
 from Code import functions as f
 
 class Milan:
@@ -16,7 +17,7 @@ class Milan:
     # Milan becomes empowered thanks to his harem
     def special(self, oponent):
         if self.special_cooldown > 0:
-            print(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
             self.special_cooldown += 2
             self.energy -= 7

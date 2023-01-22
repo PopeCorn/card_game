@@ -1,4 +1,6 @@
+import PySimpleGUI as sg
 from Code import functions as f
+from Code import settings as s
 
 class Honza:
     def __init__(self):
@@ -12,25 +14,27 @@ class Honza:
 
     def special_attack(self, oponent):
         if self.cooldown > 0:
-            print(f'You can use this ability in {self.cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.cooldown} rounds!')
         else:
             if self.energy < 6:
-                print('You do not have enough energy!')
+                sg.popup('You do not have enough energy!')
             else:
                 self.cooldown += 2
                 self.energy -= 6
                 oponent.hp -= 2
                 oponent.energy = 0
+                s.already_played['Honza'] = True
 
     # Honza calculates the situation with his superior mathematic skills and prepares for anything bad that might happen
     def special(self):
         if self.cooldown > 0:
-            print(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
         else:
             if self.energy < 4:
-                print('You do not have enough energy!')
+                sg.popup('You do not have enough energy!')
             else:
                 self.special_cooldown += 2
                 self.energy -= 4
                 self.max_hp += 1
                 self.hp += 2
+                s.already_played['Honza'] = True

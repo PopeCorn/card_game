@@ -1,3 +1,4 @@
+import PySimpleGUI as sg
 from Code import functions as f
 from Code import settings as s
 
@@ -20,6 +21,7 @@ class Kvitek:
             oponent.hp = 0
             self.energy = 0
             s.kvitek_ultimate = True
+            s.already_played['Kvítek'] = True
         else:
-            print('You can use this ability only once and the game has to be over 8 rounds long!')
+            sg.popup('You can use this ability only once and the game has to be over 8 rounds long!')
 
