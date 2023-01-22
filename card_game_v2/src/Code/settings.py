@@ -7,6 +7,11 @@ choosing_finish = False
 david_defence = False
 mata_here = False
 mata_poison = False
-global mata_poison_target
+mojmir_attack = ''
+mojmir_double_damage = False
+mojmir_done = False
+mata_poison_target = ''
 marekec_dodge = False
+kvitek_ultimate = False
+zimik_reduce_energy = False
 count = 1

@@ -30,5 +30,6 @@ class Zimik:
             oponent.energy -= 2
             self.defence += 2
             s.zimik_reduce_energy = True
+            s.already_played['Žimík'] = True
         else:
             sg.popup('You can use this ability only once!')

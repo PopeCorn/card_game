@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
-from Code import functions as f
 import random
+from Code import functions as f
+from Code import settings as s
 
 class Nikolas:
     def __init__(self):
@@ -27,3 +28,4 @@ class Nikolas:
                 self.special_cooldown += 1
                 self.energy -= 4
                 self.defence = f.recovery_actions(self.defence, self.max_defence)
+                s.already_played['Nikolas'] = True

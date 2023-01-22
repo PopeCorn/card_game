@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 from Code import functions as f
+from Code import settings as s
 
 class Honza:
     def __init__(self):
@@ -22,6 +23,7 @@ class Honza:
                 self.energy -= 6
                 oponent.hp -= 2
                 oponent.energy = 0
+                s.already_played['Honza'] = True
 
     # Honza calculates the situation with his superior mathematic skills and prepares for anything bad that might happen
     def special(self):
@@ -35,3 +37,4 @@ class Honza:
                 self.energy -= 4
                 self.max_hp += 1
                 self.hp += 2
+                s.already_played['Honza'] = True

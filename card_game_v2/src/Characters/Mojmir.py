@@ -26,3 +26,4 @@ class Mojmir:
             self.energy -= 6
             s.mojmir_double_damage = True
             s.mojmir_done = True
+            s.already_played['Mojmír'] = True

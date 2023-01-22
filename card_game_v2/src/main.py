@@ -1,5 +1,4 @@
 import PySimpleGUI as sg
-import time as t
 from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 from Code import functions as f
@@ -88,37 +87,47 @@ if __name__ == '__main__':
     for unbound in s.all_characters:
             s.already_played[unbound] = False
 
-    while True:
-        layout = [[sg.Text('1st player')],
+    layout = [[sg.Text('1st player')],
         [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
         [sg.Text('')],
         [sg.Text('2nd player')],
         [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
         [sg.Text('')],
+        [sg.Button('NEXT ROUND!')],
+        [sg.Text('')],
         [sg.Button('Exit')]]
-        window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
+    window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
+
+    while True:
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
             quit()
+        if event == 'NEXT ROUND!':
+            res = True
+            played = list(s.already_played.values())
+            for bound in played:
+                if bound is False:
+                    res = False
+                    break
+            if res is True:
+                for unbound in s.all_characters:
+                    s.already_played[unbound] = False
+                s.count += 1
+                sg.popup(f'Round {s.count} Begins!')
+                window.TKroot.title(f'Card Game - Round {s.count}')
+            else:
+                sg.popup('All characters have not played yet!')
         if s.mata_here:
-            f.poison_checking(matyas)
-        res = True
-        played = list(s.already_played.values())
-        for bound in played:
-            if bound is False:
-                res = False
-                break
-        if res is True:
-            for unbound in s.all_characters:
-                s.already_played[unbound] = False
-            s.count += 1
-            sg.popup_quick_message(f'Round {s.count} Begins!')
-            t.sleep(2)
-            window.TKroot.title(f'Card Game - Round {s.count}')
+            f.poison_checking()
         if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
-            layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')]]
+            layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
+            [sg.Button('Exit')]]
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
                 f.playing(values, window2, '1stplayer_character', s.second_collection)
             elif event == '2nd player - Play with this character':
-                f.playing(values, window, '2ndplayer_character', s.first_collection)
+                f.playing(values, window2, '2ndplayer_character', s.first_collection)
+        try:
+            window2.close()
+        except NameError:
+            pass

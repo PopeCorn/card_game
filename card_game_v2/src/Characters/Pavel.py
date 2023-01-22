@@ -25,4 +25,4 @@ class Pavel:
                 self.special_cooldown += 2
                 self.energy -= 7
                 f.attack(self.energy, 0, 3, oponent)
-                f.attack(self.energy, 0, 3, oponent)
+                oponent.hp -= 2

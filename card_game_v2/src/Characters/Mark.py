@@ -25,3 +25,4 @@ class Marekec:
                 self.special_cooldown += 2
                 self.energy -= 3
                 s.marekec_dodge = True
+                s.already_played['Mark'] = True

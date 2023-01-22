@@ -28,4 +28,5 @@ class Matyas:
                 s.mata_poison = True
                 s.mata_poison_target = oponent
                 oponent.hp -= 2
+                s.already_played['Matyáš'] = True
         

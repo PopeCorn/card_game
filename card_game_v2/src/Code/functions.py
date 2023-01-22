@@ -19,11 +19,12 @@ def choose_character(collection, character):
             sg.popup('That character does not exist!')
         break
 
-# A function which wraps all other functions to attack enemies
-def init_attack(window3, action):
+# Function finishing the attacking process with new functions and handling it over to old functions, taken from v1 and slightly modified
+def init_attack(window3, action, name):
     while True:
         event3, values3 = window3.read()
-        if event3 == sg.WIN_CLOSED:
+        if event3 == sg.WIN_CLOSED or event3 == 'Exit':
+            window3.close()
             break
         elif event3 == 'Attack this enemy':
             if values3['oponent'] == '':
@@ -32,6 +33,7 @@ def init_attack(window3, action):
             oponent = s.transfer[values3['oponent']]
             original_hp, original_defence = oponent.hp, oponent.defence
             action(oponent)
+            s.already_played[name] = True
             sg.popup(f'''You attacked {values3['oponent']} with damage:
             HP: - {original_hp - oponent.hp}
             Defence: - {original_defence - oponent.defence}''')
@@ -43,9 +45,11 @@ def action(window2, character_name, enemy_collection):
     while True:
         event2, values2 = window2.read()
         character = s.transfer[character_name]
-        layout3 = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')]]
-        window3 = sg.Window('Oponent', layout3, size=(300, 300))
-        if event2 == sg.WIN_CLOSED:
+        layout3 = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')],
+        [sg.Button('Exit')]]
+        window3 = sg.Window('Oponent', layout3)
+        if event2 == sg.WIN_CLOSED or event2 == 'Exit':
+            window2.close()
             break
         if event2 == 'Select this':
             if values2['action'] == '':
@@ -53,16 +57,14 @@ def action(window2, character_name, enemy_collection):
             else:
                 window2.close()
                 if values2['action'] == 'Normal attack':
-                    init_attack(window3, character.attack)
+                    init_attack(window3, character.attack, character_name)
                 elif values2['action'] == 'Special attack':
-                    init_attack(window3, character.special_attack)
+                    init_attack(window3, character.special_attack, character_name)
                 elif values2['action'] == 'Special action':
                     if character_name == 'David' or character_name == 'Honza' or character_name == 'Mark' or character_name == 'Nikolas' or character_name == 'Mojmír':
                         character.special()
                     else:
-                        init_attack(window3, character.special)
-                s.already_played[character_name] = True
-        window2.close()
+                        init_attack(window3, character.special, character_name)
 
 # Function that checks if the input is empty or the character has already played, then passes the necessary arguments to action()
 def playing(values, window2, key, enemy_collection):
@@ -129,3 +131,25 @@ def attacking(target, attack, original_attack):
 def making_playables(collection, playable):
     for character in collection:
         playable.append(s.transfer[character])
+
+def poison_checking():
+    if s.mata_poison is True:
+        s.mata_poison_target.hp -= 2
+        s.mata_poison = False
+    else:
+        pass
+
+def double_attack(doubled, not_doubled):
+    if s.mojmir_double_damage is True:
+        s.mojmir_double_damage  = False
+        s.mojmir_attack = doubled
+    else:
+        s.mojmir_attack = not_doubled
+
+# Regeneration of attributes for all characters
+def recovery_actions(attribute, max_attribute):
+    if attribute == max_attribute or attribute == max_attribute - 1:
+        attribute = max_attribute
+    else:
+        return attribute + 2
+    return attribute
