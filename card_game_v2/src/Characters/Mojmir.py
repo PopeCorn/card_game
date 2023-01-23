@@ -11,11 +11,11 @@ class Mojmir:
 
     def attack(self, oponent):
         f.double_attack(4, 2)
-        f.attack(self.energy, 2, s.mojmir_attack, oponent)
+        f.attack(self.energy, 2, s.mojmir_attack, oponent, 'Mojmír')
 
     def special_attack(self, oponent):
         f.double_attack(12, 6)
-        f.attack(self.energy, 7, s.mojmir_attack, oponent, 2, self.cooldown, special=True)
+        f.attack(self.energy, 7, s.mojmir_attack, oponent, 'Mojmír', 2, self.cooldown, special=True)
 
     # Mojmir positions himself behind enemy lines, ready to strike twice as hard
     def special(self):
@@ -27,3 +27,4 @@ class Mojmir:
             s.mojmir_double_damage = True
             s.mojmir_done = True
             s.already_played['Mojmír'] = True
+            sg.popup('Your next attack will have doubled damage')

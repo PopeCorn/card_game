@@ -9,10 +9,10 @@ class Marekec:
         self.defence = 7
         self.cooldown, self.special_cooldown = 0, 0
     def attack(self, oponent):
-        f.attack(self.energy, 3, 3, oponent)
+        f.attack(self.energy, 3, 3, oponent, 'Mark')
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
+        f.attack(self.energy, 6, 5, oponent, 'Mark', 2, self.cooldown, special=True)
 
     # Marekec prepares for an upcoming attack with his dodging skills
     def special(self):
@@ -26,3 +26,4 @@ class Marekec:
                 self.energy -= 3
                 s.marekec_dodge = True
                 s.already_played['Mark'] = True
+                sg.popup('You now have a 50% chance to dodge the next attack')

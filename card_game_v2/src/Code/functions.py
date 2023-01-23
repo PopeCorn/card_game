@@ -31,12 +31,7 @@ def init_attack(window3, action, name):
                 sg.popup('You have not selected an enemy!')
                 continue
             oponent = s.transfer[values3['oponent']]
-            original_hp, original_defence = oponent.hp, oponent.defence
             action(oponent)
-            s.already_played[name] = True
-            sg.popup(f'''You attacked {values3['oponent']} with damage:
-            HP: - {original_hp - oponent.hp}
-            Defence: - {original_defence - oponent.defence}''')
             window3.close()
             break
 
@@ -78,7 +73,7 @@ def playing(values, window2, key, enemy_collection):
             window2.TKroot.title(character_name)
             action(window2, character_name, enemy_collection)
 
-def attack(energy, energy_taken, damage, defender, cooldown_increase=None, cooldown=None, special=False):
+def attack(energy, energy_taken, damage, defender, character_name, cooldown_increase=None, cooldown=None, special=False):
     if energy < energy_taken:
         sg.popup('You do not have enough energy!')
     else:
@@ -89,13 +84,13 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
                 cooldown += cooldown_increase
                 energy -= energy_taken
                 blow = damage - defender.defence
-                attacking(defender, blow, damage)
+                attacking(defender, blow, damage, character_name)
         else:
             energy -= energy_taken
             blow = damage - defender.defence
-            attacking(defender, blow, damage)
+            attacking(defender, blow, damage, character_name)
 
-def attacking(target, attack, original_attack):
+def attacking(target, attack, original_attack, character_name):
     target_name = s.inv_transfer[target]
     if target_name == "David":
         if s.david_defence is True:
@@ -104,7 +99,7 @@ def attacking(target, attack, original_attack):
             original_attack -= 3
         else:
             pass
-    elif target_name == "marekec":
+    elif target_name == "Mark":
         if s.marekec_dodge is True:
             s.marekec_dodge = False
             number = random.randrange(1, 3)
@@ -116,6 +111,7 @@ def attacking(target, attack, original_attack):
         else:
             pass
 
+    original_hp, original_defence = target.hp, target.defence
     if attack == 0:
         target.defence = 0
     elif attack < 0:
@@ -126,6 +122,10 @@ def attacking(target, attack, original_attack):
     else:
         target.hp -= attack
         target.defence = 0
+    s.already_played[character_name] = True
+    sg.popup(f'''You attacked {target_name} with damage:
+            HP: - {original_hp - target.hp}
+            Defence: - {original_defence - target.defence}''')
 
 # Simple function for finishing the process of converting strings to actual, playable characters (instances of classes)
 def making_playables(collection, playable):

@@ -11,11 +11,11 @@ class Nikolas:
         self.cooldown, self.special_cooldown = 0, 0
         
     def attack(self, oponent):
-        f.attack(self.energy, 3, 4, oponent)
+        f.attack(self.energy, 3, 4, oponent, 'Nikolas')
 
     def special_attack(self, oponent):
         random_number = random.randrange(1, 10)
-        f.attack(self.energy, 6, random_number, oponent, 2, self.cooldown, special=True)
+        f.attack(self.energy, 6, random_number, oponent, 'Nikolas', 2, self.cooldown, special=True)
 
     # In the chaos of battle, Nikolas stops to have Beef Jerky and replenish his defence 
     def special(self):
@@ -29,3 +29,4 @@ class Nikolas:
                 self.energy -= 4
                 self.defence = f.recovery_actions(self.defence, self.max_defence)
                 s.already_played['Nikolas'] = True
+                sg.popup('You recovered 2 of your defence points')

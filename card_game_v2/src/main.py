@@ -112,6 +112,8 @@ if __name__ == '__main__':
             if res is True:
                 for unbound in s.all_characters:
                     s.already_played[unbound] = False
+                for character in s.all_playable:
+                    character.energy = f.recovery_actions(character.energy, character.max_energy)
                 s.count += 1
                 sg.popup(f'Round {s.count} Begins!')
                 window.TKroot.title(f'Card Game - Round {s.count}')

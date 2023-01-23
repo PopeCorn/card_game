@@ -10,10 +10,10 @@ class Matyas:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 3, oponent)
+        f.attack(self.energy, 3, 3, oponent, 'Matyáš')
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
+        f.attack(self.energy, 6, 5, oponent, 'Matyáš', 2, self.cooldown, special=True)
 
     # Matyas poisons an enemy with his arguments, which he repeats for entire 2 rounds 
     def special(self, oponent):
@@ -29,4 +29,5 @@ class Matyas:
                 s.mata_poison_target = oponent
                 oponent.hp -= 2
                 s.already_played['Matyáš'] = True
+                sg.popup(f'You deal damage to {s.inv_transfer[oponent]} now and next round because you poisoned him')
         

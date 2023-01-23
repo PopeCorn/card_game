@@ -10,7 +10,7 @@ class Honza:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 3, oponent)
+        f.attack(self.energy, 3, 3, oponent, 'Honza')
 
     def special_attack(self, oponent):
         if self.cooldown > 0:
@@ -23,7 +23,7 @@ class Honza:
                 self.energy -= 6
                 oponent.hp -= 2
                 oponent.energy = 0
-                s.already_played['Honza'] = True
+                sg.popup(f"You decreased {s.inv_transfer[oponent]}'s energy to 0")
 
     # Honza calculates the situation with his superior mathematic skills and prepares for anything bad that might happen
     def special(self):
@@ -38,3 +38,4 @@ class Honza:
                 self.max_hp += 1
                 self.hp += 2
                 s.already_played['Honza'] = True
+                sg.popup('You increased your max. hp by 1 and your actual hp by 2')

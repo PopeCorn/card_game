@@ -10,10 +10,10 @@ class David:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 2, oponent)
+        f.attack(self.energy, 3, 2, oponent, 'David')
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 6, oponent, 2, self.cooldown, special=True)
+        f.attack(self.energy, 6, 6, oponent, 'David', 2, self.cooldown, special=True)
 
     # David uses his special Big Chungus powers to reduce damage of the next attack aimed at him
     def special(self):
@@ -27,3 +27,4 @@ class David:
                 self.energy -= 4
                 s.david_defence = True
                 s.already_played['David'] = True
+                sg.popup('The next attack aimed at David will have its damage reduced by 3')

@@ -10,10 +10,10 @@ class Tom:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 4, 4, oponent)
+        f.attack(self.energy, 4, 4, oponent, 'Tom')
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
+        f.attack(self.energy, 6, 5, oponent, 'Tom', 2, self.cooldown, special=True)
 
     # Tom stays behind friendly lines, ready to heal others or himself
     def special(self, member=None, not_self=False):
@@ -27,6 +27,8 @@ class Tom:
                 self.special_cooldown += 1
                 if not_self:
                     member.hp = f.recovery_actions(member.hp, member.max_hp)
+                    sg.popup(f'You healed {s.inv_transfer[member]} by 2 hp')
                 else:
                     self.hp = f.recovery_actions(self.hp, self.max_hp)
+                    sg.popup('You healed yourself for 2 hp')
                 s.already_played['Tom'] = True
