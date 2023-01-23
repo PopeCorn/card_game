@@ -136,6 +136,7 @@ def poison_checking():
     if s.mata_poison is True:
         s.mata_poison_target.hp -= 2
         s.mata_poison = False
+        sg.popup(f"Matyáš's poison from the last round reduced {s.inv_transfer[s.mata_poison_target]}'s hp by 2")
     else:
         pass
 
