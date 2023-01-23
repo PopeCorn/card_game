@@ -23,5 +23,5 @@ class Milan:
             self.energy -= 7
             self.max_energy += 1
             self.defence += 2
-            f.attack(self.energy, 0, 2, oponent)
+            f.attack(self.energy, 0, 2, oponent, 'Milan')
             sg.popup('You increased your max energy by 1 and your defence by 2')

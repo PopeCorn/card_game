@@ -87,7 +87,7 @@ if __name__ == '__main__':
     for unbound in s.all_characters:
             s.already_played[unbound] = False
 
-    layout = [[sg.Text('ROUND 1', key='IN')],
+    layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
         [sg.Text('1st player')],
         [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
         [sg.Text('')],
@@ -120,7 +120,7 @@ if __name__ == '__main__':
                 s.count += 1
                 sg.popup(f'Round {s.count} Begins!')
                 window.TKroot.title(f'Card Game - Round {s.count}')
-                window['IN'].update(f'ROUND {s.count}')
+                window['IN'].update(f'ROUND {s.count}', text_color='r')
             else:
                 sg.popup('All characters have not played yet!')
         if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
