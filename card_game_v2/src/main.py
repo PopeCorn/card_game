@@ -22,7 +22,7 @@ if __name__ == '__main__':
             if s.choosing_finish:
                 break
             else:
-                sg.popup('All players have not chosen their characters yet!')
+                sg.popup('All players have not chosen their characters yet!', title='Error')
         elif event == 'Add for 1st player':
             f.choose_character(s.first_collection, values['first'])
         elif event == 'Add for 2nd player':
@@ -90,11 +90,11 @@ if __name__ == '__main__':
     layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
         [sg.Text('1st player')],
         [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-        [sg.Button('1st player - Check this character')],
+        [sg.Text('                '), sg.Button('1st player - Check this character')],
         [sg.Text('')],
         [sg.Text('2nd player')],
         [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-        [sg.Button('2nd player - Check this character')],
+        [sg.Text('                '), sg.Button('2nd player - Check this character')],
         [sg.Text('')],
         [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
         [sg.Text('')],

@@ -17,11 +17,14 @@ class Milan:
     # Milan becomes empowered thanks to his harem
     def special(self, oponent):
         if self.special_cooldown > 0:
-            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')
         else:
-            self.special_cooldown += 2
-            self.energy -= 7
-            self.max_energy += 1
-            self.defence += 2
-            f.attack(self.energy, 0, 2, oponent, 'Milan')
-            sg.popup('You increased your max energy by 1 and your defence by 2')
+            if self.energy < 7:
+                sg.popup('You do not have enough energy!', title='Error')
+            else:
+                self.special_cooldown += 2
+                self.energy -= 7
+                self.max_energy += 1
+                self.defence += 2
+                f.attack(self.energy, 0, 2, oponent, 'Milan')
+                sg.popup('You increased your max energy by 1 and your defence by 2')

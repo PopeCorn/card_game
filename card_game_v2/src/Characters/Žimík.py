@@ -25,4 +25,4 @@ class Zimik:
             s.already_played['Žimík'] = True
             sg.popup(f"You reduced {s.inv_transfer[oponent]}'s max. energy and his actual energy by 2")
         else:
-            sg.popup('You can use this ability only once!')
+            sg.popup('You can use this ability only once!', title='Error')

@@ -14,10 +14,10 @@ class Honza:
 
     def special_attack(self, oponent):
         if self.cooldown > 0:
-            sg.popup(f'You can use this ability in {self.cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.cooldown} rounds!', title='Error')
         else:
             if self.energy < 6:
-                sg.popup('You do not have enough energy!')
+                sg.popup('You do not have enough energy!', title='Error')
             else:
                 self.cooldown += 2
                 self.energy -= 6
@@ -29,10 +29,10 @@ class Honza:
     # Honza calculates the situation with his superior mathematic skills and prepares for anything bad that might happen
     def special(self):
         if self.cooldown > 0:
-            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')
         else:
             if self.energy < 4:
-                sg.popup('You do not have enough energy!')
+                sg.popup('You do not have enough energy!', title='Error')
             else:
                 self.special_cooldown += 2
                 self.energy -= 4

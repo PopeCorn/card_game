@@ -24,5 +24,5 @@ class Kvitek:
             s.already_played['Kvítek'] = True
             sg.popup(f'You annihilated {s.inv_transfer[oponent]}, killing it')
         else:
-            sg.popup('You can use this ability only once and the game has to be over 8 rounds long!')
+            sg.popup('You can use this ability only once and the game has to be over 8 rounds long!', title='Error')
 

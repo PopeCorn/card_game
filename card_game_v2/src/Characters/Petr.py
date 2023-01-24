@@ -16,6 +16,5 @@ class Petr:
 
     # Petr uses his unmatched speed give himself energy and attack at the same time
     def special(self, oponent):
-        self.energy += 3
-        sg.popup('You gained 3 energy points')
-        f.attack(self.energy, 3, 2, oponent, 'Petr', self.special_cooldown, special=True)
+        sg.popup('The following attack will not cost you any energy')
+        f.attack(self.energy, 0, 2, oponent, 'Petr', self.special_cooldown, special=True)

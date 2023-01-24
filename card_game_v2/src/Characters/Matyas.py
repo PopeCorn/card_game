@@ -18,10 +18,10 @@ class Matyas:
     # Matyas poisons an enemy with his arguments, which he repeats for entire 2 rounds 
     def special(self, oponent):
         if self.cooldown > 0:
-            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')
         else:
             if self.energy < 4:
-                sg.popup('You do not have enough energy!')
+                sg.popup('You do not have enough energy!', title='Error')
             else:
                 self.special_cooldown += 2
                 self.energy -= 4

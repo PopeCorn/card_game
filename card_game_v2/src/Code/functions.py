@@ -6,17 +6,17 @@ from Code import settings as s
 def choose_character(collection, character):
     while True:
         if len(collection) == 3:
-            sg.popup('That player already has 3 characters!')
+            sg.popup('That player already has 3 characters!', title='Error')
             break
         if character in s.all_available:
             if character in s.all_characters:
-                sg.popup('You or someone else already have that character!')
+                sg.popup('You or someone else already have that character!', title='Error')
             else:
                 s.all_characters.append(character)
                 collection.append(character)
                 sg.popup('Character added')
         else:
-            sg.popup('That character does not exist!')
+            sg.popup('That character does not exist!', title='Error')
         break
 
 # Function finishing the attacking process with new functions and handling it over to old functions, taken from v1 and slightly modified
@@ -28,7 +28,7 @@ def init_attack(window3, action, name):
             break
         elif event3 == 'Attack this enemy':
             if values3['oponent'] == '':
-                sg.popup('You have not selected an enemy!')
+                sg.popup('You have not selected an enemy!', title='Error')
                 continue
             oponent = s.transfer[values3['oponent']]
             action(oponent)
@@ -48,7 +48,7 @@ def action(window2, character_name, enemy_collection):
             break
         if event2 == 'Select this':
             if values2['action'] == '':
-                sg.popup('You have not selected your action yet!')
+                sg.popup('You have not selected your action yet!', title='Error')
             else:
                 window2.close()
                 if values2['action'] == 'Normal attack':
@@ -64,33 +64,33 @@ def action(window2, character_name, enemy_collection):
 # Function for checking character's stats
 def stat_checking(character_name):
     character = s.transfer[character_name]
-    sg.popup_no_titlebar(f'''{character_name.upper()}:
+    sg.popup(f'''{character_name.upper()}:
     HP - {character.hp}
     Defence - {character.defence}
     Energy - {character.energy}
     Special Attack cooldown - {character.cooldown}
-    Special Action cooldown - {character.special_cooldown}''')
+    Special Action cooldown - {character.special_cooldown}''', title=f"{character_name}'s stats")
 
 
 # Function that checks if the input is empty or the character has already played, then passes the necessary arguments to action()
 def playing(values, window2, key, enemy_collection):
     character_name = values[key]
     if character_name == '':
-        sg.popup('You have not selected a character yet!')
+        sg.popup('You have not selected a character yet!', title='Error')
     else:
         if s.already_played[character_name]:
-            sg.popup('That character has already played this round!')
+            sg.popup('That character has already played this round!', title='Error')
         else:
             window2.TKroot.title(character_name)
             action(window2, character_name, enemy_collection)
 
 def attack(energy, energy_taken, damage, defender, character_name, cooldown_increase=None, cooldown=None, special=False):
     if energy < energy_taken:
-        sg.popup('You do not have enough energy!')
+        sg.popup('You do not have enough energy!', title='Error')
     else:
         if special:
             if cooldown > 0:
-                sg.popup(f'You can use this ability in {cooldown} rounds!')
+                sg.popup(f'You can use this ability in {cooldown} rounds!', title='Error')
             else:
                 cooldown += cooldown_increase
                 energy -= energy_taken

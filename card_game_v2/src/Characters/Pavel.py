@@ -17,10 +17,10 @@ class Pavel:
     # Pavel unleashes his powerful and logical arguments, unlike Matyas' ones
     def special(self, oponent):
         if self.special_cooldown > 0:
-            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!')
+            sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')
         else:
             if self.energy < 7:
-                sg.popup('You do not have enough energy!')
+                sg.popup('You do not have enough energy!', title='Error')
             else:
                 self.special_cooldown += 2
                 self.energy -= 7
