@@ -61,6 +61,17 @@ def action(window2, character_name, enemy_collection):
                     else:
                         init_attack(window3, character.special, character_name)
 
+# Function for checking character's stats
+def stat_checking(character_name):
+    character = s.transfer[character_name]
+    sg.popup_no_titlebar(f'''{character_name.upper()}:
+    HP - {character.hp}
+    Defence - {character.defence}
+    Energy - {character.energy}
+    Special Attack cooldown - {character.cooldown}
+    Special Action cooldown - {character.special_cooldown}''')
+
+
 # Function that checks if the input is empty or the character has already played, then passes the necessary arguments to action()
 def playing(values, window2, key, enemy_collection):
     character_name = values[key]

@@ -90,9 +90,11 @@ if __name__ == '__main__':
     layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
         [sg.Text('1st player')],
         [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
+        [sg.Button('1st player - Check this character')],
         [sg.Text('')],
         [sg.Text('2nd player')],
         [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
+        [sg.Button('2nd player - Check this character')],
         [sg.Text('')],
         [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
         [sg.Text('')],
@@ -136,6 +138,14 @@ if __name__ == '__main__':
                 f.playing(values, window2, '1stplayer_character', s.second_collection)
             elif event == '2nd player - Play with this character':
                 f.playing(values, window2, '2ndplayer_character', s.first_collection)
+
+        if event == '1st player - Check this character' or event == '2nd player - Check this character':
+            if event == '1st player - Check this character':
+                name = values['1stplayer_character']
+                f.stat_checking(name)
+            elif event == '2nd player - Check this character':
+                name = values['2ndplayer_character']
+                f.stat_checking(name)
         try:
             window2.close()
         except NameError:
