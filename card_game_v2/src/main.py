@@ -121,7 +121,8 @@ if __name__ == '__main__':
                 for unbound in s.all_characters:
                     s.already_played[unbound] = False
                 for character in s.all_playable:
-                    character.energy = f.recovery_actions(character.energy, character.max_energy)
+                    character.cooldown -= 1
+                    character.special_cooldown -= 1
                 if s.mata_here:
                     f.poison_checking()
                 s.count += 1

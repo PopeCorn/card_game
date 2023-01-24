@@ -20,7 +20,7 @@ def choose_character(collection, character):
         break
 
 # Function finishing the attacking process with new functions and handling it over to old functions, taken from v1 and slightly modified
-def init_attack(window3, action, name):
+def init_attack(window3, action):
     while True:
         event3, values3 = window3.read()
         if event3 == sg.WIN_CLOSED or event3 == 'Exit':
@@ -52,14 +52,14 @@ def action(window2, character_name, enemy_collection):
             else:
                 window2.close()
                 if values2['action'] == 'Normal attack':
-                    init_attack(window3, character.attack, character_name)
+                    init_attack(window3, character.attack)
                 elif values2['action'] == 'Special attack':
-                    init_attack(window3, character.special_attack, character_name)
+                    init_attack(window3, character.special_attack)
                 elif values2['action'] == 'Special action':
                     if character_name == 'David' or character_name == 'Honza' or character_name == 'Mark' or character_name == 'Nikolas' or character_name == 'Mojmír':
                         character.special()
                     else:
-                        init_attack(window3, character.special, character_name)
+                        init_attack(window3, character.special)
 
 # Function for checking character's stats
 def stat_checking(character_name):
@@ -67,7 +67,6 @@ def stat_checking(character_name):
     sg.popup(f'''{character_name.upper()}:
     HP - {character.hp}
     Defence - {character.defence}
-    Energy - {character.energy}
     Special Attack cooldown - {character.cooldown}
     Special Action cooldown - {character.special_cooldown}''', title=f"{character_name}'s stats")
 
@@ -84,22 +83,18 @@ def playing(values, window2, key, enemy_collection):
             window2.TKroot.title(character_name)
             action(window2, character_name, enemy_collection)
 
-def attack(energy, energy_taken, damage, defender, character_name, cooldown_increase=None, cooldown=None, special=False):
-    if energy < energy_taken:
-        sg.popup('You do not have enough energy!', title='Error')
-    else:
-        if special:
-            if cooldown > 0:
-                sg.popup(f'You can use this ability in {cooldown} rounds!', title='Error')
-            else:
-                cooldown += cooldown_increase
-                energy -= energy_taken
-                blow = damage - defender.defence
-                attacking(defender, blow, damage, character_name)
+def attack(damage, defender, character_name, cooldown_increase=None, cooldown=None, special=False):
+    if special:
+        if cooldown > 0:
+            sg.popup(f'You can use this ability in {cooldown} rounds!', title='Error')
         else:
-            energy -= energy_taken
             blow = damage - defender.defence
             attacking(defender, blow, damage, character_name)
+            return cooldown + cooldown_increase
+    else:
+        blow = damage - defender.defence
+        attacking(defender, blow, damage, character_name)
+    return cooldown
 
 def attacking(target, attack, original_attack, character_name):
     target_name = s.inv_transfer[target]

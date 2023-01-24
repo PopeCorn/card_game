@@ -5,15 +5,14 @@ from Code import settings as s
 class Kvitek:
     def __init__(self):
         self.hp, self.max_hp = 11, 11
-        self.energy, self.max_energy = 9, 9
         self.defence = 5
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 4, 3, oponent, 'Kvítek')
+        f.attack(3, oponent, 'Kvítek')
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 7, 5, oponent, 'Kvítek', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(5, oponent, 'Kvítek', 2, self.cooldown, special=True)
 
     # After a long preparation, Kvitek unleashes his sigma male grindset upon one unsuspecting enemy, killing them instantly
     def special(self, oponent):
