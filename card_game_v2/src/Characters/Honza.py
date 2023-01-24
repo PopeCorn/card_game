@@ -23,6 +23,7 @@ class Honza:
                 self.energy -= 6
                 oponent.hp -= 2
                 oponent.energy = 0
+                s.already_played['Honza'] = True
                 sg.popup(f"You decreased {s.inv_transfer[oponent]}'s energy to 0")
 
     # Honza calculates the situation with his superior mathematic skills and prepares for anything bad that might happen

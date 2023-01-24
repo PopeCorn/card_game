@@ -18,4 +18,4 @@ class Petr:
     def special(self, oponent):
         self.energy += 3
         sg.popup('You gained 3 energy points')
-        f.attack(self.energy, 3, 2, oponent, 1, self.special_cooldown, special=True)
+        f.attack(self.energy, 3, 2, oponent, 'Petr', self.special_cooldown, special=True)

@@ -24,6 +24,6 @@ class Pavel:
             else:
                 self.special_cooldown += 2
                 self.energy -= 7
-                f.attack(self.energy, 0, 3, oponent)
+                f.attack(self.energy, 0, 3, oponent, 'Pavel')
                 oponent.hp -= 2
                 sg.popup(f'You dealt 2 points of additional damage to {s.inv_transfer[oponent]}')

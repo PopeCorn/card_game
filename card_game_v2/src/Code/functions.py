@@ -154,3 +154,30 @@ def recovery_actions(attribute, max_attribute):
     else:
         return attribute + 2
     return attribute
+
+# A short function to determine who won
+def winning(string, list):
+    if len(list) == 0:
+        s.end = True
+        s.winner = string
+
+# A function for removing dead characters
+def removing_characters(playable, unplayable_list, playable_list):
+    unplayable_list.remove(s.inv_transfer[playable])
+    playable_list.remove(playable)
+
+# System checking for the death of characters
+def death_system(first_collection, first_playable, second_collection, second_playable):
+    for character in s.all_playable:
+        if character.hp == 0:
+            s.all_playable.remove(character)
+            calling_functions(character, first_collection, second_collection, first_playable, second_playable, 'PLAYER 1', 'PLAYER 2')
+        else:
+            pass
+
+# A short function for calling other ones
+def calling_functions(character, first_collection, second_collection, first_playable, second_playable, name_1, name_2):
+    removing_characters(character, first_collection, first_playable)
+    removing_characters(character, second_collection, second_playable)
+    winning(first_collection, name_1)
+    winning(second_collection, name_2)
