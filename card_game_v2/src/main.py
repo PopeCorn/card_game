@@ -109,7 +109,7 @@ if __name__ == '__main__':
             sg.popup(f'THE WINNER IS {s.winner}!')
             quit()
         else:
-            f.death_system(s.first_collection, s.first_playable, s.second_collection, s.second_playable)
+            f.death_system(s.first_collection, s.first_playable, s.second_collection, s.second_playable, window)
         if event == 'NEXT ROUND!':
             res = True
             played = list(s.already_played.values())

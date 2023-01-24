@@ -173,9 +173,11 @@ def removing_characters(playable, unplayable_list, playable_list):
     playable_list.remove(playable)
 
 # System checking for the death of characters
-def death_system(first_collection, first_playable, second_collection, second_playable):
+def death_system(first_collection, first_playable, second_collection, second_playable, window):
     for character in s.all_playable:
         if character.hp == 0:
+            window['1stplayer_character'].update(values=s.first_collection)
+            window['2ndplayer_character'].update(values=s.second_collection)
             s.all_playable.remove(character)
             calling_functions(character, first_collection, second_collection, first_playable, second_playable, 'PLAYER 1', 'PLAYER 2')
         else:

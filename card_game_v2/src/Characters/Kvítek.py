@@ -16,12 +16,12 @@ class Kvitek:
 
     # After a long preparation, Kvitek unleashes his sigma male grindset upon one unsuspecting enemy, killing them instantly
     def special(self, oponent):
-        if s.count > 4 and s.kvitek_ultimate is not True:
+        if s.count > 0 and s.kvitek_ultimate is not True:
             oponent.hp = 0
             self.energy = 0
             s.kvitek_ultimate = True
             s.already_played['Kvítek'] = True
-            sg.popup(f'You annihilated {s.inv_transfer[oponent]}, killing it')
+            sg.popup(f'You annihilated {s.inv_transfer[oponent]}, killing him')
         else:
             sg.popup('You can use this ability only once and the game has to be over 8 rounds long!', title='Error')
 
