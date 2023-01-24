@@ -4,20 +4,17 @@ from Code import settings as s
 
 # Function for choosing characters from sg combo menu that is tied to the first while loop in main.py and is handling all situations that could happen
 def choose_character(collection, character):
-    while True:
-        if len(collection) == 3:
-            sg.popup('That player already has 3 characters!', title='Error')
-            break
-        if character in s.all_available:
-            if character in s.all_characters:
-                sg.popup('You or someone else already have that character!', title='Error')
-            else:
-                s.all_characters.append(character)
-                collection.append(character)
-                sg.popup('Character added')
+    if len(collection) == 3:
+        sg.popup('That player already has 3 characters!', title='Error')
+    if character in s.all_available:
+        if character in s.all_characters:
+            sg.popup('You or someone else already have that character!', title='Error')
         else:
-            sg.popup('That character does not exist!', title='Error')
-        break
+            s.all_characters.append(character)
+            collection.append(character)
+            sg.popup(f'{character} added', title='Addition')
+    else:
+        sg.popup('That character does not exist!', title='Error')
 
 # Function finishing the attacking process with new functions and handling it over to old functions, taken from v1 and slightly modified
 def init_attack(window3, action):
@@ -169,19 +166,15 @@ def winning(string, list):
 
 # A function for removing dead characters
 def removing_characters(playable, unplayable_list, playable_list):
-    unplayable_list.remove(s.inv_transfer[playable])
-    playable_list.remove(playable)
+    if playable in playable_list:
+        unplayable_list.remove(s.inv_transfer[playable])
+        playable_list.remove(playable)
 
 # System checking for the death of characters
-def death_system(first_collection, first_playable, second_collection, second_playable, window):
-    for character in s.all_playable:
-        if character.hp == 0:
-            window['1stplayer_character'].update(values=s.first_collection)
-            window['2ndplayer_character'].update(values=s.second_collection)
-            s.all_playable.remove(character)
-            calling_functions(character, first_collection, second_collection, first_playable, second_playable, 'PLAYER 1', 'PLAYER 2')
-        else:
-            pass
+def death_system(character, first_collection, first_playable, second_collection, second_playable):
+    sg.popup(f'{s.inv_transfer[character]} is dead')
+    s.all_playable.remove(character)
+    calling_functions(character, first_collection, second_collection, first_playable, second_playable, 'PLAYER 1', 'PLAYER 2')
 
 # A short function for calling other ones
 def calling_functions(character, first_collection, second_collection, first_playable, second_playable, name_1, name_2):
