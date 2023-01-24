@@ -14,4 +14,5 @@ mata_poison_target = ''
 marekec_dodge = False
 kvitek_ultimate = False
 zimik_reduce_energy = False
+end, winner = False, ''
 count = 1

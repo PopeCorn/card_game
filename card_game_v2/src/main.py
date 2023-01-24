@@ -22,7 +22,7 @@ if __name__ == '__main__':
             if s.choosing_finish:
                 break
             else:
-                sg.popup('All players have not chosen their characters yet!')
+                sg.popup('All players have not chosen their characters yet!', title='Error')
         elif event == 'Add for 1st player':
             f.choose_character(s.first_collection, values['first'])
         elif event == 'Add for 2nd player':
@@ -87,13 +87,16 @@ if __name__ == '__main__':
     for unbound in s.all_characters:
             s.already_played[unbound] = False
 
-    layout = [[sg.Text('1st player')],
+    layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
+        [sg.Text('1st player')],
         [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
+        [sg.Text('                '), sg.Button('1st player - Check this character')],
         [sg.Text('')],
         [sg.Text('2nd player')],
         [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
+        [sg.Text('                '), sg.Button('2nd player - Check this character')],
         [sg.Text('')],
-        [sg.Button('NEXT ROUND!')],
+        [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
         [sg.Text('')],
         [sg.Button('Exit')]]
     window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
@@ -101,6 +104,9 @@ if __name__ == '__main__':
     while True:
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
+            quit()
+        if s.end:
+            sg.popup(f'THE WINNER IS {s.winner}!')
             quit()
         if event == 'NEXT ROUND!':
             res = True
@@ -112,13 +118,17 @@ if __name__ == '__main__':
             if res is True:
                 for unbound in s.all_characters:
                     s.already_played[unbound] = False
+                for character in s.all_playable:
+                    character.cooldown -= 1
+                    character.special_cooldown -= 1
+                if s.mata_here:
+                    f.poison_checking()
                 s.count += 1
                 sg.popup(f'Round {s.count} Begins!')
                 window.TKroot.title(f'Card Game - Round {s.count}')
+                window['IN'].update(f'ROUND {s.count}', text_color='r')
             else:
                 sg.popup('All characters have not played yet!')
-        if s.mata_here:
-            f.poison_checking()
         if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
             layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
             [sg.Button('Exit')]]
@@ -127,7 +137,32 @@ if __name__ == '__main__':
                 f.playing(values, window2, '1stplayer_character', s.second_collection)
             elif event == '2nd player - Play with this character':
                 f.playing(values, window2, '2ndplayer_character', s.first_collection)
+
+        if event == '1st player - Check this character' or event == '2nd player - Check this character':
+            if event == '1st player - Check this character':
+                name = values['1stplayer_character']
+                f.stat_checking(name)
+            elif event == '2nd player - Check this character':
+                name = values['2ndplayer_character']
+                f.stat_checking(name)
         try:
             window2.close()
         except NameError:
             pass
+        
+        for character in s.all_playable:
+            if character.hp <= 0:
+                f.death_system(character, s.first_collection, s.first_playable, s.second_collection, s.second_playable)
+                layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
+                [sg.Text('1st player')],
+                [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
+                [sg.Text('                '), sg.Button('1st player - Check this character')],
+                [sg.Text('')],
+                [sg.Text('2nd player')],
+                [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
+                [sg.Text('                '), sg.Button('2nd player - Check this character')],
+                [sg.Text('')],
+                [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
+                [sg.Text('')],
+                [sg.Button('Exit')]]
+                window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
