@@ -37,8 +37,7 @@ def action(window2, character_name, enemy_collection):
     while True:
         event2, values2 = window2.read()
         character = s.transfer[character_name]
-        layout3 = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')],
-        [sg.Button('Exit')]]
+        layout3 = layout(layout3, oponent=True)
         window3 = sg.Window('Oponent', layout3)
         if event2 == sg.WIN_CLOSED or event2 == 'Exit':
             window2.close()
@@ -131,7 +130,11 @@ def attacking(target, attack, original_attack, character_name):
             Defence: - {original_defence - target.defence}''')
 
 # Simple function for finishing the process of converting strings to actual, playable characters (instances of classes)
-def making_playables(collection, playable):
+def making_playables(collection, playable, collection2, playable2):
+    simplifying(collection, playable)
+    simplifying(collection2, playable2)
+
+def simplifying(collection, playable):
     for character in collection:
         playable.append(s.transfer[character])
 
@@ -183,17 +186,33 @@ def calling_functions(character, first_collection, second_collection, first_play
     winning(first_collection, name_1)
     winning(second_collection, name_2)
 
-def layout(layout):
-    layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
-        [sg.Text('1st player')],
-        [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-        [sg.Text('                '), sg.Button('1st player - Check this character')],
-        [sg.Text('')],
-        [sg.Text('2nd player')],
-        [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-        [sg.Text('                '), sg.Button('2nd player - Check this character')],
-        [sg.Text('')],
-        [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
-        [sg.Text('')],
-        [sg.Button('Exit')]]
+def layout(layout, choose_characters=False, game=False, action=False, oponent=False):
+    if choose_characters:
+        layout = [[sg.Button('Proceed to the game')],
+            [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
+            [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')],
+            [sg.Text('(ONE PLAYER CAN ONLY HAVE 3 CHARACTERS)'), sg.Button('Exit')]]
+    elif game:
+        layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
+            [sg.Text('1st player')],
+            [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
+            [sg.Text('                '), sg.Button('1st player - Check this character')],
+            [sg.Text('')],
+            [sg.Text('2nd player')],
+            [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
+            [sg.Text('                '), sg.Button('2nd player - Check this character')],
+            [sg.Text('')],
+            [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
+            [sg.Text('')],
+            [sg.Button('Exit')]]
+    elif action:
+        layout = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
+            [sg.Button('Exit')]]
+    elif oponent:
+        layout = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')],
+            [sg.Button('Exit')]]
     return layout
+
+def already_played_false():
+    for unbound in s.all_characters:
+        s.already_played[unbound] = False

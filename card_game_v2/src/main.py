@@ -4,11 +4,8 @@ from Code import settings as s
 from Code import functions as f
 sg.theme('DarkTeal10')
 
-layout = [[sg.Button('Proceed to the game')],
-[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
-[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')],
-[sg.Text('(ONE PLAYER CAN ONLY HAVE 3 CHARACTERS)'), sg.Button('Exit')]]
-
+layout = []
+layout = f.layout(layout, choose_characters=True)
 window = sg.Window('Card Game - choose characters', layout, size=(380, 150))
 
 if __name__ == '__main__':
@@ -81,13 +78,9 @@ if __name__ == '__main__':
             s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
-    f.making_playables(s.first_collection, s.first_playable)
-    f.making_playables(s.second_collection, s.second_playable)
-
-    for unbound in s.all_characters:
-            s.already_played[unbound] = False
-
-    layout = f.layout()
+    f.making_playables(s.first_collection, s.first_playable, s.second_collection, s.second_playable)
+    f.already_played_false()
+    layout = f.layout(layout, game=True)
     window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
 
     while True:
@@ -119,8 +112,7 @@ if __name__ == '__main__':
             else:
                 sg.popup('All characters have not played yet!')
         if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
-            layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
-            [sg.Button('Exit')]]
+            layout2 = f.layout(layout, action=True)
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
                 f.playing(values, window2, '1stplayer_character', s.second_collection)
@@ -142,5 +134,5 @@ if __name__ == '__main__':
         for character in s.all_playable:
             if character.hp <= 0:
                 f.death_system(character, s.first_collection, s.first_playable, s.second_collection, s.second_playable)
-                layout = f.layout()
+                layout = f.layout(layout, game=True)
                 window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
