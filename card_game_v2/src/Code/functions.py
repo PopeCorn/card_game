@@ -227,3 +227,7 @@ def next_round(window, res):
     else:
         sg.popup('All characters have not played yet!')
     return window
+
+def already_played_false():
+    for character in s.all_characters:
+        s.already_played[character] = False
