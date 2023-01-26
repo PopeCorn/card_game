@@ -75,7 +75,6 @@ if __name__ == '__main__':
         elif unused == 'Žimík':
             zimik = Žimík.Zimik()
             s.transfer['Žimík'] = zimik
-            s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
     f.adding_playables(s.first_collection, s.first_playable, s.second_collection, s.second_playable)
