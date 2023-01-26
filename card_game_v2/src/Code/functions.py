@@ -37,7 +37,8 @@ def action(window2, character_name, enemy_collection):
     while True:
         event2, values2 = window2.read()
         character = s.transfer[character_name]
-        layout3 = layout(layout3, oponent=True)
+        layout3 = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')],
+        [sg.Button('Exit')]]
         window3 = sg.Window('Oponent', layout3)
         if event2 == sg.WIN_CLOSED or event2 == 'Exit':
             window2.close()
@@ -130,7 +131,7 @@ def attacking(target, attack, original_attack, character_name):
             Defence: - {original_defence - target.defence}''')
 
 # Simple function for finishing the process of converting strings to actual, playable characters (instances of classes)
-def making_playables(collection, playable, collection2, playable2):
+def adding_playables(collection, playable, collection2, playable2):
     simplifying(collection, playable)
     simplifying(collection2, playable2)
 
@@ -186,7 +187,7 @@ def calling_functions(character, first_collection, second_collection, first_play
     winning(first_collection, name_1)
     winning(second_collection, name_2)
 
-def layout(layout, choose_characters=False, game=False, action=False, oponent=False):
+def layout(layout, choose_characters=False, game=False, action=False):
     if choose_characters:
         layout = [[sg.Button('Proceed to the game')],
             [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
@@ -208,11 +209,4 @@ def layout(layout, choose_characters=False, game=False, action=False, oponent=Fa
     elif action:
         layout = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
             [sg.Button('Exit')]]
-    elif oponent:
-        layout = [[sg.Combo(enemy_collection, key='oponent'), sg.Button('Attack this enemy')],
-            [sg.Button('Exit')]]
     return layout
-
-def already_played_false():
-    for unbound in s.all_characters:
-        s.already_played[unbound] = False

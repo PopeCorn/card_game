@@ -78,7 +78,7 @@ if __name__ == '__main__':
             s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
-    f.making_playables(s.first_collection, s.first_playable, s.second_collection, s.second_playable)
+    f.adding_playables(s.first_collection, s.first_playable, s.second_collection, s.second_playable)
     f.already_played_false()
     layout = f.layout(layout, game=True)
     window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
