@@ -87,18 +87,7 @@ if __name__ == '__main__':
     for unbound in s.all_characters:
             s.already_played[unbound] = False
 
-    layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
-        [sg.Text('1st player')],
-        [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-        [sg.Text('                '), sg.Button('1st player - Check this character')],
-        [sg.Text('')],
-        [sg.Text('2nd player')],
-        [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-        [sg.Text('                '), sg.Button('2nd player - Check this character')],
-        [sg.Text('')],
-        [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
-        [sg.Text('')],
-        [sg.Button('Exit')]]
+    layout = f.layout()
     window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
 
     while True:
@@ -153,16 +142,5 @@ if __name__ == '__main__':
         for character in s.all_playable:
             if character.hp <= 0:
                 f.death_system(character, s.first_collection, s.first_playable, s.second_collection, s.second_playable)
-                layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
-                [sg.Text('1st player')],
-                [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-                [sg.Text('                '), sg.Button('1st player - Check this character')],
-                [sg.Text('')],
-                [sg.Text('2nd player')],
-                [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-                [sg.Text('                '), sg.Button('2nd player - Check this character')],
-                [sg.Text('')],
-                [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
-                [sg.Text('')],
-                [sg.Button('Exit')]]
+                layout = f.layout()
                 window = sg.Window('Card Game - Round 1', layout, size=(500, 500))

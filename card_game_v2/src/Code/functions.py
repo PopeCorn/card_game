@@ -182,3 +182,18 @@ def calling_functions(character, first_collection, second_collection, first_play
     removing_characters(character, second_collection, second_playable)
     winning(first_collection, name_1)
     winning(second_collection, name_2)
+
+def layout(layout):
+    layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
+        [sg.Text('1st player')],
+        [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
+        [sg.Text('                '), sg.Button('1st player - Check this character')],
+        [sg.Text('')],
+        [sg.Text('2nd player')],
+        [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
+        [sg.Text('                '), sg.Button('2nd player - Check this character')],
+        [sg.Text('')],
+        [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
+        [sg.Text('')],
+        [sg.Button('Exit')]]
+    return layout
