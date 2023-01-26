@@ -210,3 +210,20 @@ def layout(layout, choose_characters=False, game=False, action=False):
         layout = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
             [sg.Button('Exit')]]
     return layout
+
+def next_round(window, res):
+    if res:
+        for unbound in s.all_characters:
+            s.already_played[unbound] = False
+        for character in s.all_playable:
+            character.cooldown -= 1
+            character.special_cooldown -= 1
+        if s.mata_here:
+            poison_checking()
+        s.count += 1
+        sg.popup(f'Round {s.count} Begins!')
+        window.TKroot.title(f'Card Game - Round {s.count}')
+        window['IN'].update(f'ROUND {s.count}', text_color='r')
+    else:
+        sg.popup('All characters have not played yet!')
+    return window

@@ -97,20 +97,7 @@ if __name__ == '__main__':
                 if bound is False:
                     res = False
                     break
-            if res is True:
-                for unbound in s.all_characters:
-                    s.already_played[unbound] = False
-                for character in s.all_playable:
-                    character.cooldown -= 1
-                    character.special_cooldown -= 1
-                if s.mata_here:
-                    f.poison_checking()
-                s.count += 1
-                sg.popup(f'Round {s.count} Begins!')
-                window.TKroot.title(f'Card Game - Round {s.count}')
-                window['IN'].update(f'ROUND {s.count}', text_color='r')
-            else:
-                sg.popup('All characters have not played yet!')
+            window = f.next_round(window, res)
         if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
             layout2 = f.layout(layout, action=True)
             window2 = sg.Window('Turn', layout2).finalize()
