@@ -147,6 +147,14 @@ def init_attack(window3, action):
             action(oponent)
             window3.close()
             break
+    
+# Function for checking if all characters have played
+def is_next_round(played, res):
+    for playable in played:
+        if playable is False:
+            res = False
+            break
+    return res
 
 # Function for making layouts (PySimpleGUI)
 def layout(layout, choose_characters=False, game=False, action=False):

@@ -84,20 +84,20 @@ if __name__ == '__main__':
 
     while True:
         event, values = window.read()
-        if event == 'Exit' or event == sg.WIN_CLOSED:
-            quit()
         if s.end:
             sg.popup(f'THE WINNER IS {s.winner}!')
             quit()
-        if event == 'NEXT ROUND!':
-            res = True
+    
+        if event == 'Exit' or event == sg.WIN_CLOSED:
+            quit()
+
+        elif event == 'NEXT ROUND!':
+            res= True
             played = list(s.already_played.values())
-            for bound in played:
-                if bound is False:
-                    res = False
-                    break
+            res = f.is_next_round(played, res)
             window = f.next_round(window, res)
-        if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
+
+        elif event == '1st player - Play with this character' or event == '2nd player - Play with this character':
             layout2 = f.layout(layout, action=True)
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
@@ -105,17 +105,18 @@ if __name__ == '__main__':
             elif event == '2nd player - Play with this character':
                 f.playing(values, window2, '2ndplayer_character', s.first_collection)
 
-        if event == '1st player - Check this character' or event == '2nd player - Check this character':
-            if event == '1st player - Check this character':
-                name = values['1stplayer_character']
-                f.stat_checking(name)
-            elif event == '2nd player - Check this character':
-                name = values['2ndplayer_character']
-                f.stat_checking(name)
+        elif event == '1st player - Check this character':
+            name = values['1stplayer_character']
+            f.stat_checking(name)
+
+        elif event == '2nd player - Check this character':
+            name = values['2ndplayer_character']
+            f.stat_checking(name)
+            
         try:
             window2.close()
         except NameError:
             pass
-        
+    
         layout = f.checking_for_dead(layout)
         window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
