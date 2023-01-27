@@ -4,11 +4,8 @@ from Code import settings as s
 from Code import functions as f
 sg.theme('DarkTeal10')
 
-layout = [[sg.Button('Proceed to the game')],
-[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
-[sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')],
-[sg.Text('(ONE PLAYER CAN ONLY HAVE 3 CHARACTERS)'), sg.Button('Exit')]]
-
+layout = []
+layout = f.layout(layout, choose_characters=True)
 window = sg.Window('Card Game - choose characters', layout, size=(380, 150))
 
 if __name__ == '__main__':
@@ -78,91 +75,48 @@ if __name__ == '__main__':
         elif unused == 'Žimík':
             zimik = Žimík.Zimik()
             s.transfer['Žimík'] = zimik
-            s.all_playable.append(zimik)
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
-    f.making_playables(s.first_collection, s.first_playable)
-    f.making_playables(s.second_collection, s.second_playable)
-
-    for unbound in s.all_characters:
-            s.already_played[unbound] = False
-
-    layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
-        [sg.Text('1st player')],
-        [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-        [sg.Text('                '), sg.Button('1st player - Check this character')],
-        [sg.Text('')],
-        [sg.Text('2nd player')],
-        [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-        [sg.Text('                '), sg.Button('2nd player - Check this character')],
-        [sg.Text('')],
-        [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
-        [sg.Text('')],
-        [sg.Button('Exit')]]
+    f.adding_playables(s.first_collection, s.first_playable, s.second_collection, s.second_playable)
+    f.already_played_false()
+    layout = f.layout(layout, game=True)
     window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
 
     while True:
         event, values = window.read()
-        if event == 'Exit' or event == sg.WIN_CLOSED:
-            quit()
         if s.end:
             sg.popup(f'THE WINNER IS {s.winner}!')
             quit()
-        if event == 'NEXT ROUND!':
-            res = True
+    
+        if event == 'Exit' or event == sg.WIN_CLOSED:
+            quit()
+
+        elif event == 'NEXT ROUND!':
+            res= True
             played = list(s.already_played.values())
-            for bound in played:
-                if bound is False:
-                    res = False
-                    break
-            if res is True:
-                for unbound in s.all_characters:
-                    s.already_played[unbound] = False
-                for character in s.all_playable:
-                    character.cooldown -= 1
-                    character.special_cooldown -= 1
-                if s.mata_here:
-                    f.poison_checking()
-                s.count += 1
-                sg.popup(f'Round {s.count} Begins!')
-                window.TKroot.title(f'Card Game - Round {s.count}')
-                window['IN'].update(f'ROUND {s.count}', text_color='r')
-            else:
-                sg.popup('All characters have not played yet!')
-        if event == '1st player - Play with this character' or event == '2nd player - Play with this character':
-            layout2 = [[sg.Button('Select this'), sg.Combo(['Normal attack', 'Special attack', 'Special action'], key='action')],
-            [sg.Button('Exit')]]
+            res = f.is_next_round(played, res)
+            window = f.next_round(window, res)
+
+        elif event == '1st player - Play with this character' or event == '2nd player - Play with this character':
+            layout2 = f.layout(layout, action=True)
             window2 = sg.Window('Turn', layout2).finalize()
             if event == '1st player - Play with this character':
                 f.playing(values, window2, '1stplayer_character', s.second_collection)
             elif event == '2nd player - Play with this character':
                 f.playing(values, window2, '2ndplayer_character', s.first_collection)
 
-        if event == '1st player - Check this character' or event == '2nd player - Check this character':
-            if event == '1st player - Check this character':
-                name = values['1stplayer_character']
-                f.stat_checking(name)
-            elif event == '2nd player - Check this character':
-                name = values['2ndplayer_character']
-                f.stat_checking(name)
+        elif event == '1st player - Check this character':
+            name = values['1stplayer_character']
+            f.stat_checking(name)
+
+        elif event == '2nd player - Check this character':
+            name = values['2ndplayer_character']
+            f.stat_checking(name)
+            
         try:
             window2.close()
         except NameError:
             pass
-        
-        for character in s.all_playable:
-            if character.hp <= 0:
-                f.death_system(character, s.first_collection, s.first_playable, s.second_collection, s.second_playable)
-                layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
-                [sg.Text('1st player')],
-                [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-                [sg.Text('                '), sg.Button('1st player - Check this character')],
-                [sg.Text('')],
-                [sg.Text('2nd player')],
-                [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-                [sg.Text('                '), sg.Button('2nd player - Check this character')],
-                [sg.Text('')],
-                [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
-                [sg.Text('')],
-                [sg.Button('Exit')]]
-                window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
+    
+        layout = f.checking_for_dead(layout)
+        window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
