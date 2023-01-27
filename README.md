@@ -7,7 +7,11 @@ The card game is meant to be **played on one device** by **2 players**.
 Every round both players put all of their characters in action but can only execute one action per one hero. 
 To know how to actually play the game, read the in-depth guide in .pdf format in doc/, where I go over all characters and their usage.
 
+###v1
 First version of the game has been released here: https://www.mediafire.com/file/83jup6111fpr43j/card_game.exe/file
 
 Run the .exe file, it will create a directory for the game (in the same location as you downloaded the .exe to). Go to the new directory, then go into "src" subdirectory and run main.exe. 
 It runs on the command line. Right now, it's being reworked so it would run as a normal application in a separate window.
+
+##v2
+Second version of the game hasn't been released yet, but it is almost ready.
