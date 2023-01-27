@@ -97,6 +97,13 @@ def calling_functions(character, first_collection, second_collection, first_play
     winning(first_collection, name_1)
     winning(second_collection, name_2)
 
+# Function for checking if any character has died
+def checking_for_dead(layout):
+    for character in s.all_playable:
+        if character.hp <= 0:
+            death_system(character, s.first_collection, s.first_playable, s.second_collection, s.second_playable)
+            layout = layout(layout, game=True)
+
 # Function for choosing characters from sg combo menu that is tied to the first while loop in main.py and is handling all situations that could happen
 def choose_character(collection, character):
     if len(collection) == 3:

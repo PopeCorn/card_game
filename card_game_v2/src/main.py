@@ -117,8 +117,5 @@ if __name__ == '__main__':
         except NameError:
             pass
         
-        for character in s.all_playable:
-            if character.hp <= 0:
-                f.death_system(character, s.first_collection, s.first_playable, s.second_collection, s.second_playable)
-                layout = f.layout(layout, game=True)
-                window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
+        layout = f.checking_for_dead(layout)
+        window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
