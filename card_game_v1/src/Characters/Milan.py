@@ -8,7 +8,7 @@ class Milan:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        self.energy, self.cooldown = f.attack(self.energy, 4, 3, oponent)
+        self.energy = f.attack(self.energy, 4, 3, oponent)
 
     def special_attack(self, oponent):
         self.energy, self.cooldown = f.attack(self.energy, 4, 3, oponent, 2, self.cooldown, special=True)
