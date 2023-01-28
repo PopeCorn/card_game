@@ -7,11 +7,12 @@ class Marekec:
         self.energy, self.max_energy = 7, 7
         self.defence = 7
         self.cooldown, self.special_cooldown = 0, 0
+        
     def attack(self, oponent):
-        f.attack(self.energy, 3, 3, oponent)
+        self.energy = f.attack(self.energy, 3, 3, oponent)
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
     # Marekec prepares for an upcoming attack with his dodging skills
     def special(self):

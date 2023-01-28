@@ -8,10 +8,10 @@ class Milan:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 4, 3, oponent)
+        self.energy = f.attack(self.energy, 4, 3, oponent)
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 4, 3, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 4, 3, oponent, 2, self.cooldown, special=True)
 
     # Milan becomes empowered thanks to his harem
     def special(self, oponent):
@@ -22,4 +22,4 @@ class Milan:
             self.energy -= 7
             self.max_energy += 1
             self.defence += 2
-            f.attack(self.energy, 0, 2, oponent)
+            self.energy = f.attack(self.energy, 0, 2, oponent)

@@ -9,11 +9,11 @@ class Nikolas:
         self.cooldown, self.special_cooldown = 0, 0
         
     def attack(self, oponent):
-        f.attack(self.energy, 3, 4, oponent)
+        self.energy = f.attack(self.energy, 3, 4, oponent)
 
     def special_attack(self, oponent):
         random_number = random.randrange(1, 10)
-        f.attack(self.energy, 6, random_number, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 6, random_number, oponent, 2, self.cooldown, special=True)
 
     # In the chaos of battle, Nikolas stops to have Beef Jerky and replenish his defence 
     def special(self):

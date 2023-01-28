@@ -173,10 +173,12 @@ def attack(energy, energy_taken, damage, defender, cooldown_increase=None, coold
                 energy -= energy_taken
                 blow = damage - defender.defence
                 attacking(defender, blow, damage)
+                return cooldown
         else:
             energy -= energy_taken
             blow = damage - defender.defence
             attacking(defender, blow, damage)
+        return energy
 
 
 def initialize_attack(transfered, enemy_list, action):

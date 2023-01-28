@@ -8,10 +8,10 @@ class Tom:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 4, 4, oponent)
+        self.energy = f.attack(self.energy, 4, 4, oponent)
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
     # Tom stays behind friendly lines, ready to heal others or himself
     def special(self, member=None, not_self=False):

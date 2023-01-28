@@ -10,11 +10,11 @@ class Mojmir:
 
     def attack(self, oponent):
         f.double_attack(4, 2)
-        f.attack(self.energy, 2, s.mojmir_attack, oponent)
+        self.energy = f.attack(self.energy, 2, s.mojmir_attack, oponent)
 
     def special_attack(self, oponent):
         f.double_attack(12, 6)
-        f.attack(self.energy, 7, s.mojmir_attack, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 7, s.mojmir_attack, oponent, 2, self.cooldown, special=True)
 
     # Mojmir positions himself behind enemy lines, ready to strike twice as hard
     def special(self):
