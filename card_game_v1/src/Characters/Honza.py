@@ -8,7 +8,7 @@ class Honza:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 3, oponent)
+        self.energy, self.cooldown = f.attack(self.energy, 3, 3, oponent)
 
     def special_attack(self, oponent):
         if self.cooldown > 0:
