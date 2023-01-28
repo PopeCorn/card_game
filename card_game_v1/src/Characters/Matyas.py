@@ -9,10 +9,10 @@ class Matyas:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 3, oponent)
+        self.energy, self.cooldown = f.attack(self.energy, 3, 3, oponent)
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
+        self.energy, self.special_cooldown = f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
     # Matyas poisons an enemy with his arguments, which he repeats for entire 2 rounds 
     def special(self, oponent):
