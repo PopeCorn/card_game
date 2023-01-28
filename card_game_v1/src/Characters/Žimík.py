@@ -3,24 +3,16 @@ from Code import settings as s
 
 class Zimik:
     def __init__(self):
-        self.hp = 12
-        self.max_hp = 12
-        self.energy = 10
-        self.max_energy = 10
-        self.defence = 2
-        self.cooldown = 0
-        self.special_cooldown = 0
-
         self.hp, self.max_hp = 12, 12
         self.energy, self.max_energy = 10, 10
         self.defence = 2
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 4, 3, oponent)
+        self.energy = f.attack(self.energy, 4, 3, oponent)
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 6, 5, oponent, 2, self.cooldown, special=True)
 
     # Zimik takes off his shirt and shows the hottest body on the planet, instantly weaking one chosen oponent
     def special(self, oponent):
