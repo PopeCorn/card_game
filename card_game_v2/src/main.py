@@ -2,13 +2,14 @@ import PySimpleGUI as sg
 from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikolas, Pavel, Petr, Tom, Žimík
 from Code import settings as s
 from Code import functions as f
-sg.theme('DarkTeal10')
+sg.theme('DarkTeal10')  
 
 layout = []
 layout = f.layout(layout, choose_characters=True)
 window = sg.Window('Card Game - choose characters', layout, size=(380, 150))
 
 if __name__ == '__main__':
+    # Loop for choosing characters for both players
     while True:
         event, values = window.read()
         if len(s.all_characters) == 6:
@@ -26,6 +27,7 @@ if __name__ == '__main__':
             f.choose_character(s.second_collection, values['second'])
     window.close()
 
+    # Section for making playables
     for unused in s.all_characters:
         if unused == 'David':
             david = David.David()
@@ -82,6 +84,7 @@ if __name__ == '__main__':
     layout = f.layout(layout, game=True)
     window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
 
+    # Loop for the actual game
     while True:
         event, values = window.read()
         if s.end:
