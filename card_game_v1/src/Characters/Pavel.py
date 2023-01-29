@@ -8,10 +8,10 @@ class Pavel:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 3, oponent)
+        self.energy = f.attack(self.energy, 3, 3, oponent)
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 7, 8, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 7, 8, oponent, 2, self.cooldown, special=True)
 
     # Pavel unleashes his powerful and logical arguments, unlike Matyas' ones
     def special(self, oponent):

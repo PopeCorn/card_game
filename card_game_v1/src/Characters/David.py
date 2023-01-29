@@ -9,10 +9,10 @@ class David:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(self.energy, 3, 2, oponent)
+        self.energy = f.attack(self.energy, 3, 2, oponent)
 
     def special_attack(self, oponent):
-        f.attack(self.energy, 6, 6, oponent, 2, self.cooldown, special=True)
+        self.energy, self.cooldown = f.attack(self.energy, 6, 6, oponent, 2, self.cooldown, special=True)
 
     # David uses his special Big Chungus powers to reduce damage of the next attack aimed at him
     def special(self):
