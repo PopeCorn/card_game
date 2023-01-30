@@ -87,12 +87,14 @@ if __name__ == '__main__':
     # Loop for the actual game
     while True:
         event, values = window.read()
+        
+        if event == 'Exit' or event == sg.WIN_CLOSED:
+                    quit()
+
         if s.end:
             sg.popup(f'THE WINNER IS {s.winner}!')
             quit()
     
-        if event == 'Exit' or event == sg.WIN_CLOSED:
-            quit()
 
         elif event == 'NEXT ROUND!':
             res= True

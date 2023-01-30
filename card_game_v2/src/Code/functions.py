@@ -23,7 +23,7 @@ def action(window2, character_name, enemy_collection):
                 elif values2['action'] == 'Special attack':
                     init_attack(window3, character.special_attack)
                 elif values2['action'] == 'Special action':
-                    if character_name == 'David' or character_name == 'Honza' or character_name == 'Mark' or character_name == 'Nikolas' or character_name == 'Mojmír':
+                    if character_name == 'Big Chungus' or character_name == 'Anus' or character_name == 'Marekec' or character_name == 'Žeromán' or character_name == 'Mojmi-chan':
                         character.special()
                     else:
                         init_attack(window3, character.special)
@@ -55,14 +55,14 @@ def attack(damage, defender, character_name, cooldown_increase=None, cooldown=No
 # Function for the finishing of attack, calculating defence and special effect
 def attacking(target, attack, original_attack, character_name):
     target_name = s.inv_transfer[target]
-    if target_name == "David":
-        if s.david_defence is True:
-            s.david_defence = False
+    if target_name == "Big Chungus":
+        if s.chungus_defence is True:
+            s.chungus_defence = False
             attack -= 3
             original_attack -= 3
         else:
             pass
-    elif target_name == "Mark":
+    elif target_name == "Marekec":
         if s.marekec_dodge is True:
             s.marekec_dodge = False
             number = random.randrange(1, 3)
@@ -126,11 +126,11 @@ def death_system(character, first_collection, first_playable, second_collection,
 
 # Function for Mojmir's attack
 def double_attack(doubled, not_doubled):
-    if s.mojmir_double_damage is True:
-        s.mojmir_double_damage  = False
-        s.mojmir_attack = doubled
+    if s.mojmi_chan_double_damage is True:
+        s.mojmi_chan_double_damage  = False
+        s.mojmi_chan_attack = doubled
     else:
-        s.mojmir_attack = not_doubled
+        s.mojmi_chan_attack = not_doubled
 
 # Function finishing the attacking process with new functions and handling it over to old functions, taken from v1 and slightly modified
 def init_attack(window3, action):

@@ -10,15 +10,15 @@ class Mojmi_chan:
 
     def attack(self, oponent):
         f.double_attack(4, 2)
-        f.attack(s.mojmir_attack, oponent, 'Mojmi-chan')
+        f.attack(s.mojmi_chan_attack, oponent, 'Mojmi-chan')
 
     def special_attack(self, oponent):
         f.double_attack(12, 6)
-        self.cooldown = f.attack(s.mojmir_attack, oponent, 'Mojmi-chan', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(s.mojmi_chan_attack, oponent, 'Mojmi-chan', 2, self.cooldown, special=True)
 
     # Mojmir positions himself behind enemy lines, ready to strike twice as hard
     def special(self):
-        if s.mojmir_done:
+        if s.mojmi_chan_done:
             sg.popup('You can do this only once!', title='Error')
         else:
             self.cooldown += 3
