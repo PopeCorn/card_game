@@ -1,17 +1,17 @@
 import PySimpleGUI as sg
 from Code import functions as f
 
-class Milan:
+class Milanus:
     def __init__(self):
         self.hp, self.max_hp = 15, 15
         self.defence = 4
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(3, oponent, 'Milan')
+        f.attack(3, oponent, 'Milanus')
 
     def special_attack(self, oponent):
-        self.cooldown = f.attack(3, oponent, 'Milan', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(3, oponent, 'Milanus', 2, self.cooldown, special=True)
 
     # Milan becomes empowered thanks to his harem
     def special(self, oponent):
@@ -20,5 +20,5 @@ class Milan:
         else:
             self.special_cooldown += 2
             self.defence += 1
-            f.attack(5, oponent, 'Milan')
+            f.attack(5, oponent, 'Milanus')
             sg.popup('You increased your your defence by 1')

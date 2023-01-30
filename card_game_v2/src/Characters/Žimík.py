@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 from Code import functions as f
 from Code import settings as s
 
-class Zimik:
+class Žimík:
     def __init__(self):
         self.hp, self.max_hp = 12, 12
         self.defence, self.max_defence = 2

@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 from Code import functions as f
 from Code import settings as s
 
-class Kvitek:
+class Kvítek:
     def __init__(self):
         self.hp, self.max_hp = 11, 11
         self.defence = 5

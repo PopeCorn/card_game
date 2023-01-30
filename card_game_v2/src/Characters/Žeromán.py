@@ -3,18 +3,18 @@ import random
 from Code import functions as f
 from Code import settings as s
 
-class Nikolas:
+class Žeromán:
     def __init__(self):
         self.hp, self.max_hp = 15, 15
         self.defence, self.max_defence = 10, 10
         self.cooldown, self.special_cooldown = 0, 0
         
     def attack(self, oponent):
-        f.attack(4, oponent, 'Nikolas')
+        f.attack(4, oponent, 'Žeromán')
 
     def special_attack(self, oponent):
         random_number = random.randrange(1, 10)
-        self.cooldown = f.attack(random_number, oponent, 'Nikolas', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(random_number, oponent, 'Žeromán', 2, self.cooldown, special=True)
 
     # In the chaos of battle, Nikolas stops to have Beef Jerky and replenish his defence 
     def special(self):
@@ -23,5 +23,5 @@ class Nikolas:
         else:
             self.special_cooldown += 1
             self.defence = f.recovery_actions(self.defence, self.max_defence)
-            s.already_played['Nikolas'] = True
+            s.already_played['Žeromán'] = True
             sg.popup('You recovered 2 of your defence points')

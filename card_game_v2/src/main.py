@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from Characters import David, Honza, Kvítek, Mark, Matyas, Milan, Mojmir, Nikolas, Pavel, Petr, Tom, Žimík
+from Characters import Anus, Big_Chungus, Kvítek, Marekec, Máta, Milanus, Mojmi_chan, PopeC0rn, Tolbus, Zálabář, Žeromán, Žimík
 from Code import settings as s
 from Code import functions as f
 sg.theme('DarkTeal10')  
@@ -29,53 +29,53 @@ if __name__ == '__main__':
 
     # Section for making playables
     for unused in s.all_characters:
-        if unused == 'David':
-            david = David.David()
-            s.transfer['David'] = david
-            s.all_playable.append(david)
-        elif unused == 'Honza':
-            honza = Honza.Honza()
-            s.transfer['Honza'] = honza
-            s.all_playable.append(honza)
+        if unused == 'Big Chungus':
+            big_chungus = Big_Chungus.BigChungus()
+            s.transfer['Big Chungus'] = big_chungus
+            s.all_playable.append(big_chungus)
+        elif unused == 'Anus':
+            anus = Anus.Anus()
+            s.transfer['Anus'] = anus
+            s.all_playable.append(anus)
         elif unused == 'Kvítek':
-            kvitek = Kvítek.Kvitek()
+            kvitek = Kvítek.Kvítek()
             s.transfer['Kvítek'] = kvitek
             s.all_playable.append(kvitek)
-        elif unused == 'Mark':
-            mark = Mark.Marekec()
-            s.transfer['Mark'] = mark
-            s.all_playable.append(mark)
-        elif unused == 'Matyáš':
+        elif unused == 'Marekec':
+            marekec = Marekec.Marekec()
+            s.transfer['Marekec'] = marekec
+            s.all_playable.append(marekec)
+        elif unused == 'Máta':
             s.mata_here = True
-            matyas = Matyas.Matyas()
-            s.transfer['Matyáš'] = matyas
-            s.all_playable.append(matyas)
-        elif unused == 'Milan':
-            milan = Milan.Milan()
-            s.transfer['Milan'] = milan
-            s.all_playable.append(milan)
-        elif unused == 'Mojmír':
-            mojmir = Mojmir.Mojmir()
-            s.transfer['Mojmír'] = mojmir
-            s.all_playable.append(mojmir)
-        elif unused == 'Nikolas':
-            nikolas = Nikolas.Nikolas()
-            s.transfer['Nikolas'] = nikolas
-            s.all_playable.append(nikolas)
-        elif unused == 'Pavel':
-            pavel = Pavel.Pavel()
-            s.transfer['Pavel'] = pavel
-            s.all_playable.append(pavel)
-        elif unused == 'Petr':
-            petr = Petr.Petr()
-            s.transfer['Petr'] = petr
-            s.all_playable.append(petr)
-        elif unused == 'Tom':
-            tom = Tom.Tom()
-            s.transfer['Tom'] = tom
-            s.all_playable.append(tom)
+            mata = Máta.Máta()
+            s.transfer['Máta'] = mata
+            s.all_playable.append(mata)
+        elif unused == 'Milanus':
+            milanus = Milanus.Milanus()
+            s.transfer['Milanus'] = milanus
+            s.all_playable.append(milanus)
+        elif unused == 'Mojmi-chan':
+            mojmi_chan = Mojmi_chan.Mojmi_chan()
+            s.transfer['Mojmi-chan'] = mojmi_chan
+            s.all_playable.append(mojmi_chan)
+        elif unused == 'Žeromán':
+            zeroman = Žeromán.Žeromán()
+            s.transfer['Žeromán'] = zeroman
+            s.all_playable.append(zeroman)
+        elif unused == 'PopeC0rn':
+            popec0rn = PopeC0rn.PopeC0rn()
+            s.transfer['PopeC0rn'] = popec0rn
+            s.all_playable.append(popec0rn)
+        elif unused == 'Zálabář':
+            zalabar = Zálabář.Zálabář()
+            s.transfer['Zálabář'] = zalabar
+            s.all_playable.append(zalabar)
+        elif unused == 'Tolbus':
+            tolbus = Tolbus.Tolbus()
+            s.transfer['Tolbus'] = tolbus
+            s.all_playable.append(tolbus)
         elif unused == 'Žimík':
-            zimik = Žimík.Zimik()
+            zimik = Žimík.Žimík()
             s.transfer['Žimík'] = zimik
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 

@@ -2,17 +2,17 @@ import PySimpleGUI as sg
 from Code import functions as f
 from Code import settings as s
 
-class Tom:
+class Tolbus:
     def __init__(self):
         self.hp, self.max_hp = 10, 10
         self.defence = 7
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(4, oponent, 'Tom')
+        f.attack(4, oponent, 'Tolbus')
 
     def special_attack(self, oponent):
-        self.cooldown = f.attack(5, oponent, 'Tom', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(5, oponent, 'Tolbus', 2, self.cooldown, special=True)
 
     # Tom stays behind friendly lines, ready to heal others or himself
     def special(self, member=None, not_self=False):
@@ -26,4 +26,4 @@ class Tom:
             else:
                 self.hp = f.recovery_actions(self.hp, self.max_hp)
                 sg.popup('You healed yourself by 2 hp')
-            s.already_played['Tom'] = True
+            s.already_played['Tolbus'] = True

@@ -160,8 +160,8 @@ def is_next_round(played, res):
 def layout(layout, choose_characters=False, game=False, action=False):
     if choose_characters:
         layout = [[sg.Button('Proceed to the game')],
-            [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='first'), sg.Button('Add for 1st player')],
-            [sg.Combo(['David', 'Honza', 'Kvítek', 'Mark', 'Matyáš', 'Milan', 'Mojmír', 'Nikolas', 'Pavel', 'Petr', 'Tom', 'Žimík'], key='second'), sg.Button('Add for 2nd player')],
+            [sg.Combo(s.all_available, key='first'), sg.Button('Add for 1st player')],
+            [sg.Combo(s.all_available, key='second'), sg.Button('Add for 2nd player')],
             [sg.Text('(ONE PLAYER CAN ONLY HAVE 3 CHARACTERS)'), sg.Button('Exit')]]
     elif game:
         layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
