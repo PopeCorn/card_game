@@ -11,9 +11,9 @@ class Milanus:
         f.attack(3, oponent, 'Milanus')
 
     def special_attack(self, oponent):
-        self.cooldown = f.attack(3, oponent, 'Milanus', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(5, oponent, 'Milanus', 2, self.cooldown, special=True)
 
-    # Milan becomes empowered thanks to his harem
+    # Milanus becomes empowered thanks to his harem
     def special(self, oponent):
         if self.special_cooldown > 0:
             sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')

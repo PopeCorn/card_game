@@ -12,9 +12,9 @@ class Máta:
         f.attack(3, oponent, 'Máta')
 
     def special_attack(self, oponent):
-        self.cooldown = f.attack(5, oponent, 'Máta', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(4, oponent, 'Máta', 2, self.cooldown, special=True)
 
-    # Matyas poisons an enemy with his arguments, which he repeats for entire 2 rounds 
+    # Máta poisons an enemy with his arguments, which he repeats for entire 2 rounds 
     def special(self, oponent):
         if self.cooldown > 0:
             sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')

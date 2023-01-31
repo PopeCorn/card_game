@@ -7,6 +7,7 @@ class Marekec:
         self.hp, self.max_hp = 13, 13
         self.defence = 7
         self.cooldown, self.special_cooldown = 0, 0
+        
     def attack(self, oponent):
         f.attack(3, oponent, 'Marekec')
 

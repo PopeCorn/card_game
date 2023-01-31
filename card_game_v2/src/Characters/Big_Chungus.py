@@ -9,12 +9,12 @@ class BigChungus:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(2, oponent, 'Big Chungus')
+        f.attack(3, oponent, 'Big Chungus')
 
     def special_attack(self, oponent):
         self.cooldown = f.attack(6, oponent, 'Big Chungus', 2, self.cooldown, special=True)
 
-    # David uses his special Big Chungus powers to reduce damage of the next attack aimed at him
+    # Big Chungus uses his special Chungus powers to reduce damage of the next attack aimed at him
     def special(self):
         if self.special_cooldown > 0:
             sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')

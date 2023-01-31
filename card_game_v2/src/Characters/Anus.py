@@ -22,13 +22,13 @@ class Anus:
             s.already_played['Anus'] = True
             sg.popup(f"You increased {s.inv_transfer[oponent]}'s Special Attack cooldown by 2 and Special Action cooldown by 1 while reducing his hp by 2")
 
-    # Honza calculates the situation with his superior mathematic skills and prepares for anything bad that might happen
+    # Anus calculates the situation with his superior mathematic skills and prepares for anything bad that might happen
     def special(self):
         if self.cooldown > 0:
             sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')
         else:
             self.special_cooldown += 2
             self.max_hp += 1
-            self.hp += 2
+            self.hp = f.recovery_actions(self.hp, self.max_hp)
             s.already_played['Anus'] = True
             sg.popup('You increased your max. hp by 1 and your actual hp by 2')

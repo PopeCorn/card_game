@@ -9,7 +9,7 @@ class Kvítek:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(3, oponent, 'Kvítek')
+        f.attack(2, oponent, 'Kvítek')
 
     def special_attack(self, oponent):
         self.cooldown = f.attack(5, oponent, 'Kvítek', 2, self.cooldown, special=True)
