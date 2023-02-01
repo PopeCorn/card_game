@@ -9,17 +9,17 @@ class PopeC0rn:
         self.cooldown, self.special_cooldown = 0, 0
 
     def attack(self, oponent):
-        f.attack(3, oponent, 'PopeC0rn')
+        f.attack(4, oponent, 'PopeC0rn')
 
     def special_attack(self, oponent):
         self.cooldown = f.attack(8, oponent, 'PopeC0rn', 2, self.cooldown, special=True)
 
-    # Pavel unleashes his powerful and logical arguments, unlike Matyas' ones
+    # PopeC0rn unleashes his powerful and logical arguments, unlike Matyas' ones
     def special(self, oponent):
         if self.special_cooldown > 0:
             sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')
         else:
             self.special_cooldown += 2
-            f.attack(4, oponent, 'PopeC0rn')
+            self.attack(oponent)
             oponent.hp -= 2
             sg.popup(f'You dealt 2 points of additional damage to {s.inv_transfer[oponent]}')

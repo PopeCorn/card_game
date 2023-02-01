@@ -16,7 +16,7 @@ class Mojmi_chan:
         f.double_attack(12, 6)
         self.cooldown = f.attack(s.mojmi_chan_attack, oponent, 'Mojmi-chan', 2, self.cooldown, special=True)
 
-    # Mojmir positions himself behind enemy lines, ready to strike twice as hard
+    # Mojmi-chan positions himself behind enemy lines, ready to strike twice as hard
     def special(self):
         if s.mojmi_chan_done:
             sg.popup('You can do this only once!', title='Error')

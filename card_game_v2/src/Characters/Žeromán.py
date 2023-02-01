@@ -13,10 +13,10 @@ class Žeromán:
         f.attack(4, oponent, 'Žeromán')
 
     def special_attack(self, oponent):
-        random_number = random.randrange(1, 10)
+        random_number = random.randrange(1, 11)
         self.cooldown = f.attack(random_number, oponent, 'Žeromán', 2, self.cooldown, special=True)
 
-    # In the chaos of battle, Nikolas stops to have Beef Jerky and replenish his defence 
+    # In the chaos of battle, Žeromán stops to have Beef Jerky and replenish his defence 
     def special(self):
         if self.special_cooldown > 0:
             sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')

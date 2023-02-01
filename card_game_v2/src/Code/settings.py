@@ -13,6 +13,6 @@ mojmi_chan_done = False
 mata_poison_target = ''
 marekec_dodge = False
 kvitek_ultimate = False
-zimik_reduce_energy = False
+zimik_increase_cooldown = False
 end, winner = False, ''
 count = 1

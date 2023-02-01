@@ -14,7 +14,7 @@ class Tolbus:
     def special_attack(self, oponent):
         self.cooldown = f.attack(5, oponent, 'Tolbus', 2, self.cooldown, special=True)
 
-    # Tom stays behind friendly lines, ready to heal others or himself
+    # Tolbus stays behind friendly lines, ready to heal others or himself
     def special(self, member=None, not_self=False):
         if self.special_cooldown > 0:
             sg.popup(f'You can use this ability in {self.special_cooldown} rounds!', title='Error')
