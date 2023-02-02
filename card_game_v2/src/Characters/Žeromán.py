@@ -10,7 +10,7 @@ class Žeromán:
         self.cooldown, self.special_cooldown = 2, 1
         
     def attack(self, oponent):
-        f.attack(4, oponent, 'Žeromán')
+        f.attack(2, oponent, 'Žeromán')
 
     def special_attack(self, oponent):
         random_number = random.randrange(1, 11)

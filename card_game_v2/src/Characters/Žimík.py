@@ -5,7 +5,7 @@ from Code import settings as s
 class Žimík:
     def __init__(self):
         self.hp, self.max_hp = 12, 12
-        self.defence, self.max_defence = 2
+        self.defence, self.max_defence = 4, 4
         self.cooldown, self.special_cooldown = 2, 2
 
     def attack(self, oponent):
