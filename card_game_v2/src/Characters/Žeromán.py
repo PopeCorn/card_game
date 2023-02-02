@@ -7,7 +7,7 @@ class Žeromán:
     def __init__(self):
         self.hp, self.max_hp = 15, 15
         self.defence, self.max_defence = 10, 10
-        self.cooldown, self.special_cooldown = 0, 0
+        self.cooldown, self.special_cooldown = 2, 1
         
     def attack(self, oponent):
         f.attack(4, oponent, 'Žeromán')

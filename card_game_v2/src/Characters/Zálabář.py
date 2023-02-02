@@ -5,7 +5,7 @@ class Zálabář:
     def __init__(self):
         self.hp, self.max_hp = 11, 11
         self.defence = 9
-        self.cooldown, self.special_cooldown = 0, 0
+        self.cooldown, self.special_cooldown = 2, 2
 
     def attack(self, oponent):
         f.attack(3, oponent, 'Zálabář')

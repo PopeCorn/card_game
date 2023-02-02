@@ -6,13 +6,13 @@ class Marekec:
     def __init__(self):
         self.hp, self.max_hp = 13, 13
         self.defence = 7
-        self.cooldown, self.special_cooldown = 0, 0
+        self.cooldown, self.special_cooldown = 2, 2
         
     def attack(self, oponent):
         f.attack(3, oponent, 'Marekec')
 
     def special_attack(self, oponent):
-        self.cooldown = f.attack(5, oponent, 'Marekec', 2, self.cooldown, special=True)
+        self.cooldown = f.attack(6, oponent, 'Marekec', 2, self.cooldown, special=True)
 
     # Marekec prepares for an upcoming attack with his dodging skills
     def special(self):

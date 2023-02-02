@@ -6,7 +6,7 @@ class Tolbus:
     def __init__(self):
         self.hp, self.max_hp = 10, 10
         self.defence = 7
-        self.cooldown, self.special_cooldown = 0, 0
+        self.cooldown, self.special_cooldown = 2, 1
 
     def attack(self, oponent):
         f.attack(4, oponent, 'Tolbus')

@@ -6,8 +6,7 @@ class Máta:
     def __init__(self):
         self.hp, self.max_hp = 12, 12
         self.defence = 3
-        self.cooldown, self.special_cooldown = 0, 0
-
+        self.cooldown, self.special_cooldown = 2, 2
     def attack(self, oponent):
         f.attack(3, oponent, 'Máta')
 
