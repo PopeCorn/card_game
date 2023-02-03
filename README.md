@@ -14,7 +14,7 @@ Every round both players put all of their characters in action in a process like
 Make sure to read the in-depth **Guide.pdf** in doc/ to fully understand all the characters.
 
 ## v1
-This version has been removed as it was very outdated and v2 is ready for release.
+This version has been removed as it was very outdated and v2 is out.
 
 ## v2
 Download from here: https://www.mediafire.com/file/noa5vqjfa36ty35/card_game.exe/file
