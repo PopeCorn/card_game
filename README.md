@@ -9,6 +9,8 @@ Every round both players put all of their characters in action in a process like
 2. Select an action
 3. If it attacks, select a target
 4. Repeat with all characters
+
+
 Make sure to read the in-depth **Guide.pdf** in doc/ to fully understand all the characters.
 
 ## v1
