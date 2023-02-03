@@ -1,17 +1,19 @@
 # card_game
 **Hello random visitor**, and **thank you** for checking out my Github project "Card game"! It is very much a digital copy of a game with cards created by one
-of my dear classmates, Nikolas - also featured in-game. 
+of my dear classmates, Žeromán - also featured in-game. 
 
 ## How am I supposed to play the game?
 The card game is meant to be **played on one device** by **2 players**. 
-Every round both players put all of their characters in action but can only execute one action per one hero. 
-To know how to actually play the game, read the in-depth guide in .pdf format in doc/, where I go over all characters and their usage.
+Every round both players put all of their characters in action in a process like this:
+1. Select a character
+2. Select an action
+3. If it attacks, select a target
+4. Repeat with all characters
+Make sure to read the in-depth **Guide.pdf** in doc/ to fully understand all the characters.
 
-### v1
-First version of the game has been released here: https://www.mediafire.com/file/83jup6111fpr43j/card_game.exe/file
-
-Run the .exe file, it will create a directory for the game (in the same location as you downloaded the .exe to). Go to the new directory, then go into "src" subdirectory and run main.exe. 
-It runs on the command line. Right now, it's being reworked so it would run as a normal application in a separate window.
+## v1
+This version has been removed as it was very outdated and v2 is ready for release.
 
 ## v2
-Second version of the game hasn't been released yet, but it is almost ready.
+Expect a release soon.
+
