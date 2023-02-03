@@ -9,11 +9,17 @@ Every round both players put all of their characters in action in a process like
 2. Select an action
 3. If it attacks, select a target
 4. Repeat with all characters
+
+
 Make sure to read the in-depth **Guide.pdf** in doc/ to fully understand all the characters.
 
 ## v1
-This version has been removed as it was very outdated and v2 is ready for release.
+This version has been removed as it was very outdated and v2 is out.
 
 ## v2
-Expect a release soon.
+Download from here: https://www.mediafire.com/file/noa5vqjfa36ty35/card_game.exe/file
+
+Run the .exe installer file, it will install a card_game folder in which is card_game.exe - the game. That is all you need.
+
+Your antivirus will probably tell you it is a virus because the file is .exe. Of course, it is not - you can see all source code here on GitHub and the installer installs only one folder with one .exe file for the game.
 
