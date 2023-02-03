@@ -21,3 +21,5 @@ Download from here: https://www.mediafire.com/file/noa5vqjfa36ty35/card_game.exe
 
 Run the .exe installer file, it will install a card_game folder in which is card_game.exe - the game. That is all you need.
 
+Your antivirus will probably tell you it is a virus because the file is .exe. You can see all source code here on GitHub and the installer installs only one folder with one .exe file for the game.
+
