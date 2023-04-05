@@ -17,7 +17,7 @@ Make sure to read the in-depth **Guide.pdf** in doc/ to fully understand all the
 This version has been removed as it was very outdated and v2 is out.
 
 ## v2
-Download from here: https://www.mediafire.com/file/noa5vqjfa36ty35/card_game.exe/file
+Download from here: https://www.mediafire.com/file/83jup6111fpr43j/card_game.exe/file
 
 Run the .exe installer file, it will install a card_game folder in which is card_game.exe - the game. That is all you need.
 
