@@ -24,5 +24,5 @@ Run the .exe installer file, it will install a card_game folder in which is card
 Your antivirus will probably tell you it is a virus because the file is .exe. Of course, it is not - you can see all source code here on GitHub and the installer installs only one folder with one .exe file for the game.
 
 ## Guide
-You can download the in-depth .pdf guide here: https://www.mediafire.com/file/jwn9hnzyo2slpvi/Guide.pdf/file
+You can download the in-depth .pdf guide here: https://www.mediafire.com/file/f8gg2sji58zub6h/Guide.pdf/file
 
