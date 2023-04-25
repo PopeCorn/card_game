@@ -121,17 +121,17 @@ def choose_character(collection, character):
     # Making sure a player can't have more than 3 characters on their team
     if len(collection) == 3:
         sg.popup('That player already has 3 characters!', title='Error')
-
-    # Handling the actual adding of characters to the team
-    if character in s.all_available:
-        if character in s.all_characters:
-            sg.popup('You or someone else already have that character!', title='Error')
-        else:
-            s.all_characters.append(character)
-            collection.append(character)
-            sg.popup(f'{character} added', title='Addition')
     else:
-        sg.popup('That character does not exist!', title='Error')
+        # Handling the actual adding of characters to the team
+        if character in s.all_available:
+            if character in s.all_characters:
+                sg.popup('You or someone else already have that character!', title='Error')
+            else:
+                s.all_characters.append(character)
+                collection.append(character)
+                sg.popup(f'{character} added', title='Addition')
+        else:
+            sg.popup('That character does not exist!', title='Error')
 
 # Function for showing who died and passing the right attributes to calling_functions(), so the character gets deleted
 def death_system(character, first_collection, first_playable, second_collection, second_playable):
@@ -189,14 +189,14 @@ def layout(layout, choose_characters=False, game=False, action=False):
 
     # Layout which is used for the rest of the game after the choose_charactesr one, showing what round it is and giving players the option to play with whatever character they chose in the first phase
     elif game:
-        layout = [[sg.Text('ROUND 1', key='IN', text_color='Red')],
+        layout = [[sg.Text(f'ROUND {s.count}', key='IN', text_color='Red')],
             [sg.Text('1st player')],
             [sg.Combo(s.first_collection, key='1stplayer_character'), sg.Button('1st player - Play with this character')],
-            [sg.Text('                '), sg.Button('1st player - Check this character')],
+            [sg.Button('1st player - Check this character')],
             [sg.Text('')],
             [sg.Text('2nd player')],
             [sg.Combo(s.second_collection, key='2ndplayer_character'), sg.Button('2nd player - Play with this character')],
-            [sg.Text('                '), sg.Button('2nd player - Check this character')],
+            [sg.Button('2nd player - Check this character')],
             [sg.Text('')],
             [sg.Button('NEXT ROUND!'), sg.Text('(Press when all characters have played)')],
             [sg.Text('')],
@@ -236,9 +236,11 @@ def playing(values, window2, key, enemy_collection):
     character_name = values[key]
     if character_name == '':
         sg.popup('You have not selected a character yet!', title='Error')
+        window2.close()
     else:
         if s.already_played[character_name]:
             sg.popup('That character has already played this round!', title='Error')
+            window2.close()
         else:
             # Settings the character's name as the title of his action selection window
             window2.TKroot.title(character_name)
