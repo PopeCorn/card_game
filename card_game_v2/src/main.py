@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 from Characters import Anus, Big_Chungus, Kvítek, Marekec, Máta, Milanus, Mojmi_chan, PopeC0rn, Tolbus, Zálabář, Žeromán, Žimík
 from Code import settings as s
 from Code import functions as f
+import sys
 sg.theme('DarkTeal10')  
 
 # Layout and window creation using the layout() function in Code/functions.py
@@ -9,20 +10,24 @@ layout = []
 layout = f.layout(layout, choose_characters=True)
 window = sg.Window('Card Game - choose characters', layout, size=(380, 150))
 
-# Loop for choosing characters for both players
 if __name__ == '__main__':
+    # Loop for choosing characters for both players
     while True:
         event, values = window.read()
-        if event == 'Exit' or event == sg.WIN_CLOSED:
-            quit()
+
         # Checking if all characters have been chosen
         if len(s.all_characters) == 6:
             s.choosing_finish = True
+
+        if event == 'Exit' or event == sg.WIN_CLOSED:
+            sys.exit()
+
         elif event == 'Proceed to the game':
-            if s.choosing_finish:
+            if s.choosing_finish is True:
                 break
             else:
                 sg.popup('All players have not chosen their characters yet!', title='Error')
+
         # Passing a name of the chosen character and the collection of the player to choose_character() function in Code/functions.py
         elif event == 'Add for 1st player':
             f.choose_character(s.first_collection, values['first'])
@@ -93,12 +98,12 @@ if __name__ == '__main__':
     while True:
         event, values = window.read()
         if event == 'Exit' or event == sg.WIN_CLOSED:
-                    quit()
+            sys.exit()
 
         # Checking if s.end has been set to True, ending the game
         if s.end:
             sg.popup(f'THE WINNER IS {s.winner}!')
-            quit()
+            sys.exit()
     
         # Checking if player has pressed the 'NEXT ROUND!' button and if yes, whether the next round can start or not
         elif event == 'NEXT ROUND!':
@@ -116,22 +121,17 @@ if __name__ == '__main__':
             elif event == '2nd player - Play with this character':
                 f.playing(values, window2, '2ndplayer_character', s.first_collection)
 
-        # Function for handling if 1st player wants to check the stats of their character
+        # Handling if 1st player wants to check the stats of their character
         elif event == '1st player - Check this character':
             name = values['1stplayer_character']
             f.stat_checking(name)
 
-        # Function for handling if 2nd player wants to check the stats of their character
+        # Handling if 2nd player wants to check the stats of their character
         elif event == '2nd player - Check this character':
             name = values['2ndplayer_character']
             f.stat_checking(name)
-
-        # End of the loop which tries to close the window for actions if possible - that means, if it has been opened and isn't still running
-        try:
-            window2.close()
-        except NameError:
-            pass
     
         # Resetting the layout in case some character died, so the window shows only characters that are actually alive
-        layout = f.checking_for_dead(layout)
+        layout = f.layout(layout, game=True)
+        window.close()
         window = sg.Window('Card Game - Round 1', layout, size=(500, 500))
