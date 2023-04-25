@@ -19,7 +19,7 @@ This version has been removed as it was very outdated and v2 is out.
 ## v2
 Download from here: https://www.mediafire.com/file/geluha2qq3ygwbq/card_game_v2.exe/file
 
-Run the .exe installer file, it will install a card_game folder. The game (main.exe) is located in the subdirectory called "src".
+Run the .exe installer file, it will install a card_game folder. The game is inside it.
 
 Windows Defender will probably tell you it is a virus because the file is .exe. Of course, it is not - you can see all source code here on GitHub and the installer installs only one folder with one .exe file for the game.
 
