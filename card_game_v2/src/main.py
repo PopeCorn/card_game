@@ -1,8 +1,8 @@
+import sys
 import PySimpleGUI as sg
-from Characters import Anus, Big_Chungus, Kvítek, Marekec, Máta, Milanus, Mojmi_chan, PopeC0rn, Tolbus, Zálabář, Žeromán, Žimík
+from Code import characters as ch
 from Code import settings as s
 from Code import functions as f
-import sys
 sg.theme('DarkTeal10')  
 
 # Layout and window creation using the layout() function in Code/functions.py
@@ -23,7 +23,7 @@ if __name__ == '__main__':
             sys.exit()
 
         elif event == 'Proceed to the game':
-            if s.choosing_finish is True:
+            if s.choosing_finish:
                 break
             else:
                 sg.popup('All players have not chosen their characters yet!', title='Error')
@@ -38,52 +38,52 @@ if __name__ == '__main__':
     # Section for making playables - could be solved better, this is the easiest method
     for unused in s.all_characters:
         if unused == 'Big Chungus':
-            big_chungus = Big_Chungus.BigChungus()
+            big_chungus = ch.BigChungus()
             s.transfer['Big Chungus'] = big_chungus
             s.all_playable.append(big_chungus)
         elif unused == 'Anus':
-            anus = Anus.Anus()
+            anus = ch.Anus()
             s.transfer['Anus'] = anus
             s.all_playable.append(anus)
         elif unused == 'Kvítek':
-            kvitek = Kvítek.Kvítek()
+            kvitek = ch.Kvítek()
             s.transfer['Kvítek'] = kvitek
             s.all_playable.append(kvitek)
         elif unused == 'Marekec':
-            marekec = Marekec.Marekec()
+            marekec = ch.Marekec()
             s.transfer['Marekec'] = marekec
             s.all_playable.append(marekec)
         elif unused == 'Máta':
             s.mata_here = True
-            mata = Máta.Máta()
+            mata = ch.Máta()
             s.transfer['Máta'] = mata
             s.all_playable.append(mata)
         elif unused == 'Milanus':
-            milanus = Milanus.Milanus()
+            milanus = ch.Milanus()
             s.transfer['Milanus'] = milanus
             s.all_playable.append(milanus)
         elif unused == 'Mojmi-chan':
-            mojmi_chan = Mojmi_chan.Mojmi_chan()
+            mojmi_chan = ch.Mojmi_chan()
             s.transfer['Mojmi-chan'] = mojmi_chan
             s.all_playable.append(mojmi_chan)
         elif unused == 'Žeromán':
-            zeroman = Žeromán.Žeromán()
+            zeroman = ch.Žeromán()
             s.transfer['Žeromán'] = zeroman
             s.all_playable.append(zeroman)
         elif unused == 'PopeC0rn':
-            popec0rn = PopeC0rn.PopeC0rn()
+            popec0rn = ch.PopeC0rn()
             s.transfer['PopeC0rn'] = popec0rn
             s.all_playable.append(popec0rn)
         elif unused == 'Zálabář':
-            zalabar = Zálabář.Zálabář()
+            zalabar = ch.Zálabář()
             s.transfer['Zálabář'] = zalabar
             s.all_playable.append(zalabar)
         elif unused == 'Tolbus':
-            tolbus = Tolbus.Tolbus()
+            tolbus = ch.Tolbus()
             s.transfer['Tolbus'] = tolbus
             s.all_playable.append(tolbus)
         elif unused == 'Žimík':
-            zimik = Žimík.Žimík()
+            zimik = ch.Žimík()
             s.transfer['Žimík'] = zimik
         s.inv_transfer = {v: k for k, v in s.transfer.items()}
 
